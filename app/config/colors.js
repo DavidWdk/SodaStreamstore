@@ -12,4 +12,5 @@ export default {
   white: "#fff",
   yellow: "#ffdd00",
   transparant: "rgba(0, 0, 0, 0.0)",
+  red: "#ff0031"
 };

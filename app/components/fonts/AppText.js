@@ -20,7 +20,6 @@ function AppText({
   thin = false,
   ...otherProps
 }) {
-  //   const Authenticate = () => {
   let [fontsLoaded] = useFonts({
     Roboto_300Light,
     Roboto_400Regular,

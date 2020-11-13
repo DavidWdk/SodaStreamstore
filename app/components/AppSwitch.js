@@ -4,7 +4,7 @@ import { View, StyleSheet, Switch } from "react-native";
 import { AppText } from "./fonts";
 import defaultStyles from "../config/styles";
 
-function AppSwitch({ title, toggleSwitchFunction }) {
+function AppSwitch({ title, toggleSwitchFunction, bold, style }) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -12,20 +12,18 @@ function AppSwitch({ title, toggleSwitchFunction }) {
   };
 
   return (
-    <View style={defaultStyles.section}>
-      <View style={styles.switchSection}>
-        <AppText style={styles.title}>{title}</AppText>
-        <Switch
-          trackColor={{
-            false: defaultStyles.colors.white,
-            true: defaultStyles.colors.darkBlue,
-          }}
-          thumbColor={defaultStyles.colors.white}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-      </View>
+    <View style={[styles.switchSection, style]}>
+      <AppText bold={bold} style={styles.title}>{title}</AppText>
+      <Switch
+        trackColor={{
+          false: defaultStyles.colors.grey,
+          true: defaultStyles.colors.darkBlue,
+        }}
+        thumbColor={defaultStyles.colors.white}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
     </View>
   );
 }
@@ -33,6 +31,7 @@ const styles = StyleSheet.create({
   switchSection: {
     flexDirection: "row",
     justifyContent: "space-between",
+    flex: 1,
   },
   title: {
     alignSelf: "center",

@@ -1,6 +1,12 @@
 import React from "react";
 import Constants from "expo-constants";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+  Platform,
+} from "react-native";
 
 function ScrollScreen({ children, style }) {
   return (
@@ -19,7 +25,7 @@ const styles = StyleSheet.create({
   },
   view: {
     flex: 1,
-    paddingBottom: 32,
+    paddingBottom: Platform.OS === "ios" ? 0 : 32,
   },
 });
 

@@ -1,3 +1,8 @@
+//LINK HET SCHERM LAATST BEKEKEN, DEZE STAAT OOK BIJ ZOEKEN
+//KLANTENSERVICE LEIDT NAAR WEBSITE
+//VOORWAARDEN ALS WEBVIEW OF LEIDT NAAR WEBSITE
+//FEEBACK OVER APP LEIDT NAAR PLAYSTORE/ APPSTORE
+
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
@@ -35,7 +40,7 @@ function UserSettingsScreen(props) {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    paddingBottom: 8,
+    paddingVertical: 8,
   },
   titleText: {
     fontSize: 24,

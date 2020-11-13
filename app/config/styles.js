@@ -2,29 +2,67 @@ import colors from "./colors";
 
 export default {
   colors,
-  text: {
-    color: colors.black,
-    fontSize: 16,
+  botSpacing: {
+    marginBottom: 8,
+  },
+  blueSection: {
+    backgroundColor: colors.blueBackground,
+    paddingVertical: 24,
+  },
+  blueBackground: {
+    backgroundColor: colors.blueBackground,
   },
   boldText: {
     fontWeight: "bold",
     color: colors.black,
     fontSize: 16,
   },
-  title: {
-    color: colors.black,
-    fontSize: 24,
-    fontWeight: "600",
+  center: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    paddingTop: 12,
+  },
+  icon: {
+    marginRight: 8,
+  },
+  lineWhitespace: {
+    marginTop: 8,
+  },
+  row: {
+    flexDirection: "row",
+  },
+  screenContainer: {
+    paddingHorizontal: 8,
+  },
+  section: {
+    paddingBottom: 24,
   },
   subtitle: {
     color: colors.black,
     fontSize: 18,
     // fontWeight: "bold",
   },
-  section: {
-    paddingBottom: 24,
+  text: {
+    color: colors.black,
+    fontSize: 16,
   },
-  screenContainer: {
-    paddingHorizontal: 12,
+  textCenter: {
+    textAlign: "center",
+  },
+  title: {
+    color: colors.black,
+    fontSize: 24,
+    fontWeight: "600",
+  },
+  topWhitespace: {
+    paddingTop: 32,
+  },
+  topWhitespaceSmaller: {
+    paddingTop: 24,
+  },
+  topWhitespaceSmallest: {
+    paddingTop: 16,
   },
 };

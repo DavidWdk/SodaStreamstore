@@ -14,6 +14,7 @@ function AppTextInput({
   width = "100%",
   required = false,
   subText,
+  style,
   ...otherProps
 }) {
   let [fontsLoaded] = useFonts({
@@ -37,7 +38,7 @@ function AppTextInput({
         ) : (
           <View style={styles.whiteSpace} />
         )}
-        <View style={[styles.container, { width }]}>
+        <View style={[styles.container, style, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -48,7 +49,7 @@ function AppTextInput({
           )}
           <TextInput
             placeholderTextColor={defaultStyles.colors.grey}
-            style={defaultStyles.text}
+            style={[defaultStyles.text]}
             {...otherProps}
           />
         </View>

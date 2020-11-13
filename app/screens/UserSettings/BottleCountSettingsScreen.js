@@ -6,7 +6,6 @@ import CustomHeader from "../../components/CustomHeader";
 import Screen from "../../components/screenStyling/Screen";
 import defaultStyles from "../../config/styles";
 import AppSlider from "../../components/AppSlider";
-import AppSwitch from "../../components/AppSwitch";
 
 function BottleCountSettings(props) {
   const [isEnabled, setIsEnabled] = useState(false);

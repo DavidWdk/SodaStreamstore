@@ -1,58 +1,55 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import { AppText } from "./fonts";
 
-function AppButton({
+function ButtonOutline({
+  textColor = "darkBlue",
   title,
+  bold = false,
   onPress,
   icon,
-  fontSize = 16,
-  color = "lightBlue",
-  textColor = "white",
-  bold = false,
   style,
+  index,
 }) {
   return (
     <TouchableOpacity
-      style={[styles.button, style, { backgroundColor: colors[color] }]}
+      style={[styles.button, style]}
+      index={index}
       onPress={onPress}
     >
       {icon && (
         <MaterialCommunityIcons
           name={icon}
-          size={22}
-          color={textColor}
+          size={24}
+          color={defaultStyles.colors.darkBlue}
           style={defaultStyles.icon}
         />
       )}
       <AppText
         bold={bold}
-        style={[styles.text, { color: colors[textColor], fontSize: fontSize }]}
+        style={[styles.text, { color: defaultStyles.colors[textColor] }]}
       >
         {title}
       </AppText>
     </TouchableOpacity>
   );
 }
-
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.lightBlue,
+    borderWidth: 2,
+    borderColor: defaultStyles.colors.darkBlue,
     justifyContent: "center",
     alignItems: "center",
-    padding: 15,
-    marginVertical: 16,
-    borderBottomWidth: 4,
-    borderColor: colors.bottomBtn,
+    marginTop: 8,
     flexDirection: "row",
   },
   text: {
-    color: colors.white,
+    padding: 10,
+    color: defaultStyles.colors.darkBlue,
   },
 });
 
-export default AppButton;
+export default ButtonOutline;

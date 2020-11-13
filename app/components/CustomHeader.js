@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
@@ -23,10 +23,10 @@ const styles = StyleSheet.create({
   customHeader: {
     flexDirection: "row",
     marginBottom: 12,
-    paddingTop: 24,
+    // paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight - 15 : Constants.statusBarHeight
   },
   backIcon: {
-    paddingTop: 4,
+    paddingTop: 5,
     paddingRight: 8,
   },
 });

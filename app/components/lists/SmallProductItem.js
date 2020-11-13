@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
 
-function ProductItemFlatlist({ imageUrl, title, subtitle, onPress }) {
+function SmallProductItem({ imageUrl, title, subtitle, onPress }) {
   return (
     <TouchableHighlight
       onPress={onPress}
@@ -45,8 +45,9 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   image: {
-    width: 60,
-    height: 60,
+    marginTop: 5,
+    width: 70,
+    height: 70,
   },
   title: {
     fontSize: 16,
@@ -57,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductItemFlatlist;
+export default SmallProductItem;

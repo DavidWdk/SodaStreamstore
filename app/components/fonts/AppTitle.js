@@ -23,7 +23,7 @@ function AppTitle({ style, children, thin = false, ...otherProps }) {
     );
   } else if (fontsLoaded && thin === true) {
     return (
-      <Text style={[styles.textBold, style]} {...otherProps}>
+      <Text style={[styles.textThin, style]} {...otherProps}>
         {children}
       </Text>
     );
