@@ -18,7 +18,7 @@ function ManageSubscriptionScreen(props) {
       label: "2 pack CO2-cilinders",
       image: "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
       price: 29.99,
-      amounth: "1",
+      amount: "1",
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ function ManageSubscriptionScreen(props) {
       image:
         "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
       price: 4.99,
-      amounth: "3",
+      amount: "3",
     },
     {
       id: 3,
@@ -34,28 +34,28 @@ function ManageSubscriptionScreen(props) {
       image:
         "https://image.sodastreamstore.nl/m/sodastream-mocktail-siroop-bahamas-pina-colada?sid=3&pid=2306900",
       price: 6.99,
-      amounth: "3",
+      amount: "3",
     },
   ];
 
   const priceArray = products.map(({ price }) => price);
-  const totalArticles = priceArray.reduce((a, c) => a + c);
+  const totalPriceArticles = priceArray.reduce((a, c) => a + c);
   const [deliveryCosts, setDeliveryCosts] = useState(0);
 
   useEffect(() => {
-    if (deliveryCosts > 50) {
+    if (deliveryCosts < 50) {
       setDeliveryCosts(3.99);
     }
-  });
+  }, []);
 
   return (
     <Screen style={defaultStyles.screenContainer}>
+      <CustomHeader style={styles.header} title="Abonnement beheren" />
       <SubscriptionProductsList
         data={products}
         keyExtractor={(product) => product.id.toString()}
         ListHeaderComponent={
           <>
-            <CustomHeader style={styles.header} title="Abonnement beheren" />
             <AppText italic style={defaultStyles.textCenter}>
               Abonnementen kunnen tot een dag voor bezorging gewijzigd worden
             </AppText>
@@ -63,15 +63,15 @@ function ManageSubscriptionScreen(props) {
             <AppTitle style={defaultStyles.topWhitespaceSmaller}>
               Bezorgkwantiteit
             </AppTitle>
-            <SquareSelectionItems items={options} style={styles.item} />
 
+            <SquareSelectionItems items={options} style={styles.item} />
             <AppTitle style={styles.title}>Producten</AppTitle>
           </>
         }
         ListFooterComponent={
           <View>
             <AppTitle>Totaal</AppTitle>
-            <PriceSum title="Totaal artikelen" price={totalArticles} />
+            <PriceSum title="Totaal artikelen" price={totalPriceArticles} />
             <PriceSum title="Verzendkosten" price={deliveryCosts} />
           </View>
         }

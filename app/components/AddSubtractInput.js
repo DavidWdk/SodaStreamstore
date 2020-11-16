@@ -6,30 +6,21 @@ import AppTextInput from "./AppTextInput";
 import defaulStyles from "../config/styles";
 import { AppText } from "./fonts";
 
-function AddSubtractInput({ initialvalue = 1 }) {
-  const [value, setValue] = useState(initialvalue);
-
+function AddSubtractInput({ initialvalue, onPressAdd, onPressSubtract }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={[styles.subtract, styles.btn]}
-        onPress={() => {
-          if (value > 1) {
-            setValue(value - 1);
-          }
-        }}
+        onPress={onPressSubtract}
       >
         <FontAwesome5 style={styles.btnContent} name="minus" />
       </TouchableOpacity>
       <AppTextInput
         style={styles.input}
-        defaultValue={value.toString()}
+        defaultValue={initialvalue}
         keyboardType="numeric"
       />
-      <TouchableOpacity
-        style={[styles.add, styles.btn]}
-        onPress={() => setValue(value + 1)}
-      >
+      <TouchableOpacity style={[styles.add, styles.btn]} onPress={onPressAdd}>
         <FontAwesome5 name="plus" style={styles.btnContent} />
       </TouchableOpacity>
     </View>

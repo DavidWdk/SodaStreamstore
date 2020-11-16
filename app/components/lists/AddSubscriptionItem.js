@@ -12,17 +12,17 @@ function AddSubscriptionItem({
   buttonId,
   redButtonId,
   item,
-  amounth = 0,
+  amount = 0,
 }) {
   return (
     <Pressable
       style={styles.productContainer}
       onPress={() => console.log(item.label)}
     >
-      {amounth > 0 && (
-        <View style={styles.amounth}>
-          <AppText bold style={styles.amounthText}>
-            {amounth}
+      {amount > 0 && (
+        <View style={styles.amount}>
+          <AppText bold style={styles.amountText}>
+            {amount}
           </AppText>
         </View>
       )}
@@ -32,7 +32,7 @@ function AddSubscriptionItem({
         {item.label}
       </AppTitle>
       <View style={styles.manageItem}>
-        {amounth > 0 && (
+        {amount > 0 && (
           <ButtonOutline
             title={"- 1"}
             style={styles.subtractBtn}
@@ -56,7 +56,7 @@ function AddSubscriptionItem({
   );
 }
 const styles = StyleSheet.create({
-  amounth: {
+  amount: {
     position: "absolute",
     top: 8,
     left: 8,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  amounthText: {
+  amountText: {
     color: defaultStyles.colors.white,
     padding: 2,
   },

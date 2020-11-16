@@ -12,7 +12,13 @@ import { AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
 import AddSubtractInput from "../AddSubtractInput";
 
-function MySubscriptionItems({ item, onDelete }) {
+function MySubscriptionItems({
+  item,
+  onDelete,
+  initialvalue,
+  onPressAdd,
+  onPressSubtract,
+}) {
   return (
     <Pressable
       style={styles.productContainer}
@@ -21,18 +27,25 @@ function MySubscriptionItems({ item, onDelete }) {
       <TouchableOpacity style={styles.delete} onPress={onDelete}>
         <AntDesign name="close" size={25} />
       </TouchableOpacity>
+
       <Image source={{ uri: item.image }} style={styles.image} />
-      <AppTitle numberOfLines={1} style={styles.label}>
+
+      <AppTitle numberOfLines={2} style={styles.label}>
         {item.label}
       </AppTitle>
+
       <View style={styles.manageItem}>
-        <AddSubtractInput />
+        <AddSubtractInput
+          initialvalue={initialvalue}
+          onPressAdd={onPressAdd}
+          onPressSubtract={onPressSubtract}
+        />
       </View>
     </Pressable>
   );
 }
 const styles = StyleSheet.create({
-  amounth: {
+  amount: {
     margin: -4,
     marginVertical: -8,
     alignSelf: "center",

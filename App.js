@@ -2,6 +2,8 @@
 
 import React from "react";
 import { LogBox } from "react-native";
+LogBox.ignoreAllLogs(true);
+LogBox.ignoreLogs(["Warning: ..."]);
 
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
@@ -22,6 +24,5 @@ import ManageSubscriptionScreen from "./app/screens/Subscriptions/ManageSubscrip
 import NewSubFirstStepScreen from "./app/screens/Subscriptions/NewSubFirstStepScreen";
 
 export default function App() {
-  LogBox.ignoreLogs(["Warning: ..."]);
   return <NewSubFirstStepScreen />;
 }
