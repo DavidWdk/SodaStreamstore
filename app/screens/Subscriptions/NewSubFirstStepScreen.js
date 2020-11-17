@@ -16,9 +16,9 @@ function NewSubFirstStepScreen(props) {
     // var len = shownProducts.length
     // for (var i = 0; i < len;)
     // }
-    // setShownProducts.filter((products) =>
-    //   products.label.toLowerCase().includes(textToSearch.toLowerCase())
-    // );
+    setShownProducts.filter((products) =>
+      products.label.toLowerCase().indexOf(textToSearch.toLowerCase())
+    );
   };
 
   return (
@@ -27,21 +27,20 @@ function NewSubFirstStepScreen(props) {
 
       <SubscriptionProductsList
         newSubscriptionList
-        ListHeaderComponent={
-          <>
-            <AppTextInput
-              icon="magnify"
-              placeholder="Zoek een product..."
-              style={styles.search}
-              onChangeText={(text) => searchItems(text)}
-            />
-            <AppTitle style={defaultStyles.botSpacing}>
-              Jouw meest bestelde producten
-            </AppTitle>
-          </>
-        }
+        // ListHeaderComponent={
+        //   <>
+        //     <AppTextInput
+        //       icon="magnify"
+        //       placeholder="Zoek een product..."
+        //       style={styles.search}
+        //       onChangeText={(text) => searchItems(text)}
+        //     />
+        //     <AppTitle style={defaultStyles.botSpacing}>
+        //       Jouw meest bestelde producten
+        //     </AppTitle>
+        //   </>
+        // }
         data={shownProducts}
-        keyExtractor={(product) => product.id.toString()}
       />
     </Screen>
   );

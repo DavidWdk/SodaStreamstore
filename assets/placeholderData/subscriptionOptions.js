@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    label: "2 pack CO2-cilinders",
+    label: "2 pack CO2-ruilcilinders",
     image: "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
     price: 29.99,
     amount: 0,

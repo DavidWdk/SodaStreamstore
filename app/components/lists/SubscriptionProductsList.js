@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, Image, View } from "react-native";
-import AddSubscriptionItem from "./AddSubscriptionItem";
 
-import MySubscriptionItems from "./MySubscriptionItems";
+import { AppTitle } from "../fonts";
+import AddSubscriptionItem from "./AddSubscriptionItem";
+import PriceSum from "../PriceSum";
+import SubscriptionListItem from "./SubscriptionListItem";
+import AppTextInput from "../AppTextInput";
 
 function SubscriptionProducts({
   data,
@@ -10,30 +13,32 @@ function SubscriptionProducts({
   ...otherProps
 }) {
   //initial subscriptionlist
+  const intialTotalPrice = 0;
   const subscriptionItemList = [];
-
-  // const [productAmount, setProductamount] = useState()
-
-  //Used to search (filter) through product list
   const [products, setProducts] = useState(data);
-
-  var totalPrice = 0;
-
-  //Meant to add subscription items
+  const [totalPrice, setTotalprice] = useState(intialTotalPrice);
+  const [deliveryCosts, setDeviveryCosts] = useState(0);
   const [subscriptionItems, setSubscriptionItems] = useState(
     subscriptionItemList
   );
+  const [searchedProducts, setSearchedProducts] = useState([]);
 
   //AddItem: add item to subscriptionproducts array, if item is a duplicate,
   //don't add object to array again - instead increase the .amount value
   const addItem = (itemId) => {
-    //Optimalisation
     let len = products.length;
     for (let i = 0; i < len; i++) {
-      if (products[i].id == itemId) {
-        setSubscriptionItems((prevArray) => [...prevArray, products[i]]);
-        products[i].amount = products[i].amount + 1;
-        console.log(subscriptionItems);
+      if (products[i].id === itemId) {
+        let lenSub = subscriptionItems.length;
+        for (let j = 0; j < lenSub; j++) {
+          if (subscriptionItems[j].id === products[i].id) {
+            setSubscriptionItems((prevArray) => [...prevArray, products[i]]);
+            console.log("First instance");
+          } else {
+            products[i].amount = products[i].amount + 1;
+            console.log("Duplicate");
+          }
+        }
       }
     }
   };
@@ -41,20 +46,28 @@ function SubscriptionProducts({
   const subtractItem = (itemId) => {
     let len = products.length;
     for (let i = 0; i < len; i++) {
-      if (products[i].id == itemId) {
+      if (products[i].id === itemId) {
         if (products[i].amount > 0) {
-          setSubscriptionItems((prevArray) => [...prevArray, products[i]]);
+          setSubscriptionItems((prevArray) => [...prevArray]);
+
           products[i].amount = products[i].amount - 1;
-          console.log(subscriptionItems);
+          // console.log(subscriptionItems);
         }
       }
     }
   };
 
+  const handleSearch = (text) => {
+    console.log(text);
+    // const formatSearchInput = text.toLowerCase();
+  };
+
+  var sum = 0;
   const calculateTotalPrice = () => {
     let len = products.length;
     for (let i = 0; i < len; i++) {
-      totalPrice += parseFloat(products[i].price);
+      sum += parseFloat(products[i].price);
+      setTotalprice(sum);
     }
   };
 
@@ -63,39 +76,38 @@ function SubscriptionProducts({
     // console.log(products);
   };
 
-  //TO DO, calculate whole price after products array changes
   useEffect(() => {
     calculateTotalPrice();
-    console.log(totalPrice);
+
+    if (totalPrice < 50) {
+      setDeviveryCosts(3.99);
+    } else {
+      setDeviveryCosts(0);
+    }
   }, [products]);
 
   const onViewRef = React.useRef((viewableItems) => {});
 
-  const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 });
+  const viewConfigRef = React.useRef({
+    viewAreaCoveragePercentThreshold: 50,
+  });
 
   if (newSubscriptionList === false) {
+    //Returns list for adding items to the subscription
     return (
       <FlatList
         data={[...products, { addItem: true }]}
+        keyExtractor={(item) => item.id}
         columnWrapperStyle={styles.list}
         numColumns={2}
         onViewableItemsChanged={onViewRef.current}
         viewabilityConfig={viewConfigRef.current}
         renderItem={({ item }) => {
           if (item.addItem) {
-            return (
-              <Image
-                item={item}
-                source={{
-                  uri:
-                    "https://www.plus.nl/INTERSHOP/static/WFS/PLUS-website-Site/-/-/nl_NL/images/icon/default_img_store.png",
-                }}
-                style={{ width: 150, height: 150 }}
-              />
-            );
+            return <SubscriptionListItem addItemBlock />;
           }
           return (
-            <MySubscriptionItems
+            <SubscriptionListItem
               item={item}
               onDelete={() => handleDelete(item)}
               buttonId={item.id}
@@ -110,28 +122,46 @@ function SubscriptionProducts({
             />
           );
         }}
+        ListFooterComponent={
+          <View>
+            <AppTitle>Totaal</AppTitle>
+            <PriceSum title="Totaal artikelen" price={totalPrice} />
+            <PriceSum title="Verzendkosten" price={deliveryCosts} />
+          </View>
+        }
         {...otherProps}
       />
     );
   } else if (newSubscriptionList === true) {
+    //Returns list for managing the subscription
     return (
-      <FlatList
-        data={products}
-        columnWrapperStyle={styles.list}
-        numColumns={2}
-        onViewableItemsChanged={onViewRef.current}
-        viewabilityConfig={viewConfigRef.current}
-        renderItem={({ item }) => (
-          <AddSubscriptionItem
-            item={item}
-            buttonId={item.id}
-            onPress={() => addItem(item.id)}
-            onPressSecondary={() => subtractItem(item.id)}
-            amount={item.amount}
-          />
-        )}
-        {...otherProps}
-      />
+      <>
+        <AppTextInput
+          icon="magnify"
+          placeholder="Zoek een product..."
+          style={styles.search}
+          onChangeText={(text) => handleSearch(text)}
+        />
+
+        <FlatList
+          data={products}
+          keyExtractor={(item) => item.id}
+          columnWrapperStyle={styles.list}
+          numColumns={2}
+          onViewableItemsChanged={onViewRef.current}
+          viewabilityConfig={viewConfigRef.current}
+          renderItem={({ item }) => (
+            <AddSubscriptionItem
+              item={item}
+              buttonId={item.id}
+              onPress={() => addItem(item.id)}
+              onPressSecondary={() => subtractItem(item.id)}
+              amount={item.amount}
+            />
+          )}
+          {...otherProps}
+        />
+      </>
     );
   }
 }

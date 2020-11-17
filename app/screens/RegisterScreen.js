@@ -32,7 +32,18 @@ const validationSchema = Yup.object().shape({
   postcode: Yup.string().max(4).min(8).required().label("Postcode"),
   huisnummer: Yup.number().required().label("Huisnummer"),
   toevoeging: Yup.string().notRequired().label("Toevoeging"),
-  land: Yup.string().required().label("Land"),
+  //Placeholder van land is een object, maar een select-item is een string
+  //Switch lijkt niet te werken?
+  land: Yup.lazy((value) => {
+    switch (typeof value) {
+      case "object":
+        return Yup.object().label("Land");
+      case "string":
+        return Yup.string().required().label("Land");
+      default:
+        return Yup.object();
+    }
+  }),
   email: Yup.string().required().email().label("E-mailadres"),
   wachtwoord: Yup.string().required().min(6).label("Wachtwoord"),
 });
@@ -117,6 +128,7 @@ function RegisterScreen(props) {
               width="40%"
             />
 
+            {/* Geeft het string terug of object? */}
             <AppPicker
               label="Land"
               name="land"

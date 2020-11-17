@@ -22,7 +22,7 @@ function ManageSubscriptionScreen(props) {
     },
     {
       id: 2,
-      label: "Fruit Drops Mango",
+      label: "Fruit Drops Siroop Mango",
       image:
         "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
       price: 4.99,
@@ -53,7 +53,7 @@ function ManageSubscriptionScreen(props) {
       <CustomHeader style={styles.header} title="Abonnement beheren" />
       <SubscriptionProductsList
         data={products}
-        keyExtractor={(product) => product.id.toString()}
+        keyExtractor={(index, item) => item.toString()}
         ListHeaderComponent={
           <>
             <AppText italic style={defaultStyles.textCenter}>
@@ -67,13 +67,6 @@ function ManageSubscriptionScreen(props) {
             <SquareSelectionItems items={options} style={styles.item} />
             <AppTitle style={styles.title}>Producten</AppTitle>
           </>
-        }
-        ListFooterComponent={
-          <View>
-            <AppTitle>Totaal</AppTitle>
-            <PriceSum title="Totaal artikelen" price={totalPriceArticles} />
-            <PriceSum title="Verzendkosten" price={deliveryCosts} />
-          </View>
         }
       />
     </Screen>

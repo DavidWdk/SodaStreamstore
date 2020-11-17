@@ -8,17 +8,36 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-import { AppTitle } from "../fonts";
+import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
 import AddSubtractInput from "../AddSubtractInput";
 
-function MySubscriptionItems({
+function SubscriptionListItem({
   item,
   onDelete,
   initialvalue,
   onPressAdd,
   onPressSubtract,
+  addItemBlock = false,
 }) {
+  if (addItemBlock) {
+    return (
+      <TouchableOpacity
+        style={[styles.productContainer, styles.addItemBlock]}
+        onPress={() => console.log("Add item")}
+      >
+        <AntDesign
+          name="pluscircleo"
+          color={defaultStyles.colors.lightBlue}
+          size={80}
+        />
+        <AppText bold style={[defaultStyles.textCenter, styles.addItemText]}>
+          Voeg een product aan uw abonnement toe
+        </AppText>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <Pressable
       style={styles.productContainer}
@@ -45,6 +64,15 @@ function MySubscriptionItems({
   );
 }
 const styles = StyleSheet.create({
+  addItemBlock: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addItemText: {
+    marginTop: 12,
+    // textSize: 18,
+    color: defaultStyles.colors.lightBlue,
+  },
   amount: {
     margin: -4,
     marginVertical: -8,
@@ -93,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MySubscriptionItems;
+export default SubscriptionListItem;

@@ -22,7 +22,8 @@ import NoSubscriptionsScreen from "./app/screens/Subscriptions/NoSubscriptionsSc
 import MySubscriptionsScreen from "./app/screens/Subscriptions/MySubscriptionsScreen";
 import ManageSubscriptionScreen from "./app/screens/Subscriptions/ManageSubscriptionScreen";
 import NewSubFirstStepScreen from "./app/screens/Subscriptions/NewSubFirstStepScreen";
+import HomeScreen from "./app/screens/HomeScreen";
 
 export default function App() {
-  return <NewSubFirstStepScreen />;
+  return <HomeScreen />;
 }

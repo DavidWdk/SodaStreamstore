@@ -26,6 +26,7 @@ export default {
   },
   icon: {
     marginRight: 8,
+    marginTop: 5,
   },
   lineWhitespace: {
     marginTop: 8,
@@ -64,5 +65,8 @@ export default {
   },
   topWhitespaceSmallest: {
     paddingTop: 16,
+  },
+  topWhitespaceMini: {
+    paddingTop: 8,
   },
 };

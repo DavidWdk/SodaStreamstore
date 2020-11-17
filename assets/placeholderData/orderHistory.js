@@ -17,7 +17,7 @@ export default [
       },
       {
         id: 2,
-        product: "Fruit Drops Mango",
+        product: "Fruit Drops Siroop Mango",
         price: "€4,99",
         imageUrl:
           "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",

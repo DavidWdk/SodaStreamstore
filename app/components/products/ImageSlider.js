@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, ScrollView, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Dimensions,
+  Platform,
+} from "react-native";
 
-import { AppText } from "../fonts";
+import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
 
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
 
-function ImageSlider({ images }) {
+console.log(width, height);
+
+function ImageSlider({ images, style }) {
   const [active, setActive] = useState(0);
 
   const change = ({ nativeEvent }) => {
@@ -21,16 +30,32 @@ function ImageSlider({ images }) {
 
   return (
     <>
-      <View style={{ width, height }}>
+      <View style={(style, { width, height })}>
         <ScrollView
           pagingEnabled
           horizontal
           onMomentumScrollEnd={change}
           showsHorizontalScrollIndicator={false}
-          style={styles.container}
         >
+          <View style={styles.bannerTextContainer}>
+            <AppTitle style={styles.bannerText}>
+              Haal de bruis in huis bij Albert Heijn
+            </AppTitle>
+            <AppText
+              style={[styles.bannerText, defaultStyles.topWhitespaceMini]}
+            >
+              Bubbels op? Tegen inlevering van jouw lege cilinder betaal je
+              alleen voor het koolzuur.
+            </AppText>
+          </View>
+
           {images.map((image, index) => (
-            <Image key={index} source={{ uri: image }} style={styles.images} />
+            <Image
+              overlayColor={defaultStyles.colors.black}
+              key={index}
+              source={{ uri: image }}
+              style={styles.images}
+            />
           ))}
         </ScrollView>
       </View>
@@ -51,24 +76,36 @@ function ImageSlider({ images }) {
 }
 
 const styles = StyleSheet.create({
+  bannerText: {
+    color: defaultStyles.colors.white,
+  },
+  bannerTextContainer: {
+    width: width / 2.2,
+    position: "absolute",
+    left: 16,
+    zIndex: 1,
+    alignSelf: "center",
+  },
   paginationContainer: {
     flexDirection: "row",
     alignSelf: "center",
+    position: "absolute",
+    bottom: Platform.OS === "ios" ? 0 : 30,
   },
   paginationActiveText: {
     fontSize: width / 13,
     color: defaultStyles.colors.lightBlue,
-    marginBottom: 4,
     marginHorizontal: 2,
+    zIndex: 1,
   },
   paginationText: {
     fontSize: width / 13,
-    color: defaultStyles.colors.grey,
-    marginBottom: 4,
+    color: defaultStyles.colors.lightGrey,
     marginHorizontal: 2,
+    zIndex: 1,
   },
   images: {
-    resizeMode: "contain",
+    resizeMode: "cover",
     width,
     height,
   },

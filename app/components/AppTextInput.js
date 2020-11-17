@@ -42,9 +42,9 @@ function AppTextInput({
           {icon && (
             <MaterialCommunityIcons
               name={icon}
-              size={18}
+              size={20}
               color={defaultStyles.colors.grey}
-              style={defaultStyles.icon}
+              style={[defaultStyles.icon]}
             />
           )}
           <TextInput
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_400Regular",
   },
   icon: {
-    marginRight: 10,
+    // marginRight: 10,
+    // marginTop: 12,
   },
   text: {
     color: defaultStyles.colors.black,

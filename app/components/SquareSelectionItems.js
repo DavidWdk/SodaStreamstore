@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.white,
     width: "32%",
     padding: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
   selectableActive: {
     borderColor: defaultStyles.colors.darkBlue,
@@ -40,6 +42,8 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.blueBackground,
     width: "32%",
     padding: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
