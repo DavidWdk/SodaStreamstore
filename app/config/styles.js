@@ -8,6 +8,7 @@ export default {
   blueSection: {
     backgroundColor: colors.blueBackground,
     paddingVertical: 24,
+    paddingHorizontal: 8,
   },
   blueBackground: {
     backgroundColor: colors.blueBackground,
@@ -26,7 +27,7 @@ export default {
   },
   icon: {
     marginRight: 8,
-    marginTop: 5,
+    marginTop: 4,
   },
   lineWhitespace: {
     marginTop: 8,
@@ -39,6 +40,18 @@ export default {
   },
   section: {
     paddingBottom: 24,
+  },
+  shadowBlock: {
+    backgroundColor: colors.white,
+    padding: 16,
+    elevation: 8,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 6,
+    shadowOpacity: 0.15,
   },
   subtitle: {
     color: colors.black,

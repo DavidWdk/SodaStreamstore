@@ -49,7 +49,7 @@ function AppTextInput({
           )}
           <TextInput
             placeholderTextColor={defaultStyles.colors.grey}
-            style={[defaultStyles.text]}
+            style={defaultStyles.text}
             {...otherProps}
           />
         </View>
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_400Regular",
   },
   icon: {
-    // marginRight: 10,
-    // marginTop: 12,
+    marginRight: 10,
+    marginTop: 12,
   },
   text: {
     color: defaultStyles.colors.black,

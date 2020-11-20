@@ -24,17 +24,22 @@ function AppButton({
       {icon && (
         <MaterialCommunityIcons
           name={icon}
-          size={22}
-          color={textColor}
-          style={defaultStyles.icon}
+          size={24}
+          color={colors[textColor]}
+          style={styles.icon}
         />
       )}
-      <AppText
-        bold={bold}
-        style={[styles.text, { color: colors[textColor], fontSize: fontSize }]}
-      >
-        {title}
-      </AppText>
+      {title && (
+        <AppText
+          bold={bold}
+          style={[
+            styles.text,
+            { color: colors[textColor], fontSize: fontSize },
+          ]}
+        >
+          {title}
+        </AppText>
+      )}
     </TouchableOpacity>
   );
 }
@@ -44,14 +49,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightBlue,
     justifyContent: "center",
     alignItems: "center",
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
     marginVertical: 16,
     borderBottomWidth: 4,
     borderColor: colors.bottomBtn,
     flexDirection: "row",
   },
+  icon: {
+    marginRight: 8,
+  },
   text: {
     color: colors.white,
+    textAlign: "center",
   },
 });
 

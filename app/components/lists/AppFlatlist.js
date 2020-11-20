@@ -25,7 +25,6 @@ function AppFlatlist({ data, itemKind = "flat", ...otherProps }) {
   );
 }
 
-
 const styles = StyleSheet.create({
   list: {
     overflow: "visible",

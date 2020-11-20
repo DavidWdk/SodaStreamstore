@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, FlatList, Image, View } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 
 import { AppTitle } from "../fonts";
 import AddSubscriptionItem from "./AddSubscriptionItem";
@@ -14,33 +14,44 @@ function SubscriptionProducts({
 }) {
   //initial subscriptionlist
   const intialTotalPrice = 0;
-  const subscriptionItemList = [];
+  const initialSubscriptionProducts = [];
   const [products, setProducts] = useState(data);
   const [totalPrice, setTotalprice] = useState(intialTotalPrice);
   const [deliveryCosts, setDeviveryCosts] = useState(0);
   const [subscriptionItems, setSubscriptionItems] = useState(
-    subscriptionItemList
+    initialSubscriptionProducts
   );
   const [searchedProducts, setSearchedProducts] = useState([]);
 
-  //AddItem: add item to subscriptionproducts array, if item is a duplicate,
-  //don't add object to array again - instead increase the .amount value
-  const addItem = (itemId) => {
-    let len = products.length;
-    for (let i = 0; i < len; i++) {
-      if (products[i].id === itemId) {
-        let lenSub = subscriptionItems.length;
-        for (let j = 0; j < lenSub; j++) {
-          if (subscriptionItems[j].id === products[i].id) {
-            setSubscriptionItems((prevArray) => [...prevArray, products[i]]);
-            console.log("First instance");
-          } else {
-            products[i].amount = products[i].amount + 1;
-            console.log("Duplicate");
-          }
-        }
+  const addItem = (itemID) => {
+    const index = productIndex(itemID);
+    if (index != null) {
+      setSubscriptionItems(
+        (subscriptionItems[index].amount = subscriptionItems[index].amount + 1)
+      );
+    } else {
+      const product = getProductByID(itemID);
+      setSubscriptionItems((prevArray) => [...prevArray, product]);
+    }
+    console.log(subscriptionItems);
+  };
+
+  const getProductByID = (itemID) => {
+    for (let i = 0; i <= products.length; i++) {
+      if (products.id === itemID) {
+        return products;
       }
     }
+  };
+
+  const productIndex = (itemID) => {
+    for (let i = 0; i < subscriptionItems.length; i++) {
+      // console.log(subscriptionItems);
+      if (subscriptionItems[i].id === itemID) {
+        return i;
+      }
+    }
+    return null;
   };
 
   const subtractItem = (itemId) => {
@@ -49,9 +60,9 @@ function SubscriptionProducts({
       if (products[i].id === itemId) {
         if (products[i].amount > 0) {
           setSubscriptionItems((prevArray) => [...prevArray]);
-
           products[i].amount = products[i].amount - 1;
-          // console.log(subscriptionItems);
+        } else {
+          const obj = itemId.target.getAttribute("");
         }
       }
     }
@@ -148,6 +159,7 @@ function SubscriptionProducts({
           keyExtractor={(item) => item.id}
           columnWrapperStyle={styles.list}
           numColumns={2}
+          style={styles.listContainer}
           onViewableItemsChanged={onViewRef.current}
           viewabilityConfig={viewConfigRef.current}
           renderItem={({ item }) => (
@@ -168,14 +180,15 @@ function SubscriptionProducts({
 
 const styles = StyleSheet.create({
   container: {},
-  image: {
-    width: 150,
-    height: 150,
-  },
   list: {
     justifyContent: "space-between",
     width: "100%",
+    marginVertical: 8,
   },
+  listContainer: {
+    // marginVertical: 16,
+  },
+  search: {},
 });
 
 export default SubscriptionProducts;

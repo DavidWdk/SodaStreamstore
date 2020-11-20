@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     padding: -4,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 110,
+    height: 110,
     alignSelf: "center",
     marginTop: 8,
   },
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
   productContainer: {
     borderColor: defaultStyles.colors.lightGrey,
     width: "48%",
-    marginBottom: 16,
     backgroundColor: defaultStyles.colors.white,
     shadowColor: "#000",
     shadowOffset: {

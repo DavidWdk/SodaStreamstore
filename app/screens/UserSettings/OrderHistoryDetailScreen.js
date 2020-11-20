@@ -18,16 +18,23 @@ const billingAddress = "Gelijk aan bezorgadres";
 const billingMethod = "iDeal *************2246";
 const billingStatus = "Betaald";
 const images = [
-  "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
-  "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647&sort=1",
+  {
+    image:
+      "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
+  },
+  {
+    image:
+      "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647&sort=1",
+  },
 ];
 
 function OrderHistoryDetailScreen(props) {
   return (
-    <Screen>
+    <>
       <CustomHeader
-        style={[defaultStyles.screenContainer, styles.header]}
+        style={[defaultStyles.screenContainer]}
         title={`Bestelnr. ${orderNo}`}
+        topPaddingAdjustment
       />
       <ScrollScreen style={styles.container}>
         <ProductShowcaseFold
@@ -84,8 +91,9 @@ function OrderHistoryDetailScreen(props) {
           <ButtonOutline icon="script-text-outline" title="Factuur bekijken" />
           <ButtonOutline icon="undo" title="Retouneren" />
         </View>
+        <View style={{ paddingBottom: 40 }}></View>
       </ScrollScreen>
-    </Screen>
+    </>
   );
 }
 const styles = StyleSheet.create({

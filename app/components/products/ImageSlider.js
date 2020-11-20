@@ -10,11 +10,10 @@ import {
 
 import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
+import AppButton from "../AppButton";
 
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
-
-console.log(width, height);
 
 function ImageSlider({ images, style }) {
   const [active, setActive] = useState(0);
@@ -37,25 +36,43 @@ function ImageSlider({ images, style }) {
           onMomentumScrollEnd={change}
           showsHorizontalScrollIndicator={false}
         >
-          <View style={styles.bannerTextContainer}>
-            <AppTitle style={styles.bannerText}>
-              Haal de bruis in huis bij Albert Heijn
-            </AppTitle>
-            <AppText
-              style={[styles.bannerText, defaultStyles.topWhitespaceMini]}
-            >
-              Bubbels op? Tegen inlevering van jouw lege cilinder betaal je
-              alleen voor het koolzuur.
-            </AppText>
-          </View>
+          {images.map((banner, index) => (
+            <View key={index} style={styles.bannerContainer}>
+              <Image
+                overlayColor={defaultStyles.colors.black}
+                source={{ uri: banner.image }}
+                style={styles.images}
+              />
 
-          {images.map((image, index) => (
-            <Image
-              overlayColor={defaultStyles.colors.black}
-              key={index}
-              source={{ uri: image }}
-              style={styles.images}
-            />
+              <View style={styles.bannerTextContainer}>
+                {banner.textTitle && (
+                  <AppTitle
+                    style={[
+                      styles.bannerText,
+                      { color: defaultStyles.colors[banner.textColor] },
+                    ]}
+                  >
+                    {banner.textTitle}
+                  </AppTitle>
+                )}
+
+                {banner.textBody && (
+                  <AppText
+                    style={[
+                      styles.bannerText,
+                      defaultStyles.topWhitespaceMini,
+                      { color: defaultStyles.colors[banner.textColor] },
+                    ]}
+                  >
+                    {banner.textBody}
+                  </AppText>
+                )}
+
+                {banner.btnText && (
+                  <AppButton title={banner.btnText} style={styles.button} />
+                )}
+              </View>
+            </View>
           ))}
         </ScrollView>
       </View>
@@ -64,7 +81,7 @@ function ImageSlider({ images, style }) {
           <AppText
             key={k}
             style={
-              k == active ? styles.paginationActiveText : styles.paginationText
+              k === active ? styles.paginationActiveText : styles.paginationText
             }
           >
             •
@@ -76,21 +93,30 @@ function ImageSlider({ images, style }) {
 }
 
 const styles = StyleSheet.create({
+  bannerContainer: {
+    position: "relative",
+    justifyContent: "center",
+  },
   bannerText: {
     color: defaultStyles.colors.white,
   },
   bannerTextContainer: {
-    width: width / 2.2,
+    width: width / 2,
     position: "absolute",
     left: 16,
     zIndex: 1,
     alignSelf: "center",
   },
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    marginBottom: 0,
+    alignSelf: "flex-start",
+  },
   paginationContainer: {
     flexDirection: "row",
     alignSelf: "center",
-    position: "absolute",
-    bottom: Platform.OS === "ios" ? 0 : 30,
+    bottom: 40,
   },
   paginationActiveText: {
     fontSize: width / 13,
@@ -105,7 +131,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   images: {
-    resizeMode: "cover",
+    resizeMode: "contain",
     width,
     height,
   },

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     paddingVertical: 8,
-    marginVertical: 24,
+    marginVertical: 16,
     backgroundColor: defaultStyles.colors.lightBlue,
     elevation: 12,
     shadowOffset: { height: 5 },

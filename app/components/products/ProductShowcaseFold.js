@@ -21,7 +21,6 @@ function productShowcaseFold({
   };
 
   const [euros, cents] = priceFormatter(productPrice);
-  // console.log(priceFormatter("€4,99"));
 
   return (
     <View style={styles.container}>
@@ -42,15 +41,15 @@ function productShowcaseFold({
           onPress={() => console.log("Added to cart")}
         />
         {isProductHistory ? (
-          <Check title={`Dit product is bezorgd op ${productHistoryArrivalDate}`} />
-        )
-          :
-          (
-            <>
-              <Check />
-              <Check title="Gratis verzending vanaf 50 euro" />
-            </>
-          )}
+          <Check
+            title={`Dit product is bezorgd op ${productHistoryArrivalDate}`}
+          />
+        ) : (
+          <>
+            <Check />
+            <Check title="Gratis verzending vanaf 50 euro" />
+          </>
+        )}
       </View>
     </View>
   );

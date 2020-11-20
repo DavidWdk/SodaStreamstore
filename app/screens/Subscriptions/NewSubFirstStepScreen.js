@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import CustomHeader from "../../components/CustomHeader";
 import Screen from "../../components/screenStyling/Screen";
@@ -8,22 +8,16 @@ import subscriptionOptions from "../../../assets/placeholderData/subscriptionOpt
 import SubscriptionProductsList from "../../components/lists/SubscriptionProductsList";
 import { AppTitle } from "../../components/fonts";
 import AppTextInput from "../../components/AppTextInput";
+import AppButton from "../../components/AppButton";
 
 function NewSubFirstStepScreen(props) {
   const [shownProducts, setShownProducts] = useState(subscriptionOptions);
 
-  const searchItems = (textToSearch) => {
-    // var len = shownProducts.length
-    // for (var i = 0; i < len;)
-    // }
-    setShownProducts.filter((products) =>
-      products.label.toLowerCase().indexOf(textToSearch.toLowerCase())
-    );
-  };
+  const searchItems = (textToSearch) => {};
 
   return (
     <Screen style={[styles.container, defaultStyles.screenContainer]}>
-      <CustomHeader title="Stap 1: kies je producten" />
+      <CustomHeader title="Stap 1: kies je producten" style={styles.header} />
 
       <SubscriptionProductsList
         newSubscriptionList
@@ -42,12 +36,40 @@ function NewSubFirstStepScreen(props) {
         // }
         data={shownProducts}
       />
+      <AppButton
+        icon="arrow-right"
+        title="Door naar volgende stap"
+        style={styles.nextButton}
+        color="yellow"
+        textColor="black"
+      />
     </Screen>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultStyles.colors.blueBackground,
+    backgroundColor: defaultStyles.colors.white,
+  },
+  header: {
+    marginBottom: 0,
+    paddingBottom: 0,
+  },
+  nextButton: {
+    marginVertical: 0,
+    marginBottom: Platform.OS == "ios" ? 0 : 24,
+    // marginBottom: 8,
+    elevation: 4,
+    shadowColor: defaultStyles.colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.15,
+    // position: "absolute",
+    // bottom: 0,
+    // alignSelf: "center",
+    // width: "80%",
   },
   search: {
     marginBottom: 8,
