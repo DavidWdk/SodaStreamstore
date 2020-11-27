@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Pressable } from "react-native";
 
 import defaultStyles from "../config/styles";
-import { AppTitle } from "./fonts";
+import { AppText, AppTitle } from "./fonts";
 
 function SquareSelectionItems({ style, items }) {
   const [active, setActive] = useState(0);
@@ -15,7 +15,20 @@ function SquareSelectionItems({ style, items }) {
           onPress={() => setActive(index)}
           key={index}
         >
-          <AppTitle style={defaultStyles.textCenter}>{item}</AppTitle>
+          <AppTitle
+            style={[
+              defaultStyles.textCenter,
+              index == active ? styles.textItemsActive : styles.textItems,
+            ]}
+          >
+            {item.title}
+          </AppTitle>
+
+          {item.subTitle && (
+            <AppText thin style={defaultStyles.textCenter}>
+              {item.subTitle}
+            </AppText>
+          )}
         </Pressable>
       ))}
     </View>
@@ -33,17 +46,28 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.white,
     width: "32%",
     padding: 12,
+    paddingHorizontal: 4,
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 3,
   },
   selectableActive: {
     borderColor: defaultStyles.colors.darkBlue,
     borderWidth: 1,
-    backgroundColor: defaultStyles.colors.blueBackground,
+    backgroundColor: defaultStyles.colors.darkerBackground,
     width: "32%",
     padding: 12,
+    paddingHorizontal: 4,
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 3,
+  },
+  textItems: {
+    fontSize: 16,
+  },
+  textItemsActive: {
+    fontSize: 16,
+    color: defaultStyles.colors.darkBlue,
   },
 });
 

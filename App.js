@@ -22,10 +22,19 @@ import NoSubscriptionsScreen from "./app/screens/Subscriptions/NoSubscriptionsSc
 import MySubscriptionsScreen from "./app/screens/Subscriptions/MySubscriptionsScreen";
 import ManageSubscriptionScreen from "./app/screens/Subscriptions/ManageSubscriptionScreen";
 import NewSubFirstStepScreen from "./app/screens/Subscriptions/NewSubFirstStepScreen";
+import NewSubSecondStepScreen from "./app/screens/Subscriptions/NewSubSecondStepScreen";
 import HomeScreen from "./app/screens/HomeScreen";
 import ProductOverviewScreen from "./app/screens/Products/ProductOverviewScreen";
 import ShoppingCartScreen from "./app/screens/ShoppingCartScreen";
+import FilterScreen from "./app/screens/Products/FilterScreen";
+import UserVerificationCheckScreen from "./app/screens/UserVerificationCheckScreen";
+import CheckoutScreen from "./app/screens/CheckoutScreen";
+import ProductDetailScreen from "./app/screens/Products/ProductDetailScreen";
+import DescriptionModal from "./app/screens/Products/DescriptionModal";
+import SearchScreen from "./app/screens/SearchScreen";
 
+//TODO: When confirming subscription, show shoppingcartscreen with the selected
+//items as an validition from the user.
 export default function App() {
-  return <NewSubFirstStepScreen />;
+  return <NewSubSecondStepScreen />;
 }

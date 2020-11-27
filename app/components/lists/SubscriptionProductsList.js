@@ -21,59 +21,69 @@ function SubscriptionProducts({
   const [subscriptionItems, setSubscriptionItems] = useState(
     initialSubscriptionProducts
   );
-  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState(data);
 
-  const addItem = (itemID) => {
-    const index = productIndex(itemID);
-    if (index != null) {
-      setSubscriptionItems(
-        (subscriptionItems[index].amount = subscriptionItems[index].amount + 1)
-      );
+  const subtractItem = (itemID) => {
+    let index = productIndex(itemID);
+    let subtractProduct = subscriptionItems[index];
+    if (subtractProduct.amount >= 2) {
+      decreaseItem(subscriptionItems[index]);
+      setSubscriptionItems((prevArray) => [...prevArray]);
     } else {
-      const product = getProductByID(itemID);
-      setSubscriptionItems((prevArray) => [...prevArray, product]);
+      decreaseItem(subscriptionItems[index]);
+      const newList = subscriptionItems.filter((item) => item.id !== itemID);
+      setSubscriptionItems(newList);
     }
-    console.log(subscriptionItems);
   };
 
-  const getProductByID = (itemID) => {
-    for (let i = 0; i <= products.length; i++) {
-      if (products.id === itemID) {
-        return products;
-      }
+  const addItem = (itemID) => {
+    let index = productIndex(itemID);
+    if (index != null) {
+      increaseItem(subscriptionItems[index]);
+      setSubscriptionItems((prevArray) => [...prevArray]);
+    } else {
+      let product = getProductByID(itemID);
+      increaseItem(product);
+      setSubscriptionItems((prevArray) => [...prevArray, product]);
     }
+  };
+
+  const decreaseItem = (product) => {
+    product.amount = product.amount - 1;
+    return product;
+  };
+
+  const increaseItem = (product) => {
+    product.amount = product.amount + 1;
+    return product;
   };
 
   const productIndex = (itemID) => {
-    for (let i = 0; i < subscriptionItems.length; i++) {
-      // console.log(subscriptionItems);
-      if (subscriptionItems[i].id === itemID) {
+    let l = subscriptionItems.length;
+    for (let i = 0; i < l; i++) {
+      if (subscriptionItems[i].id == itemID) {
         return i;
       }
     }
     return null;
   };
 
-  const subtractItem = (itemId) => {
-    let len = products.length;
-    for (let i = 0; i < len; i++) {
-      if (products[i].id === itemId) {
-        if (products[i].amount > 0) {
-          setSubscriptionItems((prevArray) => [...prevArray]);
-          products[i].amount = products[i].amount - 1;
-        } else {
-          const obj = itemId.target.getAttribute("");
-        }
+  const getProductByID = (itemID) => {
+    for (let i = 0; i <= products.length; i++) {
+      if (products[i].id == itemID) {
+        return products[i];
       }
     }
   };
 
   const handleSearch = (text) => {
-    console.log(text);
-    // const formatSearchInput = text.toLowerCase();
+    const searchedProducts = products.filter((item) =>
+      item.label.toLowerCase().includes(text)
+    );
+    setSearchedProducts(searchedProducts);
   };
 
-  var sum = 0;
+  let sum = 0;
   const calculateTotalPrice = () => {
     let len = products.length;
     for (let i = 0; i < len; i++) {
@@ -84,7 +94,6 @@ function SubscriptionProducts({
 
   const handleDelete = (item) => {
     setProducts(products.filter((p) => p.id !== item.id));
-    // console.log(products);
   };
 
   useEffect(() => {
@@ -120,7 +129,7 @@ function SubscriptionProducts({
           return (
             <SubscriptionListItem
               item={item}
-              onDelete={() => handleDelete(item)}
+              onDelete={() => handleDelete(item.toNumber())}
               buttonId={item.id}
               initialvalue={item.amount}
               // onPress={() => console.log()}
@@ -149,13 +158,14 @@ function SubscriptionProducts({
       <>
         <AppTextInput
           icon="magnify"
-          placeholder="Zoek een product..."
+          placeholder="Zoek naar een product"
           style={styles.search}
           onChangeText={(text) => handleSearch(text)}
+          autoCapitalize="none"
         />
 
         <FlatList
-          data={products}
+          data={searchedProducts}
           keyExtractor={(item) => item.id}
           columnWrapperStyle={styles.list}
           numColumns={2}

@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, SectionList } from "react-native";
-import Constants from "expo-constants"
 
 import SmallProductItem from "./SmallProductItem";
 import ListItemSeperator from "./ListItemSeperator";
@@ -24,7 +23,9 @@ function SmallProductList({ data, ...otherProps }) {
       )}
       ItemSeparatorComponent={ListItemSeperator}
       renderSectionHeader={({ section: { title } }) => (
-        <AppTitle style={[defaultStyles.screenContainer, styles.sectionHeader]}>{title}</AppTitle>
+        <AppTitle style={[defaultStyles.screenContainer, styles.sectionHeader]}>
+          {title}
+        </AppTitle>
       )}
       renderSectionFooter={() => (
         <AppButton
@@ -40,15 +41,16 @@ function SmallProductList({ data, ...otherProps }) {
 const styles = StyleSheet.create({
   list: {
     overflow: "visible",
-    paddingTop: Constants.statusBarHeight,
-    marginBottom: 46,
+    // paddingTop: Constants.statusBarHeight,
+    // marginBottom: 46,
   },
   horizontalMargin: {
     marginHorizontal: 12,
   },
   sectionHeader: {
-    paddingTop: 20,
-  }
+    backgroundColor: defaultStyles.colors.white,
+    paddingBottom: 4,
+  },
 });
 
 export default SmallProductList;

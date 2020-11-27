@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Dimensions,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Image, ScrollView, Dimensions } from "react-native";
 
 import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
@@ -76,18 +69,25 @@ function ImageSlider({ images, style }) {
           ))}
         </ScrollView>
       </View>
-      <View style={styles.paginationContainer}>
-        {images.map((i, k) => (
-          <AppText
-            key={k}
-            style={
-              k === active ? styles.paginationActiveText : styles.paginationText
-            }
-          >
-            •
-          </AppText>
-        ))}
-      </View>
+
+      {images.length >= 2 ? (
+        <View style={styles.paginationContainer}>
+          {images.map((i, k) => (
+            <AppText
+              key={k}
+              style={
+                k === active
+                  ? styles.paginationActiveText
+                  : styles.paginationText
+              }
+            >
+              •
+            </AppText>
+          ))}
+        </View>
+      ) : (
+        <View style={styles.paginationReplacer}></View>
+      )}
     </>
   );
 }
@@ -119,16 +119,21 @@ const styles = StyleSheet.create({
     bottom: 40,
   },
   paginationActiveText: {
+    // position: "absolute",
     fontSize: width / 13,
     color: defaultStyles.colors.lightBlue,
     marginHorizontal: 2,
     zIndex: 1,
   },
   paginationText: {
+    // position: "absolute",
     fontSize: width / 13,
     color: defaultStyles.colors.lightGrey,
     marginHorizontal: 2,
     zIndex: 1,
+  },
+  paginationReplacer: {
+    paddingBottom: 16,
   },
   images: {
     resizeMode: "contain",

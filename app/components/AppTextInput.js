@@ -11,6 +11,7 @@ import { AppText } from "./fonts";
 function AppTextInput({
   icon,
   label,
+  placeholder,
   width = "100%",
   required = false,
   subText,
@@ -49,6 +50,7 @@ function AppTextInput({
           )}
           <TextInput
             placeholderTextColor={defaultStyles.colors.grey}
+            placeholder={placeholder}
             style={defaultStyles.text}
             {...otherProps}
           />
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   whiteSpace: {
-    marginTop: 16,
+    marginTop: 8,
   },
 });
 

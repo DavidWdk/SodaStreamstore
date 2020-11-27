@@ -5,6 +5,9 @@ export default {
   botSpacing: {
     marginBottom: 8,
   },
+  botSpacing16: {
+    marginBottom: 16,
+  },
   blueSection: {
     backgroundColor: colors.blueBackground,
     paddingVertical: 24,
@@ -81,5 +84,8 @@ export default {
   },
   topWhitespaceMini: {
     paddingTop: 8,
+  },
+  topWhitespaceLinePadding: {
+    paddingTop: 3,
   },
 };

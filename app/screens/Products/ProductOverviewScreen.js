@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import syrups from "../../../assets/placeholderData/syrups";
 
@@ -8,15 +8,23 @@ import ProductOverviewList from "../../components/lists/ProductOverviewList";
 
 function ProductOverviewScreen(props) {
   return (
-    <>
-      <CustomHeader title="Siropen" topPaddingAdjustment />
+    <View style={styles.container}>
+      <CustomHeader
+        title="Siropen"
+        topPaddingAdjustment
+        secondaryTitle="Filteren"
+        secondaryIcon="filter-outline"
+        secondaryHeaderItem
+      />
       <ProductOverviewList data={syrups} />
-      <View style={styles.container}></View>
-    </>
+    </View>
   );
 }
+
 const styles = StyleSheet.create({
-  container: { paddingBottom: 20 },
+  container: {
+    paddingBottom: 100,
+  },
 });
 
 export default ProductOverviewScreen;

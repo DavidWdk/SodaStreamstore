@@ -25,7 +25,6 @@ function ButtonOutline({
           name={icon}
           size={24}
           color={defaultStyles.colors.darkBlue}
-          style={defaultStyles.icon}
         />
       )}
       <AppText
@@ -45,10 +44,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 8,
     flexDirection: "row",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 3,
   },
   text: {
-    padding: 10,
     color: defaultStyles.colors.darkBlue,
+    marginLeft: 8,
   },
 });
 

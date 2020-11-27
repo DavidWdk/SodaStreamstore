@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Pressable,
   StyleSheet,
@@ -20,21 +20,14 @@ function ShoppingCartItem({
   onPress,
   amount,
   onPressAdd,
+  onPressDeleteItem,
   onPressSubtract,
+  totalProductPrice,
   morgenInHuis = true,
 }) {
-  const [productAmount, setProductAmount] = useState(amount);
-
-  const formatPrice = (price) => {
-    price = price.toFixed(2);
-    let priceStr = price.toString().replace(".", ",");
-    priceStr = "€" + priceStr;
-    return priceStr;
-  };
-
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <TouchableOpacity style={styles.deleteIcon}>
+      <TouchableOpacity style={styles.deleteIcon} onPress={onPressDeleteItem}>
         <MaterialCommunityIcons
           name="close"
           size={25}
@@ -50,25 +43,21 @@ function ShoppingCartItem({
         <View style={styles.bottomRow}>
           <View style={styles.productAmountContainer}>
             <AddSubtractInput
-              initialvalue={productAmount.toString()}
+              initialvalue={amount.toString()}
               style={styles.productAmount}
               styleInput={styles.productAmountInput}
+              //Make untypable?
               onChangeText={(text) => setProductAmount(text)}
               textAlign="center"
               onPressAdd={onPressAdd}
               onPressSubtract={onPressSubtract}
-              onPressAdd={() => setProductAmount(productAmount + 1)}
-              onPressSubtract={() => {
-                if (productAmount > 1) setProductAmount(productAmount - 1);
-              }}
+              onPressDeleteItem={onPressDeleteItem}
             />
-            <AppText style={styles.pricePerItem}>
-              {formatPrice(price)} p.s.
+            <AppText thin style={styles.pricePerItem}>
+              {price} p.s.
             </AppText>
           </View>
-          <AppTitle style={styles.totalPrice}>
-            {formatPrice(price * productAmount)}
-          </AppTitle>
+          <AppTitle style={styles.totalPrice}>{totalProductPrice}</AppTitle>
         </View>
       </View>
     </Pressable>
@@ -97,8 +86,8 @@ const styles = StyleSheet.create({
   },
   pricePerItem: {
     color: defaultStyles.colors.grey,
-    marginLeft: 4,
-    alignSelf: "flex-end",
+    marginLeft: 8,
+    alignSelf: "center",
   },
   productAmount: {
     width: 65,

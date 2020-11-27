@@ -7,11 +7,9 @@ import defaultStyles from "../../config/styles";
 import { AppText, AppTitle } from "../../components/fonts";
 import SquareSelectionItems from "../../components/SquareSelectionItems";
 import SubscriptionProductsList from "../../components/lists/SubscriptionProductsList";
-import PriceSum from "../../components/PriceSum";
+import subscriptionQuantityOptions from "../../../assets/placeholderData/subscriptionQuantityOptions";
 
 function ManageSubscriptionScreen(props) {
-  const options = ["Elke maand", "Elke twee maanden", "Elke drie maanden"];
-
   const products = [
     {
       id: 1,
@@ -64,7 +62,10 @@ function ManageSubscriptionScreen(props) {
               Bezorgkwantiteit
             </AppTitle>
 
-            <SquareSelectionItems items={options} style={styles.item} />
+            <SquareSelectionItems
+              items={subscriptionQuantityOptions}
+              style={styles.item}
+            />
             <AppTitle style={styles.title}>Producten</AppTitle>
           </>
         }

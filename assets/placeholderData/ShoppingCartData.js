@@ -4,7 +4,7 @@ export default [
     title: "Fruit Drops Siroop Mango",
     image:
       "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
-    amount: 1,
+    amount: 3,
     price: 4.99,
   },
   {
