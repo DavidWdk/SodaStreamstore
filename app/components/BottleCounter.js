@@ -1,13 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Pressable } from "react-native";
 import colors from "../config/colors";
 
-import defaultStyles from "../config/styles";
 import { AppText } from "./fonts";
 
-function BottleCounter({ bottleAmounth }) {
+function BottleCounter({ bottleAmounth, onPress }) {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       {/* <View style={styles.wrapper}> */}
       <AppText thin style={styles.text}>
         Flessen bespaard{"\n"}met SodaStream
@@ -22,8 +21,7 @@ function BottleCounter({ bottleAmounth }) {
           source={require("../../assets/bottleIcon.png")}
         />
       </View>
-    </View>
-    // </View>
+    </Pressable>
   );
 }
 const styles = StyleSheet.create({

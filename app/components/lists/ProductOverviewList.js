@@ -20,6 +20,7 @@ function ProductOverviewList({ data, style }) {
           // onPress={() => navigation.navigate(routes.PRODUCT_DETAILS, item)}
           price={item.price}
           prevPrice={item.prevPrice}
+          // onPress={() => navigation.navigate("ProductDetails", item)}
         />
       )}
       ItemSeparatorComponent={ListItemSeperatorFullLength}

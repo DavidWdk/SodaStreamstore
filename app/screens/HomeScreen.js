@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Image, ScrollView, Keyboard } from "react-native";
 import Constants from "expo-constants";
 
@@ -13,35 +13,16 @@ import { AppTitle, AppText } from "../components/fonts";
 import HorizontalItemList from "../components/lists/HorizontalItemList";
 import ProductTile from "../components/products/ProductTile";
 import HugeButton from "../components/HugeButton";
+import AuthContext from "../auth/context";
+import homeImageSliderData from "../../assets/placeholderData/homeImageSliderData";
 
-const images = [
-  {
-    image:
-      "https://www.sodastream.nl/wp-content/uploads/2020/10/12770-SodaStream-Homepage-banner-neon-2-2880x1600px_v2-scaled.jpg",
-    textTitle: "Lever uw lege cilinders in voor korting!",
-    textColor: "white",
-    btnText: "Ruil uw cilinder in",
-  },
-  {
-    image:
-      "https://www.sodastream.nl/wp-content/uploads/2020/03/12548-Homepage-banner-omruilen-2880x1600px_NL_03.jpg",
-    textTitle: "Lekker lijnen",
-    textBody:
-      "Wist je dat onze Fruit Drop siropen suikervrij zijn? Dat is gezond genieten",
-    textColor: "white",
-  },
-  {
-    image:
-      "https://www.sodastream.nl/wp-content/uploads/2020/02/Sodastream-banner-one-touch-3.jpg",
-    textTitle: "SodaStream Crystal",
-    textBody:
-      "Koop nu een SodaStream Crystal en krijg 20% korting met glazen karaffen",
-    textColor: "black",
-    btnText: "Die wil ik",
-  },
-];
+function HomeScreen({ navigation }) {
+  const authContext = useContext(AuthContext);
 
-function HomeScreen(props) {
+  const Login = () => {
+    console.log(authContext.setUser("Poep"));
+  };
+
   return (
     //Search bar to be found after the </ScrollScreen> closing tag
     <ScrollView
@@ -65,20 +46,33 @@ function HomeScreen(props) {
         />
       </View>
 
-      <ImageSlider images={images} />
+      <ImageSlider images={homeImageSliderData} />
 
       <View style={[styles.rowButtonsContainer, defaultStyles.screenContainer]}>
-        <AppButton
-          style={styles.topRowButton}
-          title="Abonnement"
-          icon="calendar-repeat-outline"
-          fontSize={17}
-        />
+        {authContext.user ? (
+          <AppButton
+            style={styles.topRowButton}
+            title="Abonnement"
+            icon="calendar-repeat-outline"
+            fontSize={17}
+            onPress={() => navigation.navigate("SubscriptionWelcome")}
+          />
+        ) : (
+          <AppButton
+            style={styles.topRowButton}
+            title="Inloggen"
+            icon="login"
+            fontSize={17}
+            // onPress={() => navigation.navigate("SubscriptionWelcome")}
+            onPress={Login}
+          />
+        )}
         <AppButton
           style={styles.topRowButton}
           title="Assortiment"
           icon="magnify"
           fontSize={17}
+          onPress={() => navigation.navigate("Search")}
         />
       </View>
 

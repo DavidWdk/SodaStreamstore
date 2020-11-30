@@ -37,7 +37,7 @@ function NewSubSecondStepScreen(props) {
     // const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
 
     const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
-    const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
+    const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
     const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
     return `${da} ${mo} ${ye}`;
   };
@@ -68,13 +68,15 @@ function NewSubSecondStepScreen(props) {
           value={new Date()}
         />
 
-        <Pressable onPress={showDatepicker}>
-          <AppTextInput
-            value={formatDate()}
-            editable={false}
-            onPress={showDatepicker}
-            style={styles.textInput}
-          />
+        <Pressable style={styles.clickableInput} onPress={showDatepicker}>
+          <View pointerEvents="none">
+            <AppTextInput
+              value={formatDate()}
+              editable={false}
+              //   onFocus={showDatepicker}
+              style={styles.textInput}
+            />
+          </View>
         </Pressable>
 
         <AppText
@@ -89,12 +91,16 @@ function NewSubSecondStepScreen(props) {
           title="Ga naar het afrekenen"
           icon="chevron-right"
           style={styles.nextButton}
+          //   onPress=
         />
       </ScrollView>
     </>
   );
 }
 const styles = StyleSheet.create({
+  clickableInput: {
+    zIndex: 100,
+  },
   container: {},
   nextButton: {
     marginVertical: 24,

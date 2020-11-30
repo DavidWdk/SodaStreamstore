@@ -16,10 +16,13 @@ const userMail = "david.widlak@gmail.com";
 const userName = "David";
 
 const validationSchema = Yup.object().shape({
-  password: Yup.string().required().label("Wachtwoord"),
+  password: Yup.string()
+    .required()
+    .matches(/(ja|david)/)
+    .label("Wachtwoord"),
 });
 
-function UserVerificationCheckScreen(props) {
+function UserVerificationCheckScreen({ navigation }) {
   return (
     <ScrollScreenKeyboard style={defaultStyles.screenContainer}>
       <CustomHeader title="Korte Controle" />
@@ -30,7 +33,7 @@ function UserVerificationCheckScreen(props) {
       </AppText>
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={() => navigation.navigate("Checkout")}
         validationSchema={validationSchema}
       >
         <AppFormField

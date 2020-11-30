@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Platform } from "react-native";
 
 import CustomHeader from "../../components/CustomHeader";
@@ -6,35 +6,16 @@ import Screen from "../../components/screenStyling/Screen";
 import defaultStyles from "../../config/styles";
 import subscriptionOptions from "../../../assets/placeholderData/subscriptionOptions";
 import SubscriptionProductsList from "../../components/lists/SubscriptionProductsList";
-import { AppTitle } from "../../components/fonts";
-import AppTextInput from "../../components/AppTextInput";
 import AppButton from "../../components/AppButton";
 
-function NewSubFirstStepScreen(props) {
-  const [shownProducts, setShownProducts] = useState(subscriptionOptions);
-
-  const searchItems = (textToSearch) => {};
-
+function NewSubFirstStepScreen({ navigation }) {
   return (
     <Screen style={[styles.container, defaultStyles.screenContainer]}>
       <CustomHeader title="Stap 1: kies je producten" style={styles.header} />
 
       <SubscriptionProductsList
         newSubscriptionList
-        // ListHeaderComponent={
-        //   <>
-        //     <AppTextInput
-        //       icon="magnify"
-        //       placeholder="Zoek een product..."
-        //       style={styles.search}
-        //       onChangeText={(text) => searchItems(text)}
-        //     />
-        //     <AppTitle style={defaultStyles.botSpacing}>
-        //       Jouw meest bestelde producten
-        //     </AppTitle>
-        //   </>
-        // }
-        data={shownProducts}
+        data={subscriptionOptions}
       />
       <AppButton
         icon="arrow-right"
@@ -42,6 +23,7 @@ function NewSubFirstStepScreen(props) {
         style={styles.nextButton}
         color="yellow"
         textColor="black"
+        onPress={() => navigation.navigate("SubscriptionItemsOverview")}
       />
     </Screen>
   );

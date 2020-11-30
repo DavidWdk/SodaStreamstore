@@ -14,22 +14,25 @@ import Screen from "../../components/screenStyling/Screen";
 import BottleCounter from "../../components/BottleCounter";
 import { AppText, AppTitle } from "../../components/fonts";
 
-function UserSettingsScreen(props) {
+function UserSettingsScreen({ navigation }) {
   return (
     <Screen>
       <AppFlatlist
         data={optionsData}
-        ListFooterComponent={
-          <View style={styles.bottleCount}>
-            <BottleCounter bottleAmounth={192} />
-          </View>
-        }
         ListHeaderComponent={
           <View style={styles.container}>
             <AppTitle style={styles.titleText}>
               {userData.voornaam} {userData.achternaam}
             </AppTitle>
             <AppText style={defaultStyles.subtitle}>{userData.email}</AppText>
+          </View>
+        }
+        ListFooterComponent={
+          <View style={styles.bottleCount}>
+            <BottleCounter
+              bottleAmounth={192}
+              onPress={() => navigation.navigate("BottleCount")}
+            />
           </View>
         }
       />

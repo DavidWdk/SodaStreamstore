@@ -18,7 +18,7 @@ const pointsInEuros = (Math.round(points * 5) / 5000).toFixed(2);
 pointsInEuros.toString();
 const euro = pointsInEuros.replace(".", ",");
 
-function LoyaltyPointsScreen(props) {
+function LoyaltyPointsScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={[styles.upperSection, defaultStyles.screenContainer]}>
@@ -35,14 +35,17 @@ function LoyaltyPointsScreen(props) {
           italic
           style={[defaultStyles.textCenter, defaultStyles.lineWhitespace]}
         >
-          {" "}
           Deze punten kun je uitgeven als korting op je volgende bestelling, of
-          doneren aan het goede doel.{" "}
+          doneren aan het goede doel.
         </AppText>
       </View>
 
       <View style={defaultStyles.screenContainer}>
-        <HugeButton title="Doneer uw punten" boldTitle="aan het goede doel" />
+        <HugeButton
+          title="Doneer uw punten"
+          boldTitle="aan het goede doel"
+          onPress={() => navigation.navigate("Donate")}
+        />
       </View>
 
       {/* <View style={[defaultStyles.screenContainer]}> */}

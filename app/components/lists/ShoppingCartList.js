@@ -7,11 +7,17 @@ import { AppTitle, AppText } from "../fonts";
 import PriceSum from "../PriceSum";
 import defaultStyles from "../../config/styles";
 import EmptyShoppingCart from "./EmptyShoppingCart";
+import AppButton from "../../components/AppButton";
 
 //TODO: GEBRUIK VOOR HET AANPASSEN VAN AMOUNT EN TOTAALPRIJS USEEFFECT, PAS VERANDERINGEN AAN WANNEER AMOUNT VERANDERD
 //TODO: GEBRUIK OVERAL getProductById IPV APARTE LOOPS
 
-function ShoppingCartList({ data }) {
+function ShoppingCartList({
+  data,
+  subscriptionItemsOverview = false,
+  onPressSubscription,
+  onPressShoppingCart,
+}) {
   const [shoppingCartData, setShoppingCartData] = useState(data);
   const [deliveryCosts, setDeliveryCosts] = useState();
   const [totalPrice, setTotalPrice] = useState();
@@ -156,6 +162,24 @@ function ShoppingCartList({ data }) {
               noFormatting
               price={formatPrice(totalPrice)}
             />
+
+            {subscriptionItemsOverview ? (
+              <AppButton
+                color="yellow"
+                textColor="black"
+                icon="chevron-right"
+                title="Bezorgkwantiteit bepalen"
+                onPress={onPressSubscription}
+              />
+            ) : (
+              <AppButton
+                color="yellow"
+                textColor="black"
+                icon="chevron-right"
+                title="Door naar bestellen"
+                onPress={onPressShoppingCart}
+              />
+            )}
           </View>
         )
       }

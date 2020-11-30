@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 
@@ -10,6 +10,7 @@ import SecondaryButton from "../components/SecondaryButton";
 import CustomHeader from "../components/CustomHeader";
 import ScrollScreenKeyboard from "../components/screenStyling/ScrollScreenKeyboard";
 import { AppTitle } from "../components/fonts/";
+import AuthContext from "../auth/context";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("E-mailadres"),
@@ -21,6 +22,13 @@ const registerValidation = Yup.object().shape({
 });
 
 function LoginScreen(props) {
+  const authContext = useContext(AuthContext);
+
+  const handleSubmit = () => {
+    //Complete with additional user data in form of an object
+    authContext.setUser("User");
+  };
+
   return (
     <ScrollScreenKeyboard
       style={[defaultStyles.screenContainer, styles.container]}
@@ -32,7 +40,7 @@ function LoginScreen(props) {
 
         <AppForm
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
           <AppFormField

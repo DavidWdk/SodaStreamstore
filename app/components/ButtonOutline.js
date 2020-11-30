@@ -6,6 +6,7 @@ import defaultStyles from "../config/styles";
 import { AppText } from "./fonts";
 
 function ButtonOutline({
+  borderColor = "darkBlue",
   textColor = "darkBlue",
   title,
   bold = false,
@@ -16,7 +17,11 @@ function ButtonOutline({
 }) {
   return (
     <TouchableOpacity
-      style={[styles.button, style]}
+      style={[
+        styles.button,
+        style,
+        { borderColor: defaultStyles.colors[borderColor] },
+      ]}
       index={index}
       onPress={onPress}
     >
@@ -39,7 +44,6 @@ function ButtonOutline({
 const styles = StyleSheet.create({
   button: {
     borderWidth: 2,
-    borderColor: defaultStyles.colors.darkBlue,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,

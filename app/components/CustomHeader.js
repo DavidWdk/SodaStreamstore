@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Pressable } from "react-native";
 import Constants from "expo-constants";
+import { useNavigation } from "@react-navigation/native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
@@ -11,7 +12,7 @@ function CustomHeader({
   style,
   noBackButton = false,
   textColor = "black",
-  backgroundColor = "white",
+  backgroundColor = defaultStyles.colors.transparant,
   topPaddingAdjustment = false,
   secondaryHeaderItem = false,
   secondaryTitle,
@@ -19,6 +20,7 @@ function CustomHeader({
   onPressSecondary,
   secondaryTextColor,
 }) {
+  const navigation = useNavigation();
   if (!topPaddingAdjustment) {
     return (
       <View
@@ -30,12 +32,18 @@ function CustomHeader({
       >
         <View style={styles.mainHeaderContainer}>
           {!noBackButton && (
-            <MaterialCommunityIcons
-              name="keyboard-backspace"
-              size={24}
-              color={defaultStyles.colors.black}
-              style={styles.backIcon}
-            />
+            <Pressable
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <MaterialCommunityIcons
+                name="keyboard-backspace"
+                size={24}
+                color={defaultStyles.colors.black}
+                style={styles.backIcon}
+              />
+            </Pressable>
           )}
           <AppTitle
             style={[
@@ -84,12 +92,18 @@ function CustomHeader({
       >
         <View style={styles.mainHeaderContainer}>
           {!noBackButton && (
-            <MaterialCommunityIcons
-              name="keyboard-backspace"
-              size={24}
-              color={defaultStyles.colors[textColor]}
-              style={styles.backIcon}
-            />
+            <Pressable
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <MaterialCommunityIcons
+                name="keyboard-backspace"
+                size={24}
+                color={defaultStyles.colors.black}
+                style={styles.backIcon}
+              />
+            </Pressable>
           )}
           <AppTitle
             style={[

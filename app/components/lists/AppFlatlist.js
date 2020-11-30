@@ -12,9 +12,10 @@ function AppFlatlist({ data, itemKind = "flat", ...otherProps }) {
       style={styles.list}
       renderItem={({ item }) => (
         <ListItem
+          itemKind
           title={item.title}
           icon={item.icon}
-          onPress={() => console.log("Selected", item)}
+          designationScreen={item.designationScreen}
           itemKind={item.itemKind}
           textColor={item.textColor}
         />

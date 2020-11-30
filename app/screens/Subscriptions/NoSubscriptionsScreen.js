@@ -7,7 +7,7 @@ import defaultstyles from "../../config/styles";
 import ImgTextBlock from "../../components/ImgTextBlock";
 import HugeButton from "../../components/HugeButton";
 
-function NoSubscriptionScreen(props) {
+function NoSubscriptionScreen({ navigation }) {
   return (
     <ScrollScreen>
       <AppTitle style={[styles.title, defaultstyles.textCenter]}>
@@ -15,7 +15,11 @@ function NoSubscriptionScreen(props) {
       </AppTitle>
 
       <View style={defaultstyles.screenContainer}>
-        <HugeButton title="Stel een" boldTitle="Abonnement in" />
+        <HugeButton
+          title="Stel een"
+          boldTitle="Abonnement in"
+          onPress={() => navigation.navigate("NewSubscriptionFirstStep")}
+        />
       </View>
 
       <ImgTextBlock
