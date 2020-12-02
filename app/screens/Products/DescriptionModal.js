@@ -10,7 +10,7 @@ function DescriptionModal() {
   return (
     <View style={[styles.container, defaultStyles.screenContainer]}>
       <View style={styles.topBar}>
-        <AppTitle>Omschrijving</AppTitle>
+        <AppTitle>{i18n.t("description")}</AppTitle>
         <TouchableOpacity onPress={() => console.log("close this modal")}>
           <MaterialCommunityIcons
             name="close"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import CustomHeader from "../../components/CustomHeader";
 import { AppTitle } from "../../components/fonts";
@@ -7,20 +7,7 @@ import CheckBox from "../../components/forms/Checkbox";
 
 import defaultStyles from "../../config/styles";
 import AppButton from "../../components/AppButton";
-
-const sortOptions = [
-  {
-    title: "Prijs",
-    subTitle: "Laag naar hoog",
-  },
-  {
-    title: "Prijs",
-    subTitle: "Hoog naar laag",
-  },
-  {
-    title: "Populariteit",
-  },
-];
+import sortOptions from "../../../assets/placeholderData/sortOptions";
 
 function FilterScreen(props) {
   return (
@@ -78,7 +65,7 @@ function FilterScreen(props) {
       <View style={defaultStyles.screenContainer}>
         <AppButton
           title="Filter toepassen"
-          icon="check"
+          icon="filter-outline"
           style={styles.applyBtn}
         />
       </View>
@@ -87,7 +74,7 @@ function FilterScreen(props) {
 }
 const styles = StyleSheet.create({
   applyBtn: {
-    marginBottom: 24,
+    marginBottom: 8,
     marginTop: 0,
   },
   container: {},

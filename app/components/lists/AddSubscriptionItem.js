@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
   button: {
     borderColor: defaultStyles.colors.lightBlue,
     padding: -4,
+    paddingHorizontal: 8,
+    borderRadius: 0,
   },
   image: {
     width: 110,
@@ -110,7 +112,9 @@ const styles = StyleSheet.create({
   subtractBtn: {
     // backgroundColor: defaultStyles.colors.red,
     borderColor: defaultStyles.colors.red,
-    marginRight: 4,
+    marginRight: 6,
+    paddingHorizontal: 8,
+    borderRadius: 0,
   },
 });
 

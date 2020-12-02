@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, SectionList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import SmallProductItem from "./SmallProductItem";
 import ListItemSeperator from "./ListItemSeperator";
@@ -8,6 +9,8 @@ import AppButton from "../AppButton";
 import defaultStyles from "../../config/styles";
 
 function SmallProductList({ data, ...otherProps }) {
+  const navigation = useNavigation();
+
   return (
     <SectionList
       sections={data}
@@ -18,7 +21,7 @@ function SmallProductList({ data, ...otherProps }) {
           subtitle={item.price}
           title={item.product}
           imageUrl={item.imageUrl}
-          onPress={() => console.log("Selected", item)}
+          onPress={() => navigation.navigate("OrderHistoryDetails")}
         />
       )}
       ItemSeparatorComponent={ListItemSeperator}

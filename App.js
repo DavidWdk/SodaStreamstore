@@ -1,5 +1,3 @@
-//MANAGESUBSCRIPTIONSCREEN WERKEND KRIJGEN
-
 import React, { useState } from "react";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
@@ -26,7 +24,7 @@ LogBox.ignoreLogs(["Warning: ..."]);
 // import HomeScreen from "./app/screens/HomeScreen";
 // import ProductOverviewScreen from "./app/screens/Products/ProductOverviewScreen";
 // import ShoppingCartScreen from "./app/screens/ShoppingCartScreen";
-// import FilterScreen from "./app/screens/Products/FilterScreen";
+import FilterScreen from "./app/screens/Products/FilterScreen";
 // import UserVerificationCheckScreen from "./app/screens/UserVerificationCheckScreen";
 // import CheckoutScreen from "./app/screens/CheckoutScreen";
 // import ProductDetailScreen from "./app/screens/Products/ProductDetailScreen";
@@ -38,7 +36,6 @@ LogBox.ignoreLogs(["Warning: ..."]);
 import AuthContext from "./app/auth/context";
 
 //NAVIGATION
-import InitialNavigation from "./app/navigation/InitialNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 import navigationTheme from "./app/navigation/navigationTheme";
 import BottomNavigation from "./app/navigation/BottomNavigation";

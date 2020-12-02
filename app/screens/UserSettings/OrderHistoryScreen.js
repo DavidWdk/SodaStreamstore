@@ -14,6 +14,7 @@ function OrderHistoryScreen(props) {
         topPaddingAdjustment
         style={[defaultStyles.screenContainer, styles.header]}
         title="Bestellingen"
+        backgroundColor="white"
       />
       <SmallProductList
         contentContainerStyle={{ flexGrow: 1 }}

@@ -1,50 +1,21 @@
 import React from "react";
 import Constants from "expo-constants";
 
+import i18n from "i18n-js";
+// import lan from "../lang/i18n";
+
 import { StyleSheet, View } from "react-native";
 import AppTextInput from "../components/AppTextInput";
 import AccordionList from "../components/lists/AccordionList";
-
-//TODO: als je op een niet uitklapbaar item klikt error voorkomen
-
-const searchOptions = [
-  {
-    id: 0,
-    title: "Kies een categorie",
-    data: [
-      { title: "CO2-cilinders", onPress: false },
-      { title: "Siropen", onPress: false },
-      { title: "Accessoires", onPress: false },
-      { title: "Toestellen", onPress: false },
-    ],
-  },
-  {
-    id: 1,
-    title: "Artikelen met korting",
-    data: [
-      { title: "Alle artikelen met korting", onPress: false },
-      { title: "CO2-cilinders", onPress: false },
-      { title: "Siropen", onPress: false },
-      { title: "Accessoires", onPress: false },
-      { title: "Toestellen", onPress: false },
-    ],
-  },
-  {
-    id: 2,
-    title: "Laatst gekochte artikelen",
-  },
-  {
-    id: 3,
-    title: "Laatst bekeken artikelen",
-  },
-];
+import defaultStyles from "../config/styles";
+import searchOptions from "../../assets/placeholderData/searchOptions";
 
 function SearchScreen(props) {
   return (
     <View style={styles.container}>
       <AppTextInput
         icon="magnify"
-        placeholder="Waar ben je naar op zoek?"
+        placeholder={i18n.t("searchPlaceholder")}
         style={styles.searchInput}
       />
       <AccordionList data={searchOptions} />
@@ -53,11 +24,16 @@ function SearchScreen(props) {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
   },
   searchInput: {
     borderWidth: 0,
     borderBottomWidth: 1,
+    backgroundColor: defaultStyles.colors.white,
+    zIndex: 10,
+    paddingTop: Constants.statusBarHeight + 16,
+    marginTop: -10,
+    marginBottom: 4,
   },
 });
 

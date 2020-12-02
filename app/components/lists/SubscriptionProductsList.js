@@ -6,9 +6,11 @@ import AddSubscriptionItem from "./AddSubscriptionItem";
 import PriceSum from "../PriceSum";
 import SubscriptionListItem from "./SubscriptionListItem";
 import AppTextInput from "../AppTextInput";
+import defaultStyles from "../../config/styles";
 
 function SubscriptionProducts({
   data,
+  additionalFooterComponent,
   newSubscriptionList = false,
   ...otherProps
 }) {
@@ -132,7 +134,6 @@ function SubscriptionProducts({
               onDelete={() => handleDelete(item.toNumber())}
               buttonId={item.id}
               initialvalue={item.amount}
-              // onPress={() => console.log()}
               onPressAdd={() => (item.amount = item.amount + 1)}
               onPressSubtract={() => {
                 if (item.amount > 0) {
@@ -147,6 +148,13 @@ function SubscriptionProducts({
             <AppTitle>Totaal</AppTitle>
             <PriceSum title="Totaal artikelen" price={totalPrice} />
             <PriceSum title="Verzendkosten" price={deliveryCosts} />
+            <PriceSum
+              title="Bezorginingfrequentie"
+              noFormatting
+              price="Elke maand"
+            />
+            <PriceSum title="Extra spaarpunten" noFormatting price="20%" />
+            {additionalFooterComponent}
           </View>
         }
         {...otherProps}
@@ -195,10 +203,17 @@ const styles = StyleSheet.create({
     width: "100%",
     marginVertical: 8,
   },
-  listContainer: {
-    // marginVertical: 16,
+  search: {
+    elevation: 4,
+    shadowColor: defaultStyles.colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.15,
+    zIndex: 10,
   },
-  search: {},
 });
 
 export default SubscriptionProducts;

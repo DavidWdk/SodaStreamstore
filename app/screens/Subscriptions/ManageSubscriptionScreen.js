@@ -8,34 +8,10 @@ import { AppText, AppTitle } from "../../components/fonts";
 import SquareSelectionItems from "../../components/SquareSelectionItems";
 import SubscriptionProductsList from "../../components/lists/SubscriptionProductsList";
 import subscriptionQuantityOptions from "../../../assets/placeholderData/subscriptionQuantityOptions";
+import ButtonOutline from "../../components/ButtonOutline";
+import products from "../../../assets/placeholderData/products";
 
 function ManageSubscriptionScreen(props) {
-  const products = [
-    {
-      id: 1,
-      label: "2 pack CO2-cilinders",
-      image: "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
-      price: 29.99,
-      amount: "1",
-    },
-    {
-      id: 2,
-      label: "Fruit Drops Siroop Mango",
-      image:
-        "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
-      price: 4.99,
-      amount: "3",
-    },
-    {
-      id: 3,
-      label: "Mocktail siroop Bahamas Pina Colada",
-      image:
-        "https://image.sodastreamstore.nl/m/sodastream-mocktail-siroop-bahamas-pina-colada?sid=3&pid=2306900",
-      price: 6.99,
-      amount: "3",
-    },
-  ];
-
   const priceArray = products.map(({ price }) => price);
   const totalPriceArticles = priceArray.reduce((a, c) => a + c);
   const [deliveryCosts, setDeliveryCosts] = useState(0);
@@ -50,6 +26,7 @@ function ManageSubscriptionScreen(props) {
     <Screen style={defaultStyles.screenContainer}>
       <CustomHeader style={styles.header} title="Abonnement beheren" />
       <SubscriptionProductsList
+        style={styles.container}
         data={products}
         keyExtractor={(index, item) => item.toString()}
         ListHeaderComponent={
@@ -69,6 +46,17 @@ function ManageSubscriptionScreen(props) {
             <AppTitle style={styles.title}>Producten</AppTitle>
           </>
         }
+        additionalFooterComponent={
+          <View style={styles.footer}>
+            <AppTitle>Overige opties</AppTitle>
+            <ButtonOutline title="Komende bestelling overslaan" />
+            <ButtonOutline
+              textColor="red"
+              style={styles.stopSubBtn}
+              title="Abonnement opzeggen"
+            />
+          </View>
+        }
       />
     </Screen>
   );
@@ -78,14 +66,18 @@ const styles = StyleSheet.create({
   item: {
     marginTop: 4,
   },
+  footer: {
+    paddingTop: 24,
+    paddingBottom: 16,
+  },
   header: {
     marginTop: 16,
   },
   products: {
     paddingHorizontal: 12,
-    // backgroundColor: defaultStyles.colors.blueBackground,
-    // marginVertical: 24,
-    // paddingVertical: 24,
+  },
+  stopSubBtn: {
+    borderColor: defaultStyles.colors.red,
   },
   title: {
     paddingBottom: 8,

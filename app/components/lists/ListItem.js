@@ -9,7 +9,6 @@ import AppSwitch from "../AppSwitch";
 
 function ListItem({
   title,
-  onPress,
   icon,
   textColor = "black",
   itemKind = "flat",
@@ -20,7 +19,9 @@ function ListItem({
   if (itemKind === "flat") {
     return (
       <TouchableHighlight
-        onPress={() => navigation.navigate(designationScreen)}
+        onPress={() => {
+          if (designationScreen) navigation.navigate(designationScreen);
+        }}
         underlayColor={defaultStyles.colors.lightGrey}
       >
         <View style={styles.container}>

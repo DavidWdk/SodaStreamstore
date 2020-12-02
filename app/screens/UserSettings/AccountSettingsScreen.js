@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
+import { StackActions } from "@react-navigation/native";
 
 import Screen from "../../components/screenStyling/Screen";
 import CustomHeader from "../../components/CustomHeader";
@@ -12,9 +13,13 @@ import AuthContext from "../../auth/context";
 function AccountSettingsScreen({ navigation }) {
   const authContext = useContext(AuthContext);
 
+  //Empties user state & redirect to home
+  //while deleting stack navigation
   const handleLogout = () => {
     authContext.setUser();
     navigation.navigate("Home");
+    const popAction = StackActions.pop(1);
+    navigation.dispatch(popAction);
   };
 
   return (
@@ -33,10 +38,10 @@ function AccountSettingsScreen({ navigation }) {
           >
             {authContext.user && (
               <ButtonOutline
-                textColor="red"
                 title="Uitloggen"
-                borderColor="red"
+                style={styles.logoutBtn}
                 onPress={handleLogout}
+                textColor="red"
               />
             )}
           </View>
@@ -48,6 +53,9 @@ function AccountSettingsScreen({ navigation }) {
 const styles = StyleSheet.create({
   header: {
     paddingLeft: 8,
+  },
+  logoutBtn: {
+    borderColor: defaultStyles.colors.red,
   },
 });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 
 import CustomHeader from "../../components/CustomHeader";
 import Screen from "../../components/screenStyling/Screen";
@@ -19,7 +19,7 @@ function NewSubFirstStepScreen({ navigation }) {
       />
       <AppButton
         icon="arrow-right"
-        title="Door naar volgende stap"
+        title="Bevestig gekozen producten"
         style={styles.nextButton}
         color="yellow"
         textColor="black"
@@ -37,9 +37,8 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   nextButton: {
-    marginVertical: 0,
-    marginBottom: Platform.OS == "ios" ? 0 : 24,
-    // marginBottom: 8,
+    marginTop: 0,
+    marginBottom: 12,
     elevation: 4,
     shadowColor: defaultStyles.colors.black,
     shadowOffset: {
@@ -48,10 +47,6 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 4,
     shadowOpacity: 0.15,
-    // position: "absolute",
-    // bottom: 0,
-    // alignSelf: "center",
-    // width: "80%",
   },
   search: {
     marginBottom: 8,

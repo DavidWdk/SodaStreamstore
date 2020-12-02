@@ -39,7 +39,7 @@ export default {
     flexDirection: "row",
   },
   screenContainer: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 6,
   },
   section: {
     paddingBottom: 24,

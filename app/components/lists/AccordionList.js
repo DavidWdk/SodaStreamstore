@@ -1,21 +1,27 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import AccordionListItem from "./AccordionListItem";
 import HorizontalItemList from "./HorizontalItemList";
 import PreviouslyViewed from "../../../assets/placeholderData/previouslyViewed";
 import { AppTitle } from "../fonts";
-import defaultStyles from "../../config/styles";
 
-function AccordionList({ data, ...otherProps }) {
+function AccordionList({ data, destinationScreen, ...otherProps }) {
+  const navigation = useNavigation();
+
   return (
     <FlatList
+      style={styles.list}
       data={data}
       keyExtractor={(data) => data.id.toString()}
       renderItem={({ item }) => (
         <AccordionListItem
           title={item.title}
-          onPress={item.onPress}
+          onPress={() => {
+            navigation.navigate("ProductOverview");
+            console.log("onPress");
+          }}
           childrenItems={item.data}
         />
       )}
@@ -34,6 +40,9 @@ function AccordionList({ data, ...otherProps }) {
 }
 
 const styles = StyleSheet.create({
+  list: {
+    overflow: "visible",
+  },
   footerComponent: {
     marginTop: 40,
   },

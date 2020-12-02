@@ -2,6 +2,11 @@ import React, { useContext } from "react";
 import { View, StyleSheet, Image, ScrollView, Keyboard } from "react-native";
 import Constants from "expo-constants";
 
+//localisation - both files required
+import i18n from "i18n-js";
+import lan from "../lang/i18n";
+
+//data
 import previouslyViewed from "../../assets/placeholderData/previouslyViewed";
 import popularProducts from "../../assets/placeholderData/popularProducts";
 
@@ -15,12 +20,13 @@ import ProductTile from "../components/products/ProductTile";
 import HugeButton from "../components/HugeButton";
 import AuthContext from "../auth/context";
 import homeImageSliderData from "../../assets/placeholderData/homeImageSliderData";
+import userData from "../../assets/placeholderData/userData";
 
 function HomeScreen({ navigation }) {
   const authContext = useContext(AuthContext);
 
   const Login = () => {
-    console.log(authContext.setUser("Poep"));
+    console.log(authContext.setUser(userData));
   };
 
   return (
@@ -31,7 +37,6 @@ function HomeScreen({ navigation }) {
       showsVerticalScrollIndicator={false}
       onPress={Keyboard.dismiss}
     >
-      {/* <View style={{ paddingBottom: 80 }}> */}
       <Image
         source={require("../../assets/SodaStreamStore_logo_300.png")}
         style={styles.logoHeader}
@@ -42,7 +47,7 @@ function HomeScreen({ navigation }) {
         <AppTextInput
           icon="magnify"
           style={styles.search}
-          placeholder="Waar ben je naar op zoek?"
+          placeholder={i18n.t("searchPlaceholder")}
         />
       </View>
 
@@ -52,7 +57,7 @@ function HomeScreen({ navigation }) {
         {authContext.user ? (
           <AppButton
             style={styles.topRowButton}
-            title="Abonnement"
+            title={i18n.t("subscription")}
             icon="calendar-repeat-outline"
             fontSize={17}
             onPress={() => navigation.navigate("SubscriptionWelcome")}
@@ -60,16 +65,15 @@ function HomeScreen({ navigation }) {
         ) : (
           <AppButton
             style={styles.topRowButton}
-            title="Inloggen"
+            title={i18n.t("login")}
             icon="login"
             fontSize={17}
-            // onPress={() => navigation.navigate("SubscriptionWelcome")}
             onPress={Login}
           />
         )}
         <AppButton
           style={styles.topRowButton}
-          title="Assortiment"
+          title={i18n.t("productRange")}
           icon="magnify"
           fontSize={17}
           onPress={() => navigation.navigate("Search")}
@@ -78,61 +82,61 @@ function HomeScreen({ navigation }) {
 
       <View style={defaultStyles.screenContainer}>
         <AppTitle style={defaultStyles.topWhitespaceSmallest}>
-          Eerder bekeken door jou
+          {i18n.t("previouslySeen")}
         </AppTitle>
       </View>
       <HorizontalItemList data={previouslyViewed} />
 
       <View style={[defaultStyles.blueSection, styles.hydrationSection]}>
-        <AppTitle>Dagelijkse hydratatie</AppTitle>
+        <AppTitle>{i18n.t("dailyHydration")}</AppTitle>
 
         <View style={[defaultStyles.shadowBlock, styles.glassCounter]}>
           <AppText thin style={defaultStyles.subtitle}>
-            Jouw statistieken
+            {i18n.t("statistics")}
           </AppText>
         </View>
       </View>
 
       <View style={defaultStyles.screenContainer}>
-        <AppTitle>Bekijk ons assortiment</AppTitle>
+        <AppTitle>{i18n.t("ourProductRange")}</AppTitle>
         <View style={styles.productRange}>
           <ProductTile
-            title="Cilinders"
+            title={i18n.t("cilinders")}
             image="https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=3538692"
           />
           <ProductTile
-            title="Smaken"
+            title={i18n.t("syrups")}
             image="https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-orange?sid=3&pid=2932156"
           />
         </View>
         <View style={styles.productRange}>
           <ProductTile
-            title="Accessoires"
+            title={i18n.t("accessories")}
             image="https://image.sodastreamstore.nl/m/sodastream-metal-fuse-bottle?sid=3&pid=1531398"
           />
           <ProductTile
-            title="Toestellen"
+            title={i18n.t("devices")}
             image="https://image.sodastreamstore.nl/m/sodastream-crystal-white?sid=3&pid=1635464"
           />
         </View>
         <HugeButton
-          title="Bekijk onze"
-          boldTitle="Kortingen"
+          title={i18n.t("seeDiscounts")}
+          boldTitle={i18n.t("seeDiscountsTitle")}
           style={styles.hugeButton}
         />
       </View>
 
       <View style={defaultStyles.screenContainer}>
         <AppTitle style={defaultStyles.topWhitespaceSmallest}>
-          Populaire producten
+          {i18n.t("popularProducts")}
         </AppTitle>
       </View>
       <HorizontalItemList data={popularProducts} />
-
       <View style={{ paddingBottom: 100 }}></View>
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,

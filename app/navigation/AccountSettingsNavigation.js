@@ -5,6 +5,7 @@ import AlternativeDeliveryAddressScreen from "../screens/UserSettings/Alternativ
 import ChangePassScreen from "../screens/UserSettings/ChangePassScreen";
 import BillingInfoScreen from "../screens/UserSettings/BillingInfoScreen";
 import AccountSettingsScreen from "../screens/UserSettings/AccountSettingsScreen";
+import OrderHistoryDetailScreen from "../screens/UserSettings/OrderHistoryDetailScreen";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,10 @@ const SettingsNavigation = () => (
     <Stack.Screen
       name="AltnernativeDeliveryAddress"
       component={AlternativeDeliveryAddressScreen}
+    />
+    <Stack.Screen
+      name="OrderHistoryDetails"
+      component={OrderHistoryDetailScreen}
     />
   </Stack.Navigator>
 );

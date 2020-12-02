@@ -8,4 +8,6 @@ export default {
   straat: "Straatnaam",
   voornaam: "David",
   zakelijkeBestellingen: false,
+  activeSubscription: true,
+  loyaltyPoints: 2550,
 };
