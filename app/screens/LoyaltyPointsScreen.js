@@ -3,6 +3,8 @@ import { View, StyleSheet, ScrollView, Image } from "react-native";
 import Constants from "expo-constants";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import i18n from "i18n-js";
+
 import { AppTitle, AppText } from "../components/fonts";
 import AppButton from "../components/AppButton";
 import defaultStyles from "../config/styles";
@@ -22,67 +24,67 @@ function LoyaltyPointsScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={[styles.upperSection, defaultStyles.screenContainer]}>
-        <AppTitle style={defaultStyles.textCenter}>Jouw spaarpunten:</AppTitle>
+        <AppTitle style={defaultStyles.textCenter}>
+          {i18n.t("yourPoints")}
+        </AppTitle>
         <AppTitle style={styles.fatHeader}>
           {availablePoints}
           <MaterialCommunityIcons name="pig" size={38} style={styles.icon} />
         </AppTitle>
 
         <AppText style={defaultStyles.textCenter}>
-          ter waarde van €{euro}
+          {i18n.t("pointsValue")}
+          {euro}
         </AppText>
         <AppText
           italic
           style={[defaultStyles.textCenter, defaultStyles.lineWhitespace]}
         >
-          Deze punten kun je uitgeven als korting op je volgende bestelling, of
-          doneren aan het goede doel.
+          {i18n.t("pointsDesc")}
         </AppText>
       </View>
 
       <View style={defaultStyles.screenContainer}>
         <HugeButton
-          title="Doneer uw punten"
-          boldTitle="aan het goede doel"
+          title={i18n.t("donateBtnTitle")}
+          boldTitle={i18n.t("donateBtnDesc")}
           onPress={() => navigation.navigate("Donate")}
         />
       </View>
 
       {/* <View style={[defaultStyles.screenContainer]}> */}
       <AppTitle style={[defaultStyles.textCenter, defaultStyles.title]}>
-        Hoe werkt het spaarprogramma?
+        {i18n.t("explanationTitle")}
       </AppTitle>
 
       <ImgTextBlock
         style={defaultStyles.lineWhitespace}
-        title="Sparen van punten"
+        title={i18n.t("savingPoints")}
       >
-        Per euro die je uitgeeft krijg je 50 spaarpunten
+        {i18n.t("savingPointsDesc")}
       </ImgTextBlock>
 
       <ImgTextBlock
         blueBackground
         style={defaultStyles.lineWhitespace}
-        title="Uitgeven van punten"
+        title={i18n.t("spendingPoints")}
       >
-        De spaarpunten kan je aan alle producten in de winkel uitgeven, dit kan
-        je selecteren bij het afrekenen van een bestelling
+        {i18n.t("spendingPointsDesc")}
       </ImgTextBlock>
 
       <View style={defaultStyles.lineWhitespace}>
-        <ImgTextBlock title="Extra spaarpunten">
-          Door abonnementen kan je voor eenzelfde bedrag meer spaarpunten
-          verdienen. Abonnementen zijn erg flexibel en ten alle tijden
-          opzegbaar.
+        <ImgTextBlock title={i18n.t("extraPoints")}>
+          {i18n.t("extraPointsDesc")}
         </ImgTextBlock>
 
         <View style={defaultStyles.screenContainer}>
           <AppButton
-            title="Stel een abonnement in"
+            title={i18n.t("getSubscriptionBtn")}
             icon="calendar-repeat"
             textColor="black"
             color="yellow"
             style={styles.btn}
+            onPress={() => navigation.navigate("NoActiveSubscription")}
           />
         </View>
       </View>

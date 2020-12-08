@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 
 import relatedProducts from "../../../assets/placeholderData/popularProducts";
+import i18n from "i18n-js";
 
 import CustomHeader from "../../components/CustomHeader";
 import { AppTitle, AppText } from "../../components/fonts";
@@ -12,78 +13,17 @@ import NutritionSchema from "../../components/products/NutritionSchema";
 import SpecificationSchema from "../../components/products/SpecificationSchema";
 import AppButton from "../../components/AppButton";
 import HorizontalItemList from "../../components/lists/HorizontalItemList";
+import productInfo from "../../../assets/placeholderData/productDetailExample";
 
-const productInfo = {
-  price: 25.99,
-  name: "SodaStream CO2 cilinder",
-  images: [
-    {
-      image: "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
-    },
-  ],
-  description:
-    "Let op: retourneer lege cilinders en voorkom een toeslag van €15 per cilinder. Met SodaStream koolzuur cilinders tover je kraanwater gemakelijk en snel om tot koolzuurhoudend water.",
-  nutrition: [
-    {
-      nutritionTitle: "Light",
-      nutritionInfo: "Nee",
-    },
-    {
-      nutritionTitle: "Energie (kcal)",
-      nutritionInfo: "0.80",
-    },
-    {
-      nutritionTitle: "Koolhydraten",
-      nutritionInfo: "0.00",
-    },
-    {
-      nutritionTitle: "Calcium",
-      nutritionInfo: "0.00",
-    },
-    {
-      nutritionTitle: "Vetten",
-      nutritionInfo: "0.00",
-    },
-  ],
-  specifications: [
-    {
-      title: "Merk",
-      specification: "SodaStream",
-    },
-    {
-      title: "Accessoires",
-      specification: "CO2 cilinder",
-    },
-    {
-      title: "Geschikt voor",
-      specification: "Alle apparaten",
-    },
-    {
-      title: "Set inhoud",
-      specification: "CO2 cilinder",
-    },
-    {
-      title: "Goed voor",
-      specification: "60 liter",
-    },
-    {
-      title: "Aantal",
-      specification: "1 stuk",
-    },
-  ],
-};
-
-console.log(productInfo.images);
-
-function ProductDetailScreen(props) {
+function ProductDetailScreen({ route, navigation }) {
   return (
     <>
       <CustomHeader topPaddingAdjustment title="" />
       <ScrollView style={styles.container}>
         <ProductShowcaseFold
-          productImages={productInfo.images}
-          productTitle={productInfo.name}
-          productPrice={4.99}
+          productImages={route.params.item.images}
+          productTitle={route.params.item.title}
+          productPrice={route.params.item.price}
         />
 
         <View
@@ -92,7 +32,7 @@ function ProductDetailScreen(props) {
             defaultStyles.topWhitespaceSmaller,
           ]}
         >
-          <AppTitle>Omschrijving</AppTitle>
+          <AppTitle>{i18n.t("description")}</AppTitle>
           <AppText
             numberOfLines={3}
             style={defaultStyles.topWhitespaceLinePadding}
@@ -101,14 +41,19 @@ function ProductDetailScreen(props) {
           </AppText>
 
           <SecondaryButton
-            title="Bekijk de volledige omschrijving..."
+            title={i18n.t("seeFullDesc")}
             icon="chevron-right"
             style={styles.viewDescriptionButton}
+            onPress={() =>
+              navigation.navigate("Description", {
+                productInfo: productInfo.description,
+              })
+            }
           />
 
           {productInfo.nutrition && (
             <View style={defaultStyles.topWhitespaceSmaller}>
-              <AppTitle>Voedingswaarde</AppTitle>
+              <AppTitle>{i18n.t("nutrition")}</AppTitle>
               <NutritionSchema
                 data={productInfo.nutrition}
                 style={styles.nutrition}
@@ -118,7 +63,7 @@ function ProductDetailScreen(props) {
         </View>
 
         <View style={[defaultStyles.blueSection, styles.section]}>
-          <AppTitle>Specificaties</AppTitle>
+          <AppTitle>{i18n.t("specs")}</AppTitle>
           <SpecificationSchema
             style={defaultStyles.topWhitespaceLinePadding}
             data={productInfo.specifications}
@@ -131,10 +76,10 @@ function ProductDetailScreen(props) {
             textColor="black"
             color="yellow"
             icon="cart-outline"
-            title="In winkelwagentje"
+            title={i18n.t("addToCart")}
           />
 
-          <AppTitle>Gerelateerde producten</AppTitle>
+          <AppTitle>{i18n.t("relatedProducts")}</AppTitle>
         </View>
         <HorizontalItemList
           data={relatedProducts}

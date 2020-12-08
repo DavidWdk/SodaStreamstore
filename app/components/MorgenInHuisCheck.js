@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import i18n from "i18n-js";
 
 import defaultStyles from "../config/styles";
 import { AppText } from "../components/fonts";
@@ -14,7 +15,7 @@ function MorgenInHuisCheck({ style }) {
         color={defaultStyles.colors.lightBlue}
       />
       <AppText bold style={styles.nextDayDeliveryText}>
-        Morgen in huis
+        {i18n.t("nextDayDelivery")}
       </AppText>
     </View>
   );

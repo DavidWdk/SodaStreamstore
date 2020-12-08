@@ -9,6 +9,7 @@ import SearchNavigation from "./SearchNavigator";
 import ShoppingCartNavigation from "./ShoppingCartNavigation";
 import SettingsNavigation from "./SettingsNavigation";
 import defaultStyles from "../config/styles";
+import InitialNavigation from "./InitialNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ const BottomNavigator = () => (
   >
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={InitialNavigation}
       options={{
         tabBarIcon: ({ size, color }) => (
           <MaterialCommunityIcons

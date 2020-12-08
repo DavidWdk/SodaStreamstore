@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Image, Pressable } from "react-native";
 import colors from "../config/colors";
 
+import i18n from "i18n-js";
+
 import { AppText } from "./fonts";
 
 function BottleCounter({ bottleAmounth, onPress }) {
@@ -9,7 +11,7 @@ function BottleCounter({ bottleAmounth, onPress }) {
     <Pressable style={styles.container} onPress={onPress}>
       {/* <View style={styles.wrapper}> */}
       <AppText thin style={styles.text}>
-        Flessen bespaard{"\n"}met SodaStream
+        {i18n.t("bottlesSaved")}{"\n"}{i18n.t("withSodaStream")}
       </AppText>
 
       <View style={{ flexDirection: "row", alignItems: "center" }}>

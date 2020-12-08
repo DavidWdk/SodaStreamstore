@@ -1,35 +1,12 @@
+import React from "react"
 import i18n from "i18n-js";
 
 export default [
-  {
-    id: 1,
-    title: `${i18n.t("ordersInvoices")}`,
-    icon: "package-variant-closed",
-    designationScreen: "OrderHistory",
-  },
   {
     id: 2,
     title: `${i18n.t("appSettings")}`,
     icon: "settings-outline",
     designationScreen: "AppSettings",
-  },
-  {
-    id: 3,
-    title: `${i18n.t("accountSettings")}`,
-    icon: "account-settings",
-    designationScreen: "AccountSettings",
-  },
-  {
-    id: 4,
-    title: `${i18n.t("manageSub")}`,
-    icon: "calendar-repeat-outline",
-    designationScreen: "NoActiveSubscription",
-  },
-  {
-    id: 5,
-    title: `${i18n.t("myLoyaltyPoints")}`,
-    icon: "pig",
-    designationScreen: "LoyaltyPoints",
   },
   {
     id: 6,

@@ -30,7 +30,6 @@ function HomeScreen({ navigation }) {
   };
 
   return (
-    //Search bar to be found after the </ScrollScreen> closing tag
     <ScrollView
       style={styles.container}
       stickyHeaderIndices={[1]}
@@ -51,7 +50,7 @@ function HomeScreen({ navigation }) {
         />
       </View>
 
-      <ImageSlider images={homeImageSliderData} />
+      <ImageSlider images={homeImageSliderData} bottomSpacePagination={40} />
 
       <View style={[styles.rowButtonsContainer, defaultStyles.screenContainer]}>
         {authContext.user ? (
@@ -69,6 +68,7 @@ function HomeScreen({ navigation }) {
             icon="login"
             fontSize={17}
             onPress={Login}
+            // onPress={() => navigation.navigate("Login")}
           />
         )}
         <AppButton
@@ -85,6 +85,7 @@ function HomeScreen({ navigation }) {
           {i18n.t("previouslySeen")}
         </AppTitle>
       </View>
+
       <HorizontalItemList data={previouslyViewed} />
 
       <View style={[defaultStyles.blueSection, styles.hydrationSection]}>
@@ -103,20 +104,24 @@ function HomeScreen({ navigation }) {
           <ProductTile
             title={i18n.t("cilinders")}
             image="https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=3538692"
+            onPress={() => navigation.navigate("ProductOverview")}
           />
           <ProductTile
             title={i18n.t("syrups")}
             image="https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-orange?sid=3&pid=2932156"
+            onPress={() => navigation.navigate("ProductOverview")}
           />
         </View>
         <View style={styles.productRange}>
           <ProductTile
             title={i18n.t("accessories")}
             image="https://image.sodastreamstore.nl/m/sodastream-metal-fuse-bottle?sid=3&pid=1531398"
+            onPress={() => navigation.navigate("ProductOverview")}
           />
           <ProductTile
             title={i18n.t("devices")}
             image="https://image.sodastreamstore.nl/m/sodastream-crystal-white?sid=3&pid=1635464"
+            onPress={() => navigation.navigate("ProductOverview")}
           />
         </View>
         <HugeButton

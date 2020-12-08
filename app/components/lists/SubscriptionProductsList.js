@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import i18n from "i18n-js";
 
 import { AppTitle } from "../fonts";
 import AddSubscriptionItem from "./AddSubscriptionItem";
@@ -7,6 +10,7 @@ import PriceSum from "../PriceSum";
 import SubscriptionListItem from "./SubscriptionListItem";
 import AppTextInput from "../AppTextInput";
 import defaultStyles from "../../config/styles";
+import AppButton from "../AppButton";
 
 function SubscriptionProducts({
   data,
@@ -14,7 +18,6 @@ function SubscriptionProducts({
   newSubscriptionList = false,
   ...otherProps
 }) {
-  //initial subscriptionlist
   const intialTotalPrice = 0;
   const initialSubscriptionProducts = [];
   const [products, setProducts] = useState(data);
@@ -24,6 +27,8 @@ function SubscriptionProducts({
     initialSubscriptionProducts
   );
   const [searchedProducts, setSearchedProducts] = useState(data);
+
+  const navigation = useNavigation();
 
   const subtractItem = (itemID) => {
     let index = productIndex(itemID);
@@ -114,8 +119,10 @@ function SubscriptionProducts({
     viewAreaCoveragePercentThreshold: 50,
   });
 
+  //////////////////////////////////////
+  //Returns list for new subscription//
+  /////////////////////////////////////
   if (newSubscriptionList === false) {
-    //Returns list for adding items to the subscription
     return (
       <FlatList
         data={[...products, { addItem: true }]}
@@ -146,27 +153,30 @@ function SubscriptionProducts({
         ListFooterComponent={
           <View>
             <AppTitle>Totaal</AppTitle>
-            <PriceSum title="Totaal artikelen" price={totalPrice} />
-            <PriceSum title="Verzendkosten" price={deliveryCosts} />
+            <PriceSum title={i18n.t("totalProduct")} price={totalPrice} />
+            <PriceSum title={i18n.t("deliveryCosts")} price={deliveryCosts} />
             <PriceSum
-              title="Bezorginingfrequentie"
+              title={i18n.t("deliveryFreq")}
               noFormatting
-              price="Elke maand"
+              price={i18n.t("eachMonth")}
             />
-            <PriceSum title="Extra spaarpunten" noFormatting price="20%" />
+            <PriceSum title={i18n.t("extraPoints")} noFormatting price="20%" />
             {additionalFooterComponent}
           </View>
         }
         {...otherProps}
       />
     );
+
+    //////////////////////////////////////////////
+    //Returns list for managing the subscription//
+    //////////////////////////////////////////////
   } else if (newSubscriptionList === true) {
-    //Returns list for managing the subscription
     return (
       <>
         <AppTextInput
           icon="magnify"
-          placeholder="Zoek naar een product"
+          placeholder={i18n.t("searchProd")}
           style={styles.search}
           onChangeText={(text) => handleSearch(text)}
           autoCapitalize="none"
@@ -191,6 +201,19 @@ function SubscriptionProducts({
           )}
           {...otherProps}
         />
+
+        <AppButton
+          icon="arrow-right"
+          title={i18n.t("confirmProd")}
+          style={styles.nextButton}
+          color="yellow"
+          textColor="black"
+          onPress={() =>
+            navigation.navigate("SubscriptionItemsOverview", {
+              subscriptionItems,
+            })
+          }
+        />
       </>
     );
   }
@@ -202,6 +225,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     marginVertical: 8,
+  },
+  nextButton: {
+    marginTop: 0,
+    marginBottom: 12,
+    elevation: 4,
+    shadowColor: defaultStyles.colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.15,
   },
   search: {
     elevation: 4,

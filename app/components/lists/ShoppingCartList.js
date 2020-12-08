@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, View } from "react-native";
 
+import i18n from "i18n-js";
+
 import ShoppingCartItem from "./ShoppingCartItem";
 import ListItemSeperatorFullLength from "./ListItemSeperatorFullLength";
 import { AppTitle, AppText } from "../fonts";
@@ -8,9 +10,6 @@ import PriceSum from "../PriceSum";
 import defaultStyles from "../../config/styles";
 import EmptyShoppingCart from "./EmptyShoppingCart";
 import AppButton from "../../components/AppButton";
-
-//TODO: GEBRUIK VOOR HET AANPASSEN VAN AMOUNT EN TOTAALPRIJS USEEFFECT, PAS VERANDERINGEN AAN WANNEER AMOUNT VERANDERD
-//TODO: GEBRUIK OVERAL getProductById IPV APARTE LOOPS
 
 function ShoppingCartList({
   data,
@@ -123,6 +122,7 @@ function ShoppingCartList({
       renderItem={({ item }) => (
         <ShoppingCartItem
           title={item.title}
+          label={item.label}
           price={item.price}
           amount={getInitialAmounts(item.id)}
           image={item.image}
@@ -144,21 +144,21 @@ function ShoppingCartList({
             ]}
           >
             <AppText style={[defaultStyles.textCenter]} thin>
-              Gratis verzending boven €50
+              {i18n.t("freeDeliveryNotice")}
             </AppText>
             <AppTitle>Totaal</AppTitle>
             <PriceSum
-              title="Totaal producten"
+              title={i18n.t("totalProduct")}
               noFormatting
               price={formatPrice(totalProductsPrice)}
             />
             <PriceSum
-              title="Bezorging"
+              title={i18n.t("delivery")}
               noFormatting
               price={formatPrice(deliveryCosts)}
             />
             <PriceSum
-              title="Totaal"
+              title={i18n.t("total")}
               noFormatting
               price={formatPrice(totalPrice)}
             />
@@ -168,7 +168,7 @@ function ShoppingCartList({
                 color="yellow"
                 textColor="black"
                 icon="chevron-right"
-                title="Bezorgkwantiteit bepalen"
+                title={i18n.t("chooseQuantity")}
                 onPress={onPressSubscription}
               />
             ) : (
@@ -176,7 +176,7 @@ function ShoppingCartList({
                 color="yellow"
                 textColor="black"
                 icon="chevron-right"
-                title="Door naar bestellen"
+                title={i18n.t("proceedOrder")}
                 onPress={onPressShoppingCart}
               />
             )}

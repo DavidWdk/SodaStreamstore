@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import i18n from "i18n-js";
+
 import AppPicker from "../../components/forms/AppPicker";
 import AppForm from "../../components/forms/AppForm";
 import AppFormField from "../../components/forms/AppFormField";
@@ -45,7 +47,7 @@ function AlternativeDeliveryAddressScreen(props) {
       <Screen>
         <ScrollView style={styles.section} onPress={Keyboard.dismiss}>
           <CustomHeader
-            title="Factuurgegevens"
+            title={i18n.t("alternativeDeliveryAddress")}
             style={defaultStyles.lineWhitespace}
           />
 
@@ -68,33 +70,33 @@ function AlternativeDeliveryAddressScreen(props) {
             validationSchema={validationSchema}
             style={styles.formContainer}
           >
-            <AppSwitch bold title="Ander afleveradres gebruiken?" />
+            <AppSwitch bold title={i18n.t("useAltAddress")} />
 
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Bedrijfsnaam"
+              label={i18n.t("companyName")}
               name="bedrijfsnaam"
             />
 
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Verzendrefentie 1"
+              label={i18n.t("deliveryRef1")}
               name="verzendRef1"
             />
 
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Verzendrefentie 2"
+              label={i18n.t("deliveryRef2")}
               name="verzendRef2"
             />
 
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Voornaam"
+              label={i18n.t("firstName")}
               name="voornaam"
               required
             />
@@ -102,23 +104,23 @@ function AlternativeDeliveryAddressScreen(props) {
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Achternaam"
+              label={i18n.t("lastName")}
               name="achternaam"
               required
             />
 
             <AppPicker
-              label="Land"
+              label={i18n.t("country")}
               name="land"
               selection={countries}
-              placeholder="Selecteer een land"
+              placeholder={i18n.t("selectCountry")}
               required
             />
 
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Straatnaam"
+              label={i18n.t("street")}
               name="straatnaam"
               required
             />
@@ -126,7 +128,7 @@ function AlternativeDeliveryAddressScreen(props) {
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Woonplaats"
+              label={i18n.t("city")}
               name="woonPlaats"
               required
             />
@@ -134,7 +136,7 @@ function AlternativeDeliveryAddressScreen(props) {
             <AppFormField
               autoCapitalize="characters"
               autoCorrect={false}
-              label="Postcode"
+              label={i18n.t("zipCode")}
               name="postcode"
               maxLength={6}
               required
@@ -144,7 +146,7 @@ function AlternativeDeliveryAddressScreen(props) {
             <AppFormField
               autoCorrect={false}
               keyboardType="numeric"
-              label="Huisnummer"
+              label={i18n.t("houseNum")}
               name="huisnummer"
               required
               width="40%"
@@ -153,12 +155,12 @@ function AlternativeDeliveryAddressScreen(props) {
             <AppFormField
               autoCapitalize="characters"
               autoCorrect={false}
-              label="Toevoeging"
+              label={i18n.t("addition")}
               name="toevoeging"
               width="40%"
             />
 
-            <SubmitButton style={styles.button} title="Wijzigingen opslaan" />
+            <SubmitButton style={styles.button} title={i18n.t("saveChanges")} />
           </AppForm>
         </ScrollView>
       </Screen>

@@ -5,6 +5,17 @@ export default [
     textTitle: "Lever uw lege cilinders in voor korting!",
     textColor: "white",
     btnText: "Ruil uw cilinder in",
+    routeObject: {
+      title: "SodaStream CO2 ruil cilinders",
+      price: "€25,99",
+      image: "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
+      images: [
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream?sid=3&pid=1716332",
+        },
+      ],
+    },
   },
   {
     image:
@@ -22,5 +33,25 @@ export default [
       "Koop nu een SodaStream Crystal en krijg 20% korting met glazen karaffen",
     textColor: "black",
     btnText: "Die wil ik",
+    routeObject: {
+      title: "SodaStream Toestel Crystal Mega Pack",
+      price: "€119,99",
+      image:
+        "https://image.sodastreamstore.nl/m/sodastream-crystal-mega-pack?sid=3&pid=1715802",
+      images: [
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream-crystal-mega-pack?sid=3&pid=1715802",
+        },
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream-crystal-mega-pack?sid=3&pid=1715802&sort=1",
+        },
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream-crystal-mega-pack?sid=3&pid=1715802&sort=2",
+        },
+      ],
+    },
   },
 ];

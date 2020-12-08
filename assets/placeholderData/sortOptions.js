@@ -1,13 +1,15 @@
+import i18n from "i18n-js";
+
 export default [
   {
-    title: "Prijs",
-    subTitle: "Laag naar hoog",
+    title: `${i18n.t("price")}`,
+    subTitle: `${i18n.t("lowHigh")}`,
   },
   {
-    title: "Prijs",
-    subTitle: "Hoog naar laag",
+    title: `${i18n.t("price")}`,
+    subTitle: `${i18n.t("highLow")}`,
   },
   {
-    title: "Populariteit",
+    title: `${i18n.t("popularity")}`,
   },
 ];

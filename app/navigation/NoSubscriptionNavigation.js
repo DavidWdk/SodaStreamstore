@@ -7,60 +7,84 @@ import NewSubSecondStepScreen from "../screens/Subscriptions/NewSubSecondStepScr
 import NoSubscriptionScreen from "../screens/Subscriptions/NoSubscriptionsScreen";
 import SubscriptionItemsOverviewScreen from "../screens/Subscriptions/SubscriptionItemsOverviewScreen";
 import ManageSubscriptionScreen from "../screens/Subscriptions/ManageSubscriptionScreen";
+import LoggedOutSubScreen from "../screens/Subscriptions/LoggedOutSubScreen";
 import AuthContext from "../auth/context";
+import LoginNavigation from "./LoginNavigation";
 
 const Stack = createStackNavigator();
 
 const NoSubscriptionNavigation = () => {
-  const authContext = useContext(AuthContext);
+  let authContext = useContext(AuthContext);
 
-  // console.log(authContext.user.activeSubscription);
+  const checkForLoggedUser = () => {
+    if (authContext.user) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-  // const checkForSubscription = () => {
-  //   if (authContext.user.activeSubscription == true) {
-  //     return true;
-  //   } else if (authContext.user.activeSubscription == undefined) {
-  //     return false;
-  //   }
-  // };
+  let isLoggedIn = checkForLoggedUser();
 
-  // let check = checkForSubscription();
+  const checkForSubscription = () => {
+    // console.log(authContext.user.activeSubscription, "CHECKING ACTIVE SUB");
+    if (authContext.user !== undefined || null) {
+      if (authContext.user.activeSubscription !== null || undefined) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  };
 
-  // useEffect(() => {
-  //   console.log("Been going thru it");
-  //   check = checkForSubscription();
-  // }, [authContext]);
+  let currentlySubscribedCheck;
 
-  // let check = true;
+  useEffect(() => {
+    currentlySubscribedCheck = checkForSubscription();
+  }, [authContext]);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* {check ? ( */}
-      <Stack.Screen
-        name="ManageSubscription"
-        component={ManageSubscriptionScreen}
-      />
-      {/* ) : ( */}
-      {/* <> */}
-      <Stack.Screen
-        name="NoSubscriptionPage"
-        component={NoSubscriptionScreen}
-      />
-      <Stack.Screen
-        name="NewSubscriptionFirstStep"
-        component={NewSubFirstStepScreen}
-      />
-      <Stack.Screen
-        name="SubscriptionItemsOverview"
-        component={SubscriptionItemsOverviewScreen}
-      />
-      <Stack.Screen
-        name="NewSubscriptionSecondStep"
-        component={NewSubSecondStepScreen}
-      />
-      <Stack.Screen name="MySubscriptions" component={MySubscriptionsScreen} />
-      {/* </> */}
-      {/* )} */}
+      {currentlySubscribedCheck ? (
+        <Stack.Screen
+          name="ManageSubscription"
+          component={ManageSubscriptionScreen}
+        />
+      ) : (
+        <>
+          {!isLoggedIn ? (
+            <>
+              <Stack.Screen name="LoggedOut" component={LoggedOutSubScreen} />
+              <Stack.Screen name="Login" component={LoginNavigation} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="NoSubscriptionPage"
+                component={NoSubscriptionScreen}
+              />
+              <Stack.Screen
+                name="NewSubscriptionFirstStep"
+                component={NewSubFirstStepScreen}
+              />
+              <Stack.Screen
+                name="SubscriptionItemsOverview"
+                component={SubscriptionItemsOverviewScreen}
+              />
+              <Stack.Screen
+                name="NewSubscriptionSecondStep"
+                component={NewSubSecondStepScreen}
+              />
+              <Stack.Screen
+                name="MySubscriptions"
+                component={MySubscriptionsScreen}
+              />
+            </>
+          )}
+        </>
+      )}
     </Stack.Navigator>
   );
 };

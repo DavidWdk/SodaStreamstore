@@ -1,12 +1,15 @@
 import React from "react";
-import { Pressable, StyleSheet, Image, Dimensions } from "react-native";
+import { Pressable, StyleSheet, Image } from "react-native";
 
 import defaultStyles from "../../config/styles";
 import { AppTitle } from "../fonts";
 
-function ProductTile({ image, title }) {
+function ProductTile({ image, title, onPress }) {
   return (
-    <Pressable style={[defaultStyles.shadowBlock, styles.container]}>
+    <Pressable
+      style={[defaultStyles.shadowBlock, styles.container]}
+      onPress={onPress}
+    >
       <Image source={{ uri: image }} style={styles.image} />
       <AppTitle style={styles.title}>{title}</AppTitle>
     </Pressable>

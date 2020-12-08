@@ -24,7 +24,7 @@ LogBox.ignoreLogs(["Warning: ..."]);
 // import HomeScreen from "./app/screens/HomeScreen";
 // import ProductOverviewScreen from "./app/screens/Products/ProductOverviewScreen";
 // import ShoppingCartScreen from "./app/screens/ShoppingCartScreen";
-import FilterScreen from "./app/screens/Products/FilterScreen";
+// import FilterScreen from "./app/screens/Products/FilterScreen";
 // import UserVerificationCheckScreen from "./app/screens/UserVerificationCheckScreen";
 // import CheckoutScreen from "./app/screens/CheckoutScreen";
 // import ProductDetailScreen from "./app/screens/Products/ProductDetailScreen";
@@ -51,7 +51,6 @@ import BottomNavigation from "./app/navigation/BottomNavigation";
 //TODO: NAVIGATION BIJ LEGE SHOPPINGCART & IN LOYALTY POINTS & SUBSCRIPTION NAVIGATION
 
 export default function App() {
-  // return <SubscriptionItemsOverview />;
   const [user, setUser] = useState();
 
   return (

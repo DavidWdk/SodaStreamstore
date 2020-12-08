@@ -1,5 +1,8 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+
+import i18n from "i18n-js";
+
 import CustomHeader from "../../components/CustomHeader";
 import defaultStyles from "../../config/styles";
 import AppFlatlist from "../../components/lists/AppFlatlist";
@@ -12,7 +15,7 @@ function AppSettingsScreen(props) {
       <AppFlatlist
         ListHeaderComponent={
           <CustomHeader
-            title="Instellingen"
+            title={i18n.t("settings")}
             style={[defaultStyles.screenContainer, styles.header]}
           />
         }

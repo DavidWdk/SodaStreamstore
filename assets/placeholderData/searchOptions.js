@@ -15,19 +15,41 @@ export default [
     id: 1,
     title: "Artikelen met korting",
     data: [
-      { title: `${i18n.t("allArticlesOnDiscount")}` },
-      { title: `${i18n.t("cilinders")}` },
-      { title: `${i18n.t("syrups")}` },
-      { title: `${i18n.t("accessories")}` },
-      { title: `${i18n.t("devices")}` },
+      {
+        title: `${i18n.t("allArticlesOnDiscount")}`,
+        payload: "onSale",
+        headerTitle: "Korting",
+      },
+      {
+        title: `${i18n.t("cilinders")}`,
+        payload: "onSale",
+        headerTitle: "Korting",
+      },
+      {
+        title: `${i18n.t("syrups")}`,
+        payload: "onSale",
+        headerTitle: "Korting",
+      },
+      {
+        title: `${i18n.t("accessories")}`,
+        payload: "onSale",
+        headerTitle: "Korting",
+      },
+      {
+        title: `${i18n.t("devices")}`,
+        payload: "onSale",
+        headerTitle: "Korting",
+      },
     ],
   },
   {
     id: 2,
     title: `${i18n.t("previouslyBought")}`,
+    destinationScreen: "OrderHistory",
   },
   {
     id: 3,
     title: `${i18n.t("previouslySeen")}`,
+    destinationScreen: "PreviouslySeen",
   },
 ];

@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import i18n from "i18n-js";
+
 import AppPicker from "../../components/forms/AppPicker";
 import AppForm from "../../components/forms/AppForm";
 import AppFormField from "../../components/forms/AppFormField";
@@ -78,7 +80,7 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Voornaam"
+            label={i18n.t("firstName")}
             name="voornaam"
             required
           />
@@ -86,7 +88,7 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Achternaam"
+            label={i18n.t("lastName")}
             name="achternaam"
             required
           />
@@ -94,21 +96,21 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Jouw eigen refentie 1"
+            label={i18n.t("yourReference1")}
             name="referentie1"
           />
 
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Jouw eigen refentie 2"
+            label={i18n.t("yourReference2")}
             name="referentie2"
           />
 
           <AppFormField
             autoCapitalize="characters"
             autoCorrect={false}
-            label="Postcode"
+            label={i18n.t("zipCode")}
             name="postcode"
             maxLength={6}
             required
@@ -118,7 +120,7 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCorrect={false}
             keyboardType="numeric"
-            label="Huisnummer"
+            label={i18n.t("houseNum")}
             name="huisnummer"
             required
             width="40%"
@@ -127,7 +129,7 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="characters"
             autoCorrect={false}
-            label="Toevoeging"
+            label={i18n.t("addition")}
             name="toevoeging"
             width="40%"
           />
@@ -135,7 +137,7 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Straatnaam"
+            label={i18n.t("street")}
             name="straatnaam"
             required
           />
@@ -143,22 +145,22 @@ function BillingInfoScreen(props) {
           <AppFormField
             autoCapitalize="words"
             autoCorrect={false}
-            label="Woonplaats"
+            label={i18n.t("city")}
             name="woonPlaats"
             required
           />
 
           <AppPicker
-            label="Land"
+            label={i18n.t("country")}
             name="land"
             selection={countries}
-            placeholder="Selecteer een land"
+            placeholder={i18n.t("selectCountry")}
             required
           />
 
           <AppFormField
             autoCorrect={false}
-            label="E-mailadres"
+            label={i18n.t("email")}
             name="email"
             keyboardType="email-address"
             required
@@ -166,54 +168,54 @@ function BillingInfoScreen(props) {
 
           <AppFormField
             autoCapitalize="words"
-            label="Telefoonnummer"
+            label={i18n.t("phoneNum")}
             keyboardType="numeric"
             name="telefoon"
             width="40%"
           />
 
           <View style={styles.section}>
-            <AppTitle style={defaultStyles.subtitle}>Bedrijfsgegevens</AppTitle>
+            <AppTitle style={defaultStyles.subtitle}>{i18n.t("companyDetails")}</AppTitle>
             <AppText style={defaultStyles.text}>
-              Vul de onderstaande gegevens in voor zakelijke bestellingen.
+              {i18n.t("businessOrderDesc")}
             </AppText>
             {/* Als er geen bedrijfsnaam is ingevoerd, maak de 'soort bestelling' particulier. */}
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Bedrijfsnaam"
+              label={i18n.t("companyName")}
               name="bedrijfsnaam"
             />
 
             <AppFormField
               autoCorrect={false}
               autoCapitalize="characters"
-              label="IBAN rekeningnummer"
+              label={i18n.t("accountNum")}
               name="iban"
             />
 
             <AppFormField
               autoCorrect={false}
               autoCapitalize="characters"
-              label="BTW nummer"
+              label={i18n.t("btwNum")}
               name="btwNum"
             />
 
             <AppFormField
               autoCorrect={false}
               autoCapitalize="characters"
-              label="KVK nummer"
-              name="iban"
+              label={i18n.t("kvkNum")}
+              name="kvkNum"
             />
 
             <AppFormField
               autoCorrect={false}
-              label="E-mailadres facturatie"
+              label={i18n.t("invoiceEmail")}
               name="emailFacturatie"
               keyboardType="email-address"
             />
             <SubmitButton
-              title="Wijzigingen opslaan"
+              title={i18n.t("saveChanges")}
               style={styles.whitespace}
             />
           </View>

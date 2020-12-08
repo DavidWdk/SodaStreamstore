@@ -1,11 +1,13 @@
+import i18n from "i18n-js";
+
 export default [
   {
-    title: "Elke maand",
+    title: `${i18n.t("eachMonth")}`,
   },
   {
-    title: "Elke twee maanden",
+    title: `${i18n.t("eachTwoMonths")}`,
   },
   {
-    title: "Elke vier maanden",
+    title: `${i18n.t("eachFourMonths")}`,
   },
 ];

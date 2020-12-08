@@ -56,6 +56,7 @@ function ProductOverviewItem({
     </Pressable>
   );
 }
+
 const styles = StyleSheet.create({
   bottomDetails: {
     flexDirection: "row",

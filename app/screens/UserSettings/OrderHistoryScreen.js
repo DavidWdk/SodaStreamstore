@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
+import i18n from "i18n-js";
+
 import SmallProductList from "../../components/lists/SmallProductList";
 import defaultStyles from "../../config/styles";
 import orderHistory from "../../../assets/placeholderData/orderHistory";
@@ -13,7 +15,7 @@ function OrderHistoryScreen(props) {
       <CustomHeader
         topPaddingAdjustment
         style={[defaultStyles.screenContainer, styles.header]}
-        title="Bestellingen"
+        title={i18n.t("orders")}
         backgroundColor="white"
       />
       <SmallProductList
@@ -21,8 +23,8 @@ function OrderHistoryScreen(props) {
         data={orderHistory}
         ListEmptyComponent={
           <View style={styles.emptyComponent}>
-            <AppTitle>U heeft nog geen bestellingen gedaan</AppTitle>
-            <AppText>Bezoek onze winkel om een bestelling te plaatsen</AppText>
+            <AppTitle>{i18n.t("emptyOrderHistory")}</AppTitle>
+            <AppText>{i18n.t("emptyOrderHistoryDesc")}</AppText>
           </View>
         }
       />

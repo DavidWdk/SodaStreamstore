@@ -1,10 +1,13 @@
 import React from "react";
 import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import ProductOverviewItem from "./ProductOverviewItem";
 import ListItemSeperatorFullLength from "./ListItemSeperatorFullLength";
 
 function ProductOverviewList({ data, style }) {
+  const navigation = useNavigation();
+
   return (
     <FlatList
       data={data}
@@ -17,10 +20,9 @@ function ProductOverviewList({ data, style }) {
           subText2={item.subText2}
           subText3={item.subText3}
           image={item.image}
-          // onPress={() => navigation.navigate(routes.PRODUCT_DETAILS, item)}
+          onPress={() => navigation.navigate("ProductDetails", { item })}
           price={item.price}
           prevPrice={item.prevPrice}
-          // onPress={() => navigation.navigate("ProductDetails", item)}
         />
       )}
       ItemSeparatorComponent={ListItemSeperatorFullLength}

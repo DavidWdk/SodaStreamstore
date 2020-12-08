@@ -1,38 +1,40 @@
+import i18n from "i18n-js";
+
 export default [
   {
     id: 1,
-    title: "Meldingen",
+    title: `${i18n.t("notifications")}`,
     itemKind: "switch",
   },
   {
     id: 2,
-    title: "Taal keuze",
+    title: `${i18n.t("language")}`,
   },
   {
     id: 3,
-    title: "Cookiebeleid",
+    title: `${i18n.t("cookies")}`,
   },
   {
     id: 4,
-    title: "Versie",
+    title: `${i18n.t("version")}`,
   },
   {
     id: 5,
-    title: "Copyright",
+    title: `${i18n.t("copyright")}`,
   },
   {
     id: 6,
-    title: "Geschiedenis wissen",
+    title: `${i18n.t("deleteHistory")}`,
     textColor: "red",
   },
   {
     id: 7,
-    title: "Tijdelijke bestanden wissen",
+    title: `${i18n.t("deleteCache")}`,
     textColor: "red",
   },
   {
     id: 8,
-    title: "Terug naar standaardinstellingen",
+    title: `${i18n.t("backToDefaultSettings")}`,
     textColor: "red",
   },
 ];

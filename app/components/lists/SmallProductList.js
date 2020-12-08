@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, SectionList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import i18n from "i18n-js";
+
 import SmallProductItem from "./SmallProductItem";
 import ListItemSeperator from "./ListItemSeperator";
 import { AppTitle } from "../fonts";
@@ -33,7 +35,7 @@ function SmallProductList({ data, ...otherProps }) {
       renderSectionFooter={() => (
         <AppButton
           icon="repeat"
-          title="Herhaal deze bestelling"
+          title={i18n.t("repeatOrder")}
           style={styles.horizontalMargin}
         />
       )}
@@ -44,8 +46,6 @@ function SmallProductList({ data, ...otherProps }) {
 const styles = StyleSheet.create({
   list: {
     overflow: "visible",
-    // paddingTop: Constants.statusBarHeight,
-    // marginBottom: 46,
   },
   horizontalMargin: {
     marginHorizontal: 12,

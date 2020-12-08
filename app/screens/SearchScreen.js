@@ -2,7 +2,6 @@ import React from "react";
 import Constants from "expo-constants";
 
 import i18n from "i18n-js";
-// import lan from "../lang/i18n";
 
 import { StyleSheet, View } from "react-native";
 import AppTextInput from "../components/AppTextInput";

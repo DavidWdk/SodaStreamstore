@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
+import i18n from "i18n-js";
+
 import { AppTitle } from "../../components/fonts";
 import ScrollScreen from "../../components/screenStyling/ScrollScreen";
 import defaultstyles from "../../config/styles";
@@ -11,35 +13,39 @@ function NoSubscriptionScreen({ navigation }) {
   return (
     <ScrollScreen>
       <AppTitle style={[styles.title, defaultstyles.textCenter]}>
-        Je hebt nog geen abonnement
+        {i18n.t("youHaveNoSub")}
       </AppTitle>
 
       <View style={defaultstyles.screenContainer}>
         <HugeButton
-          title="Stel een"
-          boldTitle="Abonnement in"
+          title={i18n.t("activateTitle")}
+          boldTitle={i18n.t("activateSub")}
           onPress={() => navigation.navigate("NewSubscriptionFirstStep")}
         />
       </View>
 
       <ImgTextBlock
         style={defaultstyles.lineWhitespace}
-        title="Krijg extra beloningen"
+        title={i18n.t("extraRewards")}
       >
-        Abonnementhouders verdienen extra spaarpunten bij iedere bestelling.
+        {i18n.t("extraRewardsDesc")}
       </ImgTextBlock>
 
       <ImgTextBlock
         blueBackground
-        title="Altijd je favoriete producten in huis"
+        title={i18n.t("alwaysStacked")}
+        style={styles.bottomMargin}
       >
-        Je bepaald zelf hoe vaak je producten bezorgd worden. Ook kan je altijd
-        een bezorging aanpassen, overslaan óf het abonnement opzeggen
+        {i18n.t("alwaysStackedDesc")}
       </ImgTextBlock>
     </ScrollScreen>
   );
 }
+
 const styles = StyleSheet.create({
+  bottomMargin: {
+    paddingBottom: 30,
+  },
   btn: {
     width: 280,
     alignSelf: "center",

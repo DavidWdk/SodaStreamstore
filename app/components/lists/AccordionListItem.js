@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   StyleSheet,
@@ -12,12 +13,18 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../../config/styles";
 import { AppText } from "../fonts";
 
-function AccordionListItem({ title, onPress, childrenItems }) {
+function AccordionListItem({
+  title,
+  childrenItems,
+  destinationScreen = "ProductOverview",
+}) {
   if (Platform.OS === "android") {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
   }
+
+  const navigation = useNavigation();
 
   const handlePress = () => {
     //Change onPress based on childrenItems
@@ -25,7 +32,7 @@ function AccordionListItem({ title, onPress, childrenItems }) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setExpanded(!expanded);
     } else if (!childrenItems) {
-      onPress;
+      navigation.navigate(destinationScreen, { payload });
     }
   };
 
@@ -51,7 +58,7 @@ function AccordionListItem({ title, onPress, childrenItems }) {
             <Pressable
               style={[styles.childRow, styles.row]}
               key={index}
-              onPress={onPress}
+              onPress={() => navigation.navigate(destinationScreen)}
             >
               <AppText>{child.title}</AppText>
             </Pressable>

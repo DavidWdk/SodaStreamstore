@@ -1,26 +1,29 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
+import i18n from "i18n-js";
 import syrups from "../../../assets/placeholderData/syrups";
+// import onSale from "../../../assets/placeholderData/onSale";
 
 import CustomHeader from "../../components/CustomHeader";
 import ProductOverviewList from "../../components/lists/ProductOverviewList";
 
-function ProductOverviewScreen(props) {
-  const navigation = useNavigation();
-
+function ProductOverviewScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <CustomHeader
-        title="Siropen"
+        // title={route.params.headerTitle}
+        title={i18n.t("syrups")}
         topPaddingAdjustment
-        secondaryTitle="Filteren"
+        secondaryTitle={i18n.t("filter")}
         secondaryIcon="filter-outline"
         secondaryHeaderItem
         onPressSecondary={() => navigation.navigate("Filter")}
       />
-      <ProductOverviewList data={syrups} />
+      <ProductOverviewList
+        // data={(route.params.payload = "onSale" ? onSale : syrups)}
+        data={syrups}
+      />
     </View>
   );
 }

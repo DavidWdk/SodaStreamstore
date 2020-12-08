@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Image } from "react-native";
 import defaultStyles from "../../config/styles";
 import ButtonOutline from "../ButtonOutline";
+import AuthContext from "../../auth/context";
+import AppButton from "../AppButton";
+import { useNavigation } from "@react-navigation/native";
 
 import { AppTitle, AppText } from "../fonts";
 
-//FIXME: Werkt niet goed op Android
-function EmptyShoppingCart(props) {
+function EmptyShoppingCart() {
+  const navigation = useNavigation();
+
+  let authContext = useContext(AuthContext);
+
+  const checkForLoggedUser = () => {
+    if (authContext.user) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  let isLoggedIn = checkForLoggedUser();
+
   return (
     <View style={[styles.container, defaultStyles.screenContainer]}>
       <View style={styles.verticalAlign}>
@@ -22,8 +38,18 @@ function EmptyShoppingCart(props) {
           óf doe een herhaalaankoop
         </AppText>
 
-        <ButtonOutline title="Doe een herhaalaankoop" icon="repeat" />
-        <ButtonOutline title="Zoek naar een product" icon="magnify" />
+        {isLoggedIn ? (
+          <>
+            <ButtonOutline title="Doe een herhaalaankoop" icon="repeat" />
+            <ButtonOutline title="Zoek naar een product" icon="magnify" />
+          </>
+        ) : (
+          <AppButton
+            title="Inloggen"
+            icon="account-arrow-right-outline"
+            onPress={() => navigation.navigate("Login")}
+          />
+        )}
       </View>
     </View>
   );

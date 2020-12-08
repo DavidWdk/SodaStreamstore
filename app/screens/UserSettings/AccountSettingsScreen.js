@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { StackActions } from "@react-navigation/native";
 
+import i18n from "i18n-js";
+
 import Screen from "../../components/screenStyling/Screen";
 import CustomHeader from "../../components/CustomHeader";
 import AppFlatlist from "../../components/lists/AppFlatlist";
@@ -27,7 +29,7 @@ function AccountSettingsScreen({ navigation }) {
       <AppFlatlist
         data={accountOptionsData}
         ListHeaderComponent={
-          <CustomHeader style={styles.header} title="Accountinstellingen" />
+          <CustomHeader style={styles.header} title={i18n.t("accountSettings")} />
         }
         ListFooterComponent={
           <View
@@ -38,7 +40,7 @@ function AccountSettingsScreen({ navigation }) {
           >
             {authContext.user && (
               <ButtonOutline
-                title="Uitloggen"
+                title={i18n.t("logout")}
                 style={styles.logoutBtn}
                 onPress={handleLogout}
                 textColor="red"

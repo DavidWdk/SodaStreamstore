@@ -4,6 +4,8 @@ import { ScrollView, View, StyleSheet, Pressable } from "react-native";
 import "intl";
 import "intl/locale-data/jsonp/en";
 
+import i18n from "i18n-js";
+
 import CustomHeader from "../../components/CustomHeader";
 import SquareSelectionItems from "../../components/SquareSelectionItems";
 import defaultStyles from "../../config/styles";
@@ -25,17 +27,12 @@ function NewSubSecondStepScreen(props) {
   };
 
   const handleConfirm = (date) => {
-    console.log("A date has been picked: ", date);
     setStartDate(date);
     hideDatePicker();
   };
 
   const formatDate = () => {
     const d = startDate;
-    // const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
-    // const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
-    // const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
-
     const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
     const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
     const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
@@ -44,10 +41,10 @@ function NewSubSecondStepScreen(props) {
 
   return (
     <>
-      <CustomHeader title="Stap 2: kwantiteit" topPaddingAdjustment />
+      <CustomHeader title={i18n.t("step2")} topPaddingAdjustment />
       <ScrollView style={[styles.container, defaultStyles.screenContainer]}>
         <AppTitle style={defaultStyles.topWhitespaceSmaller}>
-          Bezorgkwantiteit
+          {i18n.t("deliveryFreq")}
         </AppTitle>
 
         <SquareSelectionItems
@@ -56,7 +53,7 @@ function NewSubSecondStepScreen(props) {
         />
 
         <AppTitle style={defaultStyles.topWhitespaceSmaller}>
-          Startdatum
+          {i18n.t("startDate")}
         </AppTitle>
 
         <DateTimePickerModal
@@ -82,13 +79,11 @@ function NewSubSecondStepScreen(props) {
         <AppText
           style={[defaultStyles.textCenter, defaultStyles.topWhitespaceSmaller]}
         >
-          Het abonnement zal elke twee maanden automatisch worden geincasseerd
-          voor €23,99. We sturen een herinnering voor elke bezorging zodat je
-          genoeg tijd hebt je bestelling aan te passen of te annuleren.
+          {i18n.t("subscriptionDisclaimer")}
         </AppText>
 
         <AppButton
-          title="Ga naar het afrekenen"
+          title={i18n.t("proceedOrder")}
           icon="chevron-right"
           style={styles.nextButton}
           //   onPress=

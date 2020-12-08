@@ -6,6 +6,7 @@ import ChangePassScreen from "../screens/UserSettings/ChangePassScreen";
 import BillingInfoScreen from "../screens/UserSettings/BillingInfoScreen";
 import AccountSettingsScreen from "../screens/UserSettings/AccountSettingsScreen";
 import OrderHistoryDetailScreen from "../screens/UserSettings/OrderHistoryDetailScreen";
+import LoginNavigation from "./LoginNavigation";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const SettingsNavigation = () => (
       name="OrderHistoryDetails"
       component={OrderHistoryDetailScreen}
     />
+    <Stack.Screen name="Login" component={LoginNavigation} />
   </Stack.Navigator>
 );
 

@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
+import i18n from "i18n-js";
+
 import defaultStyles from "../config/styles";
 import AppFormField from "../components/forms/AppFormField";
 import ScrollScreenKeyboard from "../components/screenStyling/ScrollScreenKeyboard";
@@ -25,11 +27,10 @@ const validationSchema = Yup.object().shape({
 function UserVerificationCheckScreen({ navigation }) {
   return (
     <ScrollScreenKeyboard style={defaultStyles.screenContainer}>
-      <CustomHeader title="Korte Controle" />
-      <AppTitle>Ben jij het nog, {userName}?</AppTitle>
+      <CustomHeader title={i18n.t("quickCheck")} />
+      <AppTitle>{i18n.t("isItYou")}{userName}?</AppTitle>
       <AppText style={styles.textBlock}>
-        Om er zeker van te zijn dat jij de gebruiker bent die gekoppeld is aan
-        het huidig ingelogde account dien je jouw wachtwoord in te voeren
+        {i18n.t("verificationDesc")}
       </AppText>
       <AppForm
         initialValues={{ email: "", password: "" }}
@@ -40,20 +41,20 @@ function UserVerificationCheckScreen({ navigation }) {
           autoCapitalize="none"
           autoCorrect={false}
           name="password"
-          placeholder="Wachtwoord"
+          placeholder={i18n.t("password")}
           secureTextEntry
           textContentType="password"
         />
-        <SubmitButton title="Verder" />
+        <SubmitButton title={i18n.t("proceed")} />
       </AppForm>
 
       <View style={styles.secondaryOptions}>
         <SecondaryButton
-          title="Wissel account"
+          title={i18n.t("switchAcc")}
           style={styles.secondaryButton}
         />
         <SecondaryButton
-          title="Wachtwoord vergeten?"
+          title={i18n.t("forgotPass")}
           style={styles.secondaryButton}
         />
       </View>

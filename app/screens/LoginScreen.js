@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
+
+import i18n from "i18n-js";
 
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
@@ -9,34 +11,45 @@ import SubmitButton from "../components/forms/SubmitButton";
 import SecondaryButton from "../components/SecondaryButton";
 import CustomHeader from "../components/CustomHeader";
 import ScrollScreenKeyboard from "../components/screenStyling/ScrollScreenKeyboard";
-import { AppTitle } from "../components/fonts/";
+import { AppTitle, AppText } from "../components/fonts/";
 import AuthContext from "../auth/context";
+import AppButton from "../components/AppButton";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("E-mailadres"),
-  password: Yup.string().required().min(4).label("Wachtwoord"),
+  password: Yup.string().required().label("Wachtwoord"),
 });
 
-const registerValidation = Yup.object().shape({
-  registerMail: Yup.string().required().email().label("E-mailadres"),
-});
-
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   const authContext = useContext(AuthContext);
 
+  const [registerError, setRegisterError] = useState("");
+  const [registerMail, setRegisterMail] = useState("");
+
+  const handleRegister = () => {
+    if (registerMail.includes("@", "." && registerMail.length > 3)) {
+      navigation.navigate("Register", { registerMail });
+    } else {
+      setRegisterError(`${i18n.t("useValidEmail")}`);
+    }
+  };
+
   const handleSubmit = () => {
-    //Complete with additional user data in form of an object
-    authContext.setUser("User");
+    console.log("handleSubmit");
+    // authContext.setUser("User");
+    // navigation.navigate("Home");
   };
 
   return (
     <ScrollScreenKeyboard
       style={[defaultStyles.screenContainer, styles.container]}
     >
-      <CustomHeader title="Inloggen" />
+      <CustomHeader title={i18n.t("login")} />
 
       <View style={styles.section}>
-        <AppTitle style={defaultStyles.subtitle}>Bestaande gebruikers</AppTitle>
+        <AppTitle style={defaultStyles.subtitle}>
+          {i18n.t("existingUsers")}
+        </AppTitle>
 
         <AppForm
           initialValues={{ email: "", password: "" }}
@@ -48,7 +61,7 @@ function LoginScreen(props) {
             autoCorrect={false}
             keyboardType="email-address"
             name="email"
-            placeholder="E-mailadres"
+            placeholder={i18n.t("email")}
             textContentType="emailAddress"
           />
 
@@ -56,36 +69,32 @@ function LoginScreen(props) {
             autoCapitalize="none"
             autoCorrect={false}
             name="password"
-            placeholder="Wachtwoord"
+            placeholder={i18n.t("password")}
             secureTextEntry
             textContentType="password"
           />
-          <SubmitButton title="Inloggen" />
-
-          <SecondaryButton title="Wachtwoord vergeten" />
         </AppForm>
+        <SubmitButton title={i18n.t("login")} />
+        <SecondaryButton title={i18n.t("forgotPass")} />
       </View>
 
       <View style={styles.section}>
-        <AppTitle style={defaultStyles.subtitle}>Nieuwe gebruikers</AppTitle>
+        <AppTitle style={defaultStyles.subtitle}>{i18n.t("newUsers")}</AppTitle>
 
-        <AppForm
-          initialValues={{ registerMail: "" }}
-          //Route the field values when implementing navigation
-          onSubmit={(values) => console.log(values)}
-          validationSchema={registerValidation}
-        >
+        <AppForm initialValues={{ registerMail: "" }}>
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
             keyboardType="email-address"
             name="registerMail"
-            placeholder="E-mailadres"
+            placeholder={i18n.t("email")}
             textContentType="emailAddress"
+            onChangeText={(text) => setRegisterMail(text)}
           />
-
-          {/* Route the field values when implementing navigation */}
-          <SubmitButton title="Maak een account aan" />
+          {registerError.length > 0 && (
+            <AppText style={styles.error}>{registerError}</AppText>
+          )}
+          <AppButton title={i18n.t("createAcc")} onPress={handleRegister} />
         </AppForm>
       </View>
     </ScrollScreenKeyboard>
@@ -95,6 +104,11 @@ function LoginScreen(props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.blueBackground,
+  },
+  error: {
+    color: "red",
+    fontSize: 14,
+    marginTop: 2,
   },
   section: {
     marginTop: 24,

@@ -27,7 +27,7 @@ export default [
     label: "Classic Lemon Lime Siroop",
     image:
       "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-lemon-lime?sid=3&pid=1393549",
-    price: 29.99,
+    price: 4.99,
     amount: 0,
   },
   {

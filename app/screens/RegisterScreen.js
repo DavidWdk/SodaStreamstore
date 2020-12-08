@@ -15,6 +15,8 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import i18n from "i18n-js";
+
 import AppPicker from "../components/forms/AppPicker";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
@@ -48,7 +50,8 @@ const validationSchema = Yup.object().shape({
   wachtwoord: Yup.string().required().min(6).label("Wachtwoord"),
 });
 
-function RegisterScreen(props) {
+function RegisterScreen({ route }) {
+  console.log(route.params);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -79,7 +82,7 @@ function RegisterScreen(props) {
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Voornaam"
+              label={i18n.t("firstName")}
               name="voornaam"
               required
             />
@@ -87,7 +90,7 @@ function RegisterScreen(props) {
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Achternaam"
+              label={i18n.t("lastName")}
               name="achternaam"
               required
             />
@@ -96,15 +99,15 @@ function RegisterScreen(props) {
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}
-              label="Bedrijfsnaam"
+              label={i18n.t("companyName")}
               name="bedrijfsnaam"
-              subText="Indien u zakelijke klant bent"
+              subText={i18n.t("ifBusinessCustomer")}
             />
 
             <AppFormField
               autoCapitalize="characters"
               autoCorrect={false}
-              label="Postcode"
+              label={i18n.t("zipCode")}
               name="postcode"
               maxLength={6}
               required
@@ -114,7 +117,7 @@ function RegisterScreen(props) {
             <AppFormField
               autoCorrect={false}
               keyboardType="numeric"
-              label="Huisnummer"
+              label={i18n.t("houseNum")}
               name="huisnummer"
               required
               width="40%"
@@ -123,45 +126,44 @@ function RegisterScreen(props) {
             <AppFormField
               autoCapitalize="characters"
               autoCorrect={false}
-              label="Toevoeging"
+              label={i18n.t("addition")}
               name="toevoeging"
               width="40%"
             />
 
             {/* Geeft het string terug of object? */}
             <AppPicker
-              label="Land"
+              label={i18n.t("country")}
               name="land"
               selection={countries}
-              placeholder="Selecteer een land"
+              placeholder={i18n.t("selectCountry")}
               required
             />
 
             <View style={styles.section}>
-              <AppTitle style={defaultStyles.subtitle}>Inloggegevens</AppTitle>
+              <AppTitle style={defaultStyles.subtitle}>{i18n.t("loginData")}</AppTitle>
               <AppText style={defaultStyles.text}>
-                Het e-mailadres en wachtwoord zijn nodig om toegang te krijgen
-                tot uw account. Ook zullen we je e-mail gebruiken om contact met
-                je op te nemen na een bestelling
+                {i18n.t("loginDataDesc")}
               </AppText>
 
               <AppFormField
                 autoCorrect={false}
-                label="E-mailadres"
+                label={i18n.t("email")}
                 name="email"
                 keyboardType="email-address"
                 required
+                value={route.params.registerMail}
               />
 
               <AppFormField
                 autoCorrect={false}
-                label="Wachtwoord"
+                label={i18n.t("password")}
                 name="wachtwoord"
                 required
                 secureTextEntry
               />
 
-              <SubmitButton title="Maak een account aan" />
+              <SubmitButton title={i18n.t("createAcc")} />
             </View>
           </AppForm>
         </ScrollView>

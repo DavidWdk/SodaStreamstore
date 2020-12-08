@@ -1,9 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
+import i18n from "i18n-js";
+
 import ImageSlider from "../products/ImageSlider";
 import defaultStyles from "../../config/styles";
-import { AppTitle, AppText } from "../fonts";
+import { AppTitle } from "../fonts";
 import AppButton from "../AppButton";
 import Check from "./Check";
 
@@ -16,7 +18,7 @@ function productShowcaseFold({
 }) {
   const priceFormatter = (price) => {
     const string = price.toString();
-    const fullPrice = `€${string}`;
+    const fullPrice = `${string}`;
     return fullPrice.split(".");
   };
 
@@ -36,18 +38,17 @@ function productShowcaseFold({
           fontSize={18}
           icon="cart"
           textColor="black"
-          title="In winkelwagentje"
+          title={i18n.t("addToCart")}
           color={"yellow"}
-          onPress={() => console.log("Added to cart")}
         />
         {isProductHistory ? (
           <Check
-            title={`Dit product is bezorgd op ${productHistoryArrivalDate}`}
+            title={`${i18n.t("wasDeliveredDate")} ${productHistoryArrivalDate}`}
           />
         ) : (
           <>
             <Check />
-            <Check title="Gratis verzending vanaf 50 euro" />
+            <Check title={i18n.t("freeDeliveryNotice")} />
           </>
         )}
       </View>

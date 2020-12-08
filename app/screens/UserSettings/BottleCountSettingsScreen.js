@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 
+import i18n from "i18n-js";
+
 import { AppTitle, AppText } from "../../components/fonts";
 import CustomHeader from "../../components/CustomHeader";
 import Screen from "../../components/screenStyling/Screen";
@@ -13,21 +15,18 @@ function BottleCountSettings(props) {
 
   return (
     <Screen style={defaultStyles.screenContainer}>
-      <CustomHeader title="Flessenteller" />
+      <CustomHeader title={i18n.t("bottleCountHeader")} />
       <View style={defaultStyles.section}>
-        <AppTitle>Hoe werkt het?</AppTitle>
+        <AppTitle>{i18n.t("counterWorkings")}</AppTitle>
         <AppText>
-          De flessenteller berekent het aantal bespaarde plastic flessen op
-          basis van hoeveel liter bruiswater je maakt met een CO2-cilinder. Het
-          aantal CO2-cilinders dat je hebt gebruikt worden berekend aan de hand
-          van je bestelgeschiedenis.
+          {i18n.t("counterWorkingsDesc")}
         </AppText>
       </View>
 
       <View style={defaultStyles.section}>
-        <AppTitle>Hoeveelheid</AppTitle>
+        <AppTitle>{i18n.t("amount")}</AppTitle>
         <AppText>
-          Hoeveel liter bruiswater haal je uit een CO2-cilinder?
+          {i18n.t("amountDesc")}
         </AppText>
 
         <AppSlider
@@ -35,7 +34,7 @@ function BottleCountSettings(props) {
           maximum={70}
           step={1}
           initialValue={60}
-          unit="liter"
+          unit={i18n.t("liter")}
           style={styles.slider}
         />
       </View>

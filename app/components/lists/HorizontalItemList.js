@@ -1,10 +1,13 @@
 import React from "react";
 import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import HorizontalItemContainer from "./HorizontalItemContainer";
 import ListItemSeperatorVertical from "./ListItemSeperatorVertical";
 
 function HorizontalItemList({ data, ...otherProps }) {
+  const navigation = useNavigation();
+
   return (
     <FlatList
       data={data}
@@ -15,7 +18,7 @@ function HorizontalItemList({ data, ...otherProps }) {
           image={item.image}
           title={item.title}
           price={item.price}
-          onPress={() => console.log("Selected", item.title)}
+          onPress={() => navigation.navigate("ProductDetails", { item })}
         />
       )}
       showsHorizontalScrollIndicator={false}

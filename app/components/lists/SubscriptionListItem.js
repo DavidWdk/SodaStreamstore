@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
+import i18n from "i18n-js";
+
 import { AppText, AppTitle } from "../fonts";
 import defaultStyles from "../../config/styles";
 import AddSubtractInput from "../AddSubtractInput";
@@ -24,7 +26,6 @@ function SubscriptionListItem({
     return (
       <TouchableOpacity
         style={[styles.productContainer, styles.addItemBlock]}
-        onPress={() => console.log("Add item")}
       >
         <AntDesign
           name="pluscircleo"
@@ -32,7 +33,7 @@ function SubscriptionListItem({
           size={80}
         />
         <AppText bold style={[defaultStyles.textCenter, styles.addItemText]}>
-          Voeg een product aan uw abonnement toe
+          {i18n.t("addProdToSub")}
         </AppText>
       </TouchableOpacity>
     );

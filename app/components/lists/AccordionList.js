@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import AccordionListItem from "./AccordionListItem";
 import HorizontalItemList from "./HorizontalItemList";
@@ -8,8 +7,6 @@ import PreviouslyViewed from "../../../assets/placeholderData/previouslyViewed";
 import { AppTitle } from "../fonts";
 
 function AccordionList({ data, destinationScreen, ...otherProps }) {
-  const navigation = useNavigation();
-
   return (
     <FlatList
       style={styles.list}
@@ -18,11 +15,9 @@ function AccordionList({ data, destinationScreen, ...otherProps }) {
       renderItem={({ item }) => (
         <AccordionListItem
           title={item.title}
-          onPress={() => {
-            navigation.navigate("ProductOverview");
-            console.log("onPress");
-          }}
           childrenItems={item.data}
+          destinationScreen={item.destinationScreen}
+          payload={item.payload}
         />
       )}
       ListFooterComponent={
@@ -45,6 +40,7 @@ const styles = StyleSheet.create({
   },
   footerComponent: {
     marginTop: 40,
+    paddingBottom: 120,
   },
   footerTitle: {
     paddingLeft: 16,

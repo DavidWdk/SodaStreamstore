@@ -18,6 +18,7 @@ function ShoppingCartItem({
   title,
   price,
   onPress,
+  label,
   amount,
   onPressAdd,
   onPressDeleteItem,
@@ -37,7 +38,7 @@ function ShoppingCartItem({
       <Image source={{ uri: image }} style={styles.productImage} />
 
       <View style={styles.productInfo}>
-        <AppTitle>{title}</AppTitle>
+        <AppTitle>{title ? title : label}</AppTitle>
         {morgenInHuis && <MorgenInHuisCheck style={styles.topMargin} />}
 
         <View style={styles.bottomRow}>
@@ -47,7 +48,7 @@ function ShoppingCartItem({
               style={styles.productAmount}
               styleInput={styles.productAmountInput}
               //Make untypable?
-              onChangeText={(text) => setProductAmount(text)}
+              editable={false}
               textAlign="center"
               onPressAdd={onPressAdd}
               onPressSubtract={onPressSubtract}

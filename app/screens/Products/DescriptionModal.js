@@ -1,17 +1,19 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+
+import i18n from "i18n-js";
 
 import { AppText, AppTitle } from "../../components/fonts";
 import defaultStyles from "../../config/styles";
 
-function DescriptionModal() {
+function DescriptionModal({ route, navigation: { goBack } }) {
   return (
-    <View style={[styles.container, defaultStyles.screenContainer]}>
+    <ScrollView style={[styles.container, defaultStyles.screenContainer]}>
       <View style={styles.topBar}>
-        <AppTitle>{i18n.t("description")}</AppTitle>
-        <TouchableOpacity onPress={() => console.log("close this modal")}>
+        <AppTitle style={defaultStyles.title}>{i18n.t("description")}</AppTitle>
+        <TouchableOpacity onPress={() => goBack()}>
           <MaterialCommunityIcons
             name="close"
             color={defaultStyles.colors.black}
@@ -19,16 +21,10 @@ function DescriptionModal() {
           />
         </TouchableOpacity>
       </View>
-      <AppText>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+      <AppText style={defaultStyles.topWhitespaceMini}>
+        {route.params.productInfo}
       </AppText>
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({

@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import i18n from "i18n-js";
+
 import AppForm from "../../components/forms/AppForm";
 import AppFormField from "../../components/forms/AppFormField";
 import defaultStyles from "../../config/styles";
@@ -30,7 +32,7 @@ function ChangePassScreen(props) {
       style={[styles.container, defaultStyles.screenContainer]}
     >
       <ScrollScreen style={styles.section} onPress={Keyboard.dismiss}>
-        <CustomHeader title="Wachtwoord veranderen" />
+        <CustomHeader title={i18n.t("changePass")} />
 
         <AppForm
           initialValues={{
@@ -43,7 +45,7 @@ function ChangePassScreen(props) {
           <View style={styles.container}>
             <AppFormField
               autoCorrect={false}
-              label="Wachtwoord"
+              label={i18n.t("password")}
               name="wachtwoord"
               required
               secureTextEntry
@@ -51,13 +53,13 @@ function ChangePassScreen(props) {
 
             <AppFormField
               autoCorrect={false}
-              label="Bevestig wachtwoord"
+              label={i18n.t("confirmPass")}
               name="nieuwWachtwoord"
               required
               secureTextEntry
             />
 
-            <SubmitButton title="Verander wachtwoord" />
+            <SubmitButton title={i18n.t("changePassBtn")} />
           </View>
         </AppForm>
       </ScrollScreen>

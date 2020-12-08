@@ -5,6 +5,8 @@ import { AppTitle } from "../../components/fonts";
 import SquareSelectionItems from "../../components/SquareSelectionItems";
 import CheckBox from "../../components/forms/Checkbox";
 
+import i18n from "i18n-js";
+
 import defaultStyles from "../../config/styles";
 import AppButton from "../../components/AppButton";
 import sortOptions from "../../../assets/placeholderData/sortOptions";
@@ -13,15 +15,15 @@ function FilterScreen(props) {
   return (
     <>
       <CustomHeader
-        title="Filteren"
+        title={i18n.t("filter")}
         secondaryHeaderItem
-        secondaryTitle="Filter wissen"
+        secondaryTitle={i18n.t("deleteFilter")}
         secondaryTextColor="darkBlue"
         onPressSecondary={() => console.log("Reset filter")}
         topPaddingAdjustment
       />
       <ScrollView style={defaultStyles.screenContainer}>
-        <AppTitle>Sorteren op</AppTitle>
+        <AppTitle>{i18n.t("sort")}</AppTitle>
         <SquareSelectionItems
           items={sortOptions}
           style={defaultStyles.topWhitespaceMini}
@@ -64,7 +66,7 @@ function FilterScreen(props) {
 
       <View style={defaultStyles.screenContainer}>
         <AppButton
-          title="Filter toepassen"
+          title={i18n.t("applyFilter")}
           icon="filter-outline"
           style={styles.applyBtn}
         />

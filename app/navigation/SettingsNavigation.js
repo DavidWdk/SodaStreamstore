@@ -9,6 +9,7 @@ import OrderHistoryScreen from "../screens/UserSettings/OrderHistoryScreen";
 import UserSettingsScreen from "../screens/UserSettings/UserSettingsScreen";
 import LoyaltyPointsNavigation from "./LoyaltyPointsNavigation";
 import NoSubscriptionNavigation from "./NoSubscriptionNavigation";
+import LoginNavigation from "./LoginNavigation";
 
 const Stack = createStackNavigator();
 
@@ -25,10 +26,10 @@ const SettingsNavigation = () => (
       name="AccountSettings"
       component={AccountSettingsNavigation}
     />
-    {/* Make subscription component dynamic based on whether subscription is active or not */}
     <Stack.Screen name="Subscription" component={NoSubscriptionNavigation} />
     <Stack.Screen name="LoyaltyPoints" component={LoyaltyPointsNavigation} />
     <Stack.Screen name="BottleCount" component={BottleCountSettings} />
+    <Stack.Screen name="Login" component={LoginNavigation} />
     {/* Create recently viewed screen */}
     {/* Link to story feedback link */}
     {/* Link to webpage for customer service */}

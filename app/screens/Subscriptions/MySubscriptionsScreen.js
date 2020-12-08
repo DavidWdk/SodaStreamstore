@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import Screen from "../../components/screenStyling/Screen";
 import CustomHeader from "../../components/CustomHeader";
@@ -17,6 +18,8 @@ const loyaltyPoints = 20;
 const price = "53,22";
 
 function MySubscriptionsScreen(props) {
+  const navigation = useNavigation();
+
   return (
     <Screen>
       <CustomHeader
@@ -26,7 +29,7 @@ function MySubscriptionsScreen(props) {
       <TouchableOpacity
         underlayColor={defaultstyles.colors.lightestGrey}
         style={styles.container}
-        onPress={() => console.log("pressed")}
+        onPress={() => navigation.navigate("")}
       >
         <View>
           <View style={styles.subscriptionHeader}>
