@@ -1,4 +1,3 @@
-import React from "react"
 import i18n from "i18n-js";
 
 export default [
@@ -12,12 +11,13 @@ export default [
     id: 6,
     title: `${i18n.t("previouslySeen")}`,
     icon: "clock-outline",
-    designationScreen: "OrderHistory",
+    designationScreen: "RecentlyViewed",
   },
   {
     id: 7,
     title: `${i18n.t("customerService")}`,
     icon: "phone",
+    designationScreen: "CustomerService",
   },
   {
     id: 8,
@@ -28,5 +28,6 @@ export default [
     id: 9,
     title: `${i18n.t("termsConditions")}`,
     icon: "text-subject",
+    designationScreen: "TermsConditions",
   },
 ];
