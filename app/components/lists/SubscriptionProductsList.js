@@ -119,9 +119,9 @@ function SubscriptionProducts({
     viewAreaCoveragePercentThreshold: 50,
   });
 
-  //////////////////////////////////////
-  //Returns list for new subscription//
-  /////////////////////////////////////
+  //////////////////////////////////////////////
+  //Returns list for managing the subscription//
+  //////////////////////////////////////////////
   if (newSubscriptionList === false) {
     return (
       <FlatList
@@ -168,9 +168,9 @@ function SubscriptionProducts({
       />
     );
 
-    //////////////////////////////////////////////
-    //Returns list for managing the subscription//
-    //////////////////////////////////////////////
+    /////////////////////////////////////
+    //Returns list for new subscription//
+    /////////////////////////////////////
   } else if (newSubscriptionList === true) {
     return (
       <>

@@ -19,11 +19,11 @@ import ScrollScreen from "../../components/screenStyling/ScrollScreen";
 
 function ChangePassScreen(props) {
   const validationSchema = Yup.object().shape({
-    wachtwoord: Yup.string().required().min(6).label("Wachtwoord"),
+    wachtwoord: Yup.string().required(`${i18n.t("requiredField")}`).min(6, `${i18n.t("minLength")}`).label(`${i18n.t("password")}`),
     nieuwWachtwoord: Yup.string()
-      .required()
-      .oneOf([Yup.ref("wachtwoord"), null], "Wachtwoorden komen niet overeen")
-      .label("Bevestig wachtwoord"),
+      .required(`${i18n.t("requiredField")}`)
+      .oneOf([Yup.ref("wachtwoord"), null], `${i18n.t("notIdentical")}`)
+      .label(`${i18n.t("confirmPass")}`),
   });
 
   return (

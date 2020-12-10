@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 
 import CustomHeader from "../../components/CustomHeader";
@@ -10,17 +10,31 @@ import SubscriptionProductsList from "../../components/lists/SubscriptionProduct
 import subscriptionQuantityOptions from "../../../assets/placeholderData/subscriptionQuantityOptions";
 import ButtonOutline from "../../components/ButtonOutline";
 import products from "../../../assets/placeholderData/products";
+import AuthContext from "../../auth/context";
 
 function ManageSubscriptionScreen(props) {
   const priceArray = products.map(({ price }) => price);
   const totalPriceArticles = priceArray.reduce((a, c) => a + c);
   const [deliveryCosts, setDeliveryCosts] = useState(0);
 
+  const authContext = useContext(AuthContext);
+
   useEffect(() => {
     if (deliveryCosts < 50) {
       setDeliveryCosts(3.99);
     }
   }, []);
+
+  const cancelSubscription = () => {
+    if (authContext.user !== undefined || null) {
+      if (authContext.user.activeSubscription == true) {
+        authContext.setUser((authContext.user.activeSubscription = false));
+        console.log(authContext.user.activeSubscription);
+      } else {
+      }
+    } else {
+    }
+  };
 
   return (
     <Screen style={defaultStyles.screenContainer}>
@@ -54,6 +68,7 @@ function ManageSubscriptionScreen(props) {
               textColor="red"
               style={styles.stopSubBtn}
               title="Abonnement opzeggen"
+              onPress={cancelSubscription}
             />
           </View>
         }

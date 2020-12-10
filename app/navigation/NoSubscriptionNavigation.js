@@ -27,7 +27,6 @@ const NoSubscriptionNavigation = () => {
   let isLoggedIn = checkForLoggedUser();
 
   const checkForSubscription = () => {
-    // console.log(authContext.user.activeSubscription, "CHECKING ACTIVE SUB");
     if (authContext.user !== undefined || null) {
       if (authContext.user.activeSubscription !== null || undefined) {
         return true;
@@ -39,25 +38,26 @@ const NoSubscriptionNavigation = () => {
     }
   };
 
-  let currentlySubscribedCheck;
-
-  useEffect(() => {
-    currentlySubscribedCheck = checkForSubscription();
-  }, [authContext]);
+  let currentlySubscribedCheck = checkForSubscription();
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {currentlySubscribedCheck ? (
-        <Stack.Screen
-          name="ManageSubscription"
-          component={ManageSubscriptionScreen}
-        />
-      ) : (
+      {isLoggedIn ? (
         <>
-          {!isLoggedIn ? (
+          {currentlySubscribedCheck ? (
             <>
-              <Stack.Screen name="LoggedOut" component={LoggedOutSubScreen} />
-              <Stack.Screen name="Login" component={LoginNavigation} />
+              <Stack.Screen
+                name="ManageSub"
+                component={ManageSubscriptionScreen}
+              />
+              <Stack.Screen
+                name="NewSubscriptionFirstStep"
+                component={NewSubFirstStepScreen}
+              />
+              <Stack.Screen
+                name="SubscriptionItemsOverview"
+                component={SubscriptionItemsOverviewScreen}
+              />
             </>
           ) : (
             <>
@@ -77,12 +77,13 @@ const NoSubscriptionNavigation = () => {
                 name="NewSubscriptionSecondStep"
                 component={NewSubSecondStepScreen}
               />
-              <Stack.Screen
-                name="MySubscriptions"
-                component={MySubscriptionsScreen}
-              />
             </>
           )}
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="LoggedOut" component={LoggedOutSubScreen} />
+          <Stack.Screen name="Login" component={LoginNavigation} />
         </>
       )}
     </Stack.Navigator>

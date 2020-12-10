@@ -6,7 +6,6 @@ import CustomHeader from "../../components/CustomHeader";
 import ShoppingCartList from "../../components/lists/ShoppingCartList";
 
 function SubscriptionItemsOverview({ navigation, route }) {
-  console.log(route.params);
   return (
     <>
       <CustomHeader title={i18n.t("chosenProds")} topPaddingAdjustment />

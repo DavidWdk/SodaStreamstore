@@ -2,7 +2,6 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import HomeScreen from "../screens/HomeScreen";
 import LoyaltyPointsNavigation from "../navigation/LoyaltyPointsNavigation";
 import NoSubscriptionNavigation from "./NoSubscriptionNavigation";
 import SearchNavigation from "./SearchNavigator";

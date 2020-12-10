@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import i18n from "i18n-js";
+
 import CustomHeader from "../components/CustomHeader";
 import { AppTitle } from "../components/fonts";
 import defaultStyles from "../config/styles";
@@ -52,7 +54,7 @@ const userLoyaltyPointsValue = 5.19;
 function CheckoutScreen(props) {
   return (
     <ScrollView>
-      <CustomHeader topPaddingAdjustment title="Afrekenen" />
+      <CustomHeader topPaddingAdjustment title={i18n.t("pay")} />
       <View style={[styles.titleSection, defaultStyles.screenContainer]}>
         <MaterialCommunityIcons
           name="map-marker-outline"
@@ -60,7 +62,7 @@ function CheckoutScreen(props) {
           color={defaultStyles.colors.black}
           style={styles.icon}
         />
-        <AppTitle>Bezorgadres</AppTitle>
+        <AppTitle>{i18n.t("deliveryAddress")}</AppTitle>
       </View>
 
       <MultipleChoiceSelection options={userDeliveryOptions} />
@@ -82,7 +84,7 @@ function CheckoutScreen(props) {
             color={defaultStyles.colors.black}
             style={styles.icon}
           />
-          <AppTitle>Bezorgadres</AppTitle>
+          <AppTitle>{i18n.t("paymentMethod")}</AppTitle>
         </View>
 
         <MultipleChoiceSelection options={userPaymentOptions} />
@@ -94,7 +96,7 @@ function CheckoutScreen(props) {
           ]}
         >
           <Checkbox
-            title={`Gebruik jouw spaarpunten en krijg €${userLoyaltyPointsValue} korting`}
+            title={`${i18n.t("spendPointsDesc1")}${userLoyaltyPointsValue}${i18n.t("spendPointsDesc2")}`}
           />
         </View>
       </View>
@@ -111,12 +113,12 @@ function CheckoutScreen(props) {
         </View>
 
         <View style={defaultStyles.screenContainer}>
-          <PriceSum title="Totaalbedrag" price={25.99} />
-          <PriceSum title="Totaal artikelen (2)" price={22.99} />
-          <PriceSum title="Verzendkosten" price={3.99} />
+          <PriceSum title={i18n.t("totalAmount")} price={25.99} />
+          <PriceSum title={i18n.t("totalProduct")} price={22.99} />
+          <PriceSum title={i18n.t("deliveryCosts")} price={3.99} />
 
           <AppButton
-            title="Bestelling afronden"
+            title={i18n.t("finishOrder")}
             icon="chevron-right"
             color="yellow"
             textColor="black"

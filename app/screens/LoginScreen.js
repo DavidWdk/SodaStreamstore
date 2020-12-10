@@ -1,43 +1,65 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
+import { StackActions } from "@react-navigation/native";
 
 import i18n from "i18n-js";
 
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
 import defaultStyles from "../config/styles";
-import SubmitButton from "../components/forms/SubmitButton";
 import SecondaryButton from "../components/SecondaryButton";
 import CustomHeader from "../components/CustomHeader";
 import ScrollScreenKeyboard from "../components/screenStyling/ScrollScreenKeyboard";
-import { AppTitle, AppText } from "../components/fonts/";
+import { AppTitle } from "../components/fonts/";
 import AuthContext from "../auth/context";
 import AppButton from "../components/AppButton";
+import SubmitButton from "../components/forms/SubmitButton";
+import userData from "../../assets/placeholderData/userData";
+import storage from "../auth/storage";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("E-mailadres"),
-  password: Yup.string().required().label("Wachtwoord"),
+  email: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .email(`${i18n.t("validMail")}`)
+    .label(`${i18n.t("email")}`),
+  password: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("password")}`),
 });
 
-function LoginScreen({ navigation }) {
+const registerSchema = Yup.object().shape({
+  registerMail: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .email(`${i18n.t("validMail")}`)
+    .label(`${i18n.t("email")}`),
+});
+
+function LoginScreen({ navigation, route }) {
   const authContext = useContext(AuthContext);
 
-  const [registerError, setRegisterError] = useState("");
-  const [registerMail, setRegisterMail] = useState("");
+  // const [registerError, setRegisterError] = useState("");
 
   const handleRegister = () => {
-    if (registerMail.includes("@", "." && registerMail.length > 3)) {
-      navigation.navigate("Register", { registerMail });
+    navigation.navigate("Register");
+  };
+
+  const handleRouting = () => {
+    if (route.params?.checkout === true) {
+      navigation.replace("Checkout");
     } else {
-      setRegisterError(`${i18n.t("useValidEmail")}`);
+      navigation.navigate("Home");
     }
   };
 
   const handleSubmit = () => {
-    console.log("handleSubmit");
-    // authContext.setUser("User");
-    // navigation.navigate("Home");
+    authContext.setUser(userData);
+    storage.storeToken("sjad");
+    handleRouting();
+    if (!route.params?.checkout) {
+      const popAction = StackActions.pop(5);
+      navigation.dispatch(popAction);
+    }
   };
 
   return (
@@ -73,15 +95,19 @@ function LoginScreen({ navigation }) {
             secureTextEntry
             textContentType="password"
           />
+          <SubmitButton title="Login" />
         </AppForm>
-        <SubmitButton title={i18n.t("login")} />
         <SecondaryButton title={i18n.t("forgotPass")} />
       </View>
 
       <View style={styles.section}>
         <AppTitle style={defaultStyles.subtitle}>{i18n.t("newUsers")}</AppTitle>
 
-        <AppForm initialValues={{ registerMail: "" }}>
+        <AppForm
+          initialValues={{ registerMail: "" }}
+          onSubmit={handleRegister}
+          validationSchema={registerSchema}
+        >
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -89,12 +115,12 @@ function LoginScreen({ navigation }) {
             name="registerMail"
             placeholder={i18n.t("email")}
             textContentType="emailAddress"
-            onChangeText={(text) => setRegisterMail(text)}
           />
-          {registerError.length > 0 && (
-            <AppText style={styles.error}>{registerError}</AppText>
-          )}
           <AppButton title={i18n.t("createAcc")} onPress={handleRegister} />
+          {/* {registerError.length > 0 && (
+            <AppText style={styles.error}>{registerError}</AppText>
+          )} */}
+          {/* <AppButton title={i18n.t("createAcc")} onPress={} /> */}
         </AppForm>
       </View>
     </ScrollScreenKeyboard>

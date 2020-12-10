@@ -4,7 +4,6 @@ import Constants from "expo-constants";
 
 //localisation - both files required
 import i18n from "i18n-js";
-import lan from "../lang/i18n";
 
 //data
 import previouslyViewed from "../../assets/placeholderData/previouslyViewed";
@@ -26,7 +25,7 @@ function HomeScreen({ navigation }) {
   const authContext = useContext(AuthContext);
 
   const Login = () => {
-    console.log(authContext.setUser(userData));
+    authContext.setUser(userData);
   };
 
   return (
@@ -41,7 +40,6 @@ function HomeScreen({ navigation }) {
         style={styles.logoHeader}
         resizeMode="contain"
       />
-
       <View style={[defaultStyles.screenContainer, styles.searchContainer]}>
         <AppTextInput
           icon="magnify"
@@ -49,9 +47,7 @@ function HomeScreen({ navigation }) {
           placeholder={i18n.t("searchPlaceholder")}
         />
       </View>
-
       <ImageSlider images={homeImageSliderData} bottomSpacePagination={40} />
-
       <View style={[styles.rowButtonsContainer, defaultStyles.screenContainer]}>
         {authContext.user ? (
           <AppButton
@@ -59,7 +55,7 @@ function HomeScreen({ navigation }) {
             title={i18n.t("subscription")}
             icon="calendar-repeat-outline"
             fontSize={17}
-            onPress={() => navigation.navigate("SubscriptionWelcome")}
+            onPress={() => navigation.navigate("NoActiveSubscription")}
           />
         ) : (
           <AppButton
@@ -79,15 +75,12 @@ function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate("Search")}
         />
       </View>
-
       <View style={defaultStyles.screenContainer}>
         <AppTitle style={defaultStyles.topWhitespaceSmallest}>
           {i18n.t("previouslySeen")}
         </AppTitle>
       </View>
-
       <HorizontalItemList data={previouslyViewed} />
-
       <View style={[defaultStyles.blueSection, styles.hydrationSection]}>
         <AppTitle>{i18n.t("dailyHydration")}</AppTitle>
 
@@ -97,7 +90,6 @@ function HomeScreen({ navigation }) {
           </AppText>
         </View>
       </View>
-
       <View style={defaultStyles.screenContainer}>
         <AppTitle>{i18n.t("ourProductRange")}</AppTitle>
         <View style={styles.productRange}>
@@ -130,14 +122,13 @@ function HomeScreen({ navigation }) {
           style={styles.hugeButton}
         />
       </View>
-
       <View style={defaultStyles.screenContainer}>
         <AppTitle style={defaultStyles.topWhitespaceSmallest}>
           {i18n.t("popularProducts")}
         </AppTitle>
       </View>
       <HorizontalItemList data={popularProducts} />
-      <View style={{ paddingBottom: 100 }}></View>
+      <View style={{ paddingBottom: 70 }}></View>
     </ScrollView>
   );
 }

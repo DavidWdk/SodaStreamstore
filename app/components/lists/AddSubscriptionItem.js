@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Pressable, Image } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import defaultStyles from "../../config/styles";
 import { AppTitle, AppText } from "../fonts";
@@ -14,11 +14,10 @@ function AddSubscriptionItem({
   item,
   amount = 0,
 }) {
+  const navigation = useNavigation();
+
   return (
-    <Pressable
-      style={styles.productContainer}
-      onPress={() => console.log(item.label)}
-    >
+    <Pressable style={styles.productContainer}>
       {amount > 0 && (
         <View style={styles.amount}>
           <AppText bold style={styles.amountText}>

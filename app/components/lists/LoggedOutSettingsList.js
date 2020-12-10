@@ -12,21 +12,23 @@ import AppButton from "../AppButton";
 function LoggedOutSettingsList({ data }) {
   const navigation = useNavigation();
 
+  const handleLogin = () => {
+    navigation.push("Login");
+  };
+
   return (
     <AppFlatlist
       data={data}
       ListHeaderComponent={
         <View style={defaultStyles.screenContainer}>
           <AppTitle style={defaultStyles.title}>{i18n.t("hello")}</AppTitle>
-          <AppText>
-            {i18n.t("loginDescription")}
-          </AppText>
+          <AppText>{i18n.t("loginDescription")}</AppText>
           <AppButton
             title={i18n.t("login")}
             color="yellow"
             textColor="black"
             icon="account-arrow-right-outline"
-            onPress={() => navigation.navigate("Login")}
+            onPress={handleLogin}
           />
         </View>
       }

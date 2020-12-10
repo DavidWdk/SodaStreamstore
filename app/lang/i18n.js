@@ -167,6 +167,7 @@ i18n.translations = {
     confirmPass: "Bevestig wachtwoord",
     changePassBtn: "Wachtwoord wijzigen",
     password: "Wachtwoord",
+    notIdentical: "Wachtwoorden komen niet overeen",
 
     //LOGINSCREEN
     existingUsers: "Bestaande gebruikers",
@@ -174,12 +175,17 @@ i18n.translations = {
     useValidEmail: "Gebruik een geldig e-mailadres",
     forgotPass: "Wachtwoord vergeten",
     createAcc: "Maak een account aan",
+    requiredField: "Dit is een verplicht veld",
+    validMail: "Voer een geldig e-mailadres in",
 
     //REGISTERSCREEN
     ifBusinessCustomer: "Indien u zakelijke klant bent",
     loginData: "Inloggegevens",
     loginDataDesc:
       "Het e-mailadres en wachtwoord zijn nodig om toegang te krijgen tot uw account. Ook zullen we je e-mail gebruiken om contact met je op te nemen na een bestelling",
+    minLength: "Dit voldoet niet aan de minimale lengte",
+    maxLength: "Dit is te lang",
+    numberNotice: "Alleen nummers toegestaan",
 
     //PRODUCTOVERVIEWSCREEN
     syrups: "Siropen",
@@ -222,9 +228,10 @@ i18n.translations = {
 
     //NEWSUBFIRSTSTEP
     step1: "Stap 1: kies je producten",
+    addItems: "Voeg items toe",
 
     //SUBSCRIPTIONITEMSOVERVIEWSCREEN
-    chosenProds: "Gekozen producten",
+    chosenProds: "Jouw producten",
 
     //SUBSCRIPTIONQUANTITYOPTIONS
     eachTwoMonths: "Elke twee maanden",
@@ -258,6 +265,16 @@ i18n.translations = {
 
     //PREVIOUSLYSEENSCREEN
     prevSeenTitle: "Eerder bekeken",
+
+    //CHECKOUTSCREEN
+    addAddress: "Ander adres toevoegen",
+    deliveryAddress: "Bezorgadres",
+    paymentMethod: "Betaalmethode",
+    pay: "Afrekenen",
+    spendPointsDesc1: "Gebruik jouw spaarpunten en krijg €",
+    spendPointsDesc2: " korting",
+    finishOrder: "Bestelling afronden",
+    totalAmount: "Totaalbedrag",
   },
 
   en: {

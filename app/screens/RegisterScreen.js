@@ -28,26 +28,26 @@ import countries from "../../assets/placeholderData/countries";
 import Screen from "../components/screenStyling/Screen";
 
 const validationSchema = Yup.object().shape({
-  voornaam: Yup.string().required().label("Voornaam"),
-  achternaam: Yup.string().required().label("Achternaam"),
-  bedrijfsnaam: Yup.string().notRequired().label("Bedrijfsnaam"),
-  postcode: Yup.string().max(4).min(8).required().label("Postcode"),
-  huisnummer: Yup.number().required().label("Huisnummer"),
-  toevoeging: Yup.string().notRequired().label("Toevoeging"),
+  voornaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("firstName")}`),
+  achternaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("lastName")}`),
+  bedrijfsnaam: Yup.string().notRequired().label(`${i18n.t("companyName")}`),
+  postcode: Yup.string().max(4).min(8).required(`${i18n.t("requiredField")}`).label(`${i18n.t("zipCode")}`),
+  huisnummer: Yup.number(`${i18n.t("numberNotice")}`).required(`${i18n.t("requiredField")}`).label(`${i18n.t("houseNum")}`),
+  toevoeging: Yup.string().notRequired().label(`${i18n.t("addition")}`),
   //Placeholder van land is een object, maar een select-item is een string
   //Switch lijkt niet te werken?
   land: Yup.lazy((value) => {
     switch (typeof value) {
       case "object":
-        return Yup.object().label("Land");
+        return Yup.object().label(`${i18n.t("country")}`);
       case "string":
-        return Yup.string().required().label("Land");
+        return Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("country")}`);
       default:
         return Yup.object();
     }
   }),
-  email: Yup.string().required().email().label("E-mailadres"),
-  wachtwoord: Yup.string().required().min(6).label("Wachtwoord"),
+  email: Yup.string().required(`${i18n.t("requiredField")}`).email(`${i18n.t("validMail")}`).label(`${i18n.t("email")}`),
+  wachtwoord: Yup.string().required(`${i18n.t("requiredField")}`).min(6, `${i18n.t("minLength")}`).label(`${i18n.t("password")}`),
 });
 
 function RegisterScreen({ route }) {
@@ -152,7 +152,7 @@ function RegisterScreen({ route }) {
                 name="email"
                 keyboardType="email-address"
                 required
-                value={route.params.registerMail}
+                // value={route.params.registerMail}
               />
 
               <AppFormField

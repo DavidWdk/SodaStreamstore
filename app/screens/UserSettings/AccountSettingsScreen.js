@@ -11,14 +11,16 @@ import accountOptionsData from "../../../assets/placeholderData/accountOptionsDa
 import ButtonOutline from "../../components/ButtonOutline";
 import defaultStyles from "../../config/styles";
 import AuthContext from "../../auth/context";
+import authStorage from "../../auth/storage";
 
 function AccountSettingsScreen({ navigation }) {
-  const authContext = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   //Empties user state & redirect to home
   //while deleting stack navigation
   const handleLogout = () => {
-    authContext.setUser();
+    setUser(null);
+    authStorage.removeToken();
     navigation.navigate("Home");
     const popAction = StackActions.pop(1);
     navigation.dispatch(popAction);
@@ -29,7 +31,10 @@ function AccountSettingsScreen({ navigation }) {
       <AppFlatlist
         data={accountOptionsData}
         ListHeaderComponent={
-          <CustomHeader style={styles.header} title={i18n.t("accountSettings")} />
+          <CustomHeader
+            style={styles.header}
+            title={i18n.t("accountSettings")}
+          />
         }
         ListFooterComponent={
           <View
@@ -38,7 +43,7 @@ function AccountSettingsScreen({ navigation }) {
               defaultStyles.topWhitespaceMini,
             ]}
           >
-            {authContext.user && (
+            {user && (
               <ButtonOutline
                 title={i18n.t("logout")}
                 style={styles.logoutBtn}

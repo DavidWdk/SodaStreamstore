@@ -8,12 +8,21 @@ import Screen from "../../components/screenStyling/Screen";
 import defaultStyles from "../../config/styles";
 import subscriptionOptions from "../../../assets/placeholderData/subscriptionOptions";
 import SubscriptionProductsList from "../../components/lists/SubscriptionProductsList";
-import AppButton from "../../components/AppButton";
 
-function NewSubFirstStepScreen({ navigation }) {
+function NewSubFirstStepScreen({ route }) {
+  const handleHeaderTitle = () => {
+    if (route.params?.addItem === true) {
+      return i18n.t("addItems");
+    } else {
+      return i18n.t("step1");
+    }
+  };
+
+  const title = handleHeaderTitle();
+
   return (
     <Screen style={[styles.container, defaultStyles.screenContainer]}>
-      <CustomHeader title={i18n.t("step1")} style={styles.header} />
+      <CustomHeader title={title} style={styles.header} />
 
       <SubscriptionProductsList
         newSubscriptionList

@@ -8,7 +8,7 @@ import syrups from "../../../assets/placeholderData/syrups";
 import CustomHeader from "../../components/CustomHeader";
 import ProductOverviewList from "../../components/lists/ProductOverviewList";
 
-function ProductOverviewScreen({ navigation, route }) {
+function ProductOverviewScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <CustomHeader
@@ -18,7 +18,7 @@ function ProductOverviewScreen({ navigation, route }) {
         secondaryTitle={i18n.t("filter")}
         secondaryIcon="filter-outline"
         secondaryHeaderItem
-        onPressSecondary={() => navigation.navigate("Filter")}
+        onPressSecondary={() => navigation.replace("Filter")}
       />
       <ProductOverviewList
         // data={(route.params.payload = "onSale" ? onSale : syrups)}

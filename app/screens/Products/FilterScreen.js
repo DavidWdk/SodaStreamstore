@@ -11,7 +11,7 @@ import defaultStyles from "../../config/styles";
 import AppButton from "../../components/AppButton";
 import sortOptions from "../../../assets/placeholderData/sortOptions";
 
-function FilterScreen(props) {
+function FilterScreen({ navigation }) {
   return (
     <>
       <CustomHeader
@@ -69,6 +69,7 @@ function FilterScreen(props) {
           title={i18n.t("applyFilter")}
           icon="filter-outline"
           style={styles.applyBtn}
+          onPress={() => navigation.replace("ProductOverview")}
         />
       </View>
     </>

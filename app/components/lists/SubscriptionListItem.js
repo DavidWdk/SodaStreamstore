@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import i18n from "i18n-js";
 
@@ -22,10 +23,18 @@ function SubscriptionListItem({
   onPressSubtract,
   addItemBlock = false,
 }) {
+  const navigation = useNavigation();
+
+  ////////////////////
+  // ADD ITEM BLOCK //
+  ////////////////////
   if (addItemBlock) {
     return (
       <TouchableOpacity
         style={[styles.productContainer, styles.addItemBlock]}
+        onPress={() =>
+          navigation.navigate("NewSubscriptionFirstStep", { addItem: true })
+        }
       >
         <AntDesign
           name="pluscircleo"
@@ -39,6 +48,9 @@ function SubscriptionListItem({
     );
   }
 
+  ///////////////////////////////////////
+  // REGULAR MANAGE SUBSCRIPTION BLOCK //
+  ///////////////////////////////////////
   return (
     <Pressable
       style={styles.productContainer}
