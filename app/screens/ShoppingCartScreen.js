@@ -30,7 +30,7 @@ function ShoppingCartScreen({ navigation }) {
         data={ShoppingCartData}
         onPressShoppingCart={() => {
           isLoggedIn
-            ? navigation.navigate("QuickCheck")
+            ? navigation.navigate("Checkout")
             : navigation.navigate("Login", { checkout: true });
         }}
       />

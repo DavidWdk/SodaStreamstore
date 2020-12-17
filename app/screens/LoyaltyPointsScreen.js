@@ -58,6 +58,7 @@ function LoyaltyPointsScreen({ navigation }) {
       </AppTitle>
 
       <ImgTextBlock
+        image="https://i.ibb.co/6vQdWWH/undraw-Savings-re-eq4w.png"
         style={defaultStyles.lineWhitespace}
         title={i18n.t("savingPoints")}
       >
@@ -66,6 +67,7 @@ function LoyaltyPointsScreen({ navigation }) {
 
       <ImgTextBlock
         blueBackground
+        image="https://i.ibb.co/N2bSDMV/undraw-happy-birthday-s72n.png"
         style={defaultStyles.lineWhitespace}
         title={i18n.t("spendingPoints")}
       >
@@ -73,7 +75,10 @@ function LoyaltyPointsScreen({ navigation }) {
       </ImgTextBlock>
 
       <View style={defaultStyles.lineWhitespace}>
-        <ImgTextBlock title={i18n.t("extraPoints")}>
+        <ImgTextBlock
+          image="https://i.ibb.co/Zgz4xgF/undraw-investing-7u74.png"
+          title={i18n.t("extraPoints")}
+        >
           {i18n.t("extraPointsDesc")}
         </ImgTextBlock>
 
@@ -84,7 +89,7 @@ function LoyaltyPointsScreen({ navigation }) {
             textColor="black"
             color="yellow"
             style={styles.btn}
-            onPress={() => navigation.navigate("NoActiveSubscription")}
+            onPress={() => navigation.navigate("Subscription")}
           />
         </View>
       </View>

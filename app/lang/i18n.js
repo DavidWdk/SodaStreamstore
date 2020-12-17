@@ -218,6 +218,9 @@ i18n.translations = {
     deliveryCosts: "Bezorgkosten",
     deliveryFreq: "Bezorgingfrequentie",
     eachMonth: "Elke maand",
+    noProductsNoticeTitle: "Geen producten",
+    noProductsNoticeBody:
+      "Je moet producten kiezen om een abonnement aan te schaffe.",
 
     //LOGGEDOUTSUBSCREEN
     youreNotLoggedIn: "Je bent niet ingelogd",
@@ -252,7 +255,8 @@ i18n.translations = {
     step2: "Stap 2: frequentie",
     startDate: "Startdatum",
     subscriptionDisclaimer:
-      "Het abonnement zal elke twee maanden automatisch worden geincasseerd voor €23,99. We sturen een herinnering voor elke bezorging zodat je genoeg tijd hebt je bestelling aan te passen of te annuleren.",
+      "Het abonnement zal elke twee maanden automatisch worden geincasseerd voor €23,99. We sturen een herinnering voor elke bezorging zodat je genoeg tijd hebt je bestelling aan te passen of te annuleren. Het abonnement kan je ten alle tijden opzeggen.",
+    buySubscription: "Abonnement aanschaffen",
 
     //DONATESCREEN
     donateTitle: "Doneer aan The Plastic Soup Foundation",
@@ -275,9 +279,42 @@ i18n.translations = {
     spendPointsDesc2: " korting",
     finishOrder: "Bestelling afronden",
     totalAmount: "Totaalbedrag",
+
+    //MANAGESUBSCRIPTIONSCREEN
+    manageSubscription: "Abonnement beheren",
+    dayBeforeNotice:
+      "Abonnementen kunnen tot een dag voor bezorging gewijzigd worden",
+    products: "Producten",
+    skipNextDelivery: "Aankomende bestelling overslaan",
+    cancelSubscription: "Abonnement opzeggen",
+
+    //GLASCOUNTER
+    glassCounterNote:
+      "Het is aangeraden voor vrouwen om 2 liter water per dag te drinken. Voor mannen geldt 2,5 liter per dag. Wil je weten waarom?",
+    readMoreBtn: "Lees meer...",
+    volGlass: "Volume per glas",
+    dailyTarget: "Dagelijks doel",
+
+    //WHYWATERSCREEN
+    headerTitle: "Waarom water?",
+    whyTitle1: "Water maakt je alerter en productiever",
+    whyDesc1:
+      "Water drinken helpt om je te concenteren en deze contratie vast te houden gedurende de dag.",
+    whyTitle2: "Water verbeterd je spijsvertering",
+    whyDesc2:
+      "Water helpt bij het afbreken van voedsel, zodat je lichaam de voedingsstoffen makkelijker kan opnemen",
+    whyTitle3: "Verbeterd de bloedsomloop",
+    whyDesc3:
+      "Door water te drinken blijft je bloed lekker stromen en komen toxines vrij",
+    whyTitle4: "Essentieel voor het brein",
+    whyDesc4:
+      "Je hersenen bestaan voor 70% uit water, water drinken helpt om je begrip te verbeteren, emoties in balans te houden en geheugenfuncties te behouden.",
+    whyTitle5: "Je spieren bestaan voor meer dan 70% uit water",
+    whyDesc5:
+      "Met water houd je je spieren in topconditie, waardoor je maximale kracht kunt  uitoefenen. Blijf gehydrateerd om vermoeide spieren te voorkomen.",
   },
 
-  en: {
-    // searchHome: "What are you looking for?",
-  },
+  // en: {
+  //   // searchHome: "What are you looking for?",
+  // },
 };

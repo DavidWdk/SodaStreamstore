@@ -83,7 +83,7 @@ function NewSubSecondStepScreen(props) {
         </AppText>
 
         <AppButton
-          title={i18n.t("proceedOrder")}
+          title={i18n.t("buySubscription")}
           icon="chevron-right"
           style={styles.nextButton}
           //   onPress=

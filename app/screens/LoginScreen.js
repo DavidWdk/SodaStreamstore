@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import * as Yup from "yup";
-import { StackActions } from "@react-navigation/native";
 
 import i18n from "i18n-js";
 
@@ -28,17 +27,8 @@ const validationSchema = Yup.object().shape({
     .label(`${i18n.t("password")}`),
 });
 
-const registerSchema = Yup.object().shape({
-  registerMail: Yup.string()
-    .required(`${i18n.t("requiredField")}`)
-    .email(`${i18n.t("validMail")}`)
-    .label(`${i18n.t("email")}`),
-});
-
 function LoginScreen({ navigation, route }) {
   const authContext = useContext(AuthContext);
-
-  // const [registerError, setRegisterError] = useState("");
 
   const handleRegister = () => {
     navigation.navigate("Register");
@@ -46,7 +36,7 @@ function LoginScreen({ navigation, route }) {
 
   const handleRouting = () => {
     if (route.params?.checkout === true) {
-      navigation.replace("Checkout");
+      navigation.navigate("Checkout");
     } else {
       navigation.navigate("Home");
     }
@@ -54,19 +44,19 @@ function LoginScreen({ navigation, route }) {
 
   const handleSubmit = () => {
     authContext.setUser(userData);
-    storage.storeToken("sjad");
+    storage.storeToken("Token");
     handleRouting();
-    if (!route.params?.checkout) {
-      const popAction = StackActions.pop(5);
-      navigation.dispatch(popAction);
-    }
+    // if (!route.params?.checkout) {
+    //   const popAction = StackActions.pop(5);
+    //   navigation.dispatch(popAction);
+    // }
   };
 
   return (
     <ScrollScreenKeyboard
       style={[defaultStyles.screenContainer, styles.container]}
     >
-      <CustomHeader title={i18n.t("login")} />
+      <CustomHeader title={i18n.t("login")} style={styles.header} />
 
       <View style={styles.section}>
         <AppTitle style={defaultStyles.subtitle}>
@@ -97,31 +87,15 @@ function LoginScreen({ navigation, route }) {
           />
           <SubmitButton title="Login" />
         </AppForm>
-        <SecondaryButton title={i18n.t("forgotPass")} />
+        <SecondaryButton
+          title={i18n.t("forgotPass")}
+          onPress={() => navigation.replace("ForgotPassword")}
+        />
       </View>
 
       <View style={styles.section}>
         <AppTitle style={defaultStyles.subtitle}>{i18n.t("newUsers")}</AppTitle>
-
-        <AppForm
-          initialValues={{ registerMail: "" }}
-          onSubmit={handleRegister}
-          validationSchema={registerSchema}
-        >
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType="email-address"
-            name="registerMail"
-            placeholder={i18n.t("email")}
-            textContentType="emailAddress"
-          />
-          <AppButton title={i18n.t("createAcc")} onPress={handleRegister} />
-          {/* {registerError.length > 0 && (
-            <AppText style={styles.error}>{registerError}</AppText>
-          )} */}
-          {/* <AppButton title={i18n.t("createAcc")} onPress={} /> */}
-        </AppForm>
+        <AppButton title={i18n.t("createAcc")} onPress={handleRegister} />
       </View>
     </ScrollScreenKeyboard>
   );
@@ -135,6 +109,9 @@ const styles = StyleSheet.create({
     color: "red",
     fontSize: 14,
     marginTop: 2,
+  },
+  header: {
+    paddingTop: Platform.OS === "ios" ? 10 : 40,
   },
   section: {
     marginTop: 24,

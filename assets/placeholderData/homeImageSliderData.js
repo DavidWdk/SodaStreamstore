@@ -29,8 +29,7 @@ export default [
     image:
       "https://www.sodastream.nl/wp-content/uploads/2020/02/Sodastream-banner-one-touch-3.jpg",
     textTitle: "SodaStream Crystal",
-    textBody:
-      "Koop nu een SodaStream Crystal en krijg 20% korting met glazen karaffen",
+    textBody: "Koop nu een SodaStream Crystal en krijg 20% korting",
     textColor: "black",
     btnText: "Die wil ik",
     routeObject: {

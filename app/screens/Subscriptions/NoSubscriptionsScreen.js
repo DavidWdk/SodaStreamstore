@@ -27,12 +27,14 @@ function NoSubscriptionScreen({ navigation }) {
       <ImgTextBlock
         style={defaultstyles.lineWhitespace}
         title={i18n.t("extraRewards")}
+        image="https://i.ibb.co/N2bSDMV/undraw-happy-birthday-s72n.png"
       >
         {i18n.t("extraRewardsDesc")}
       </ImgTextBlock>
 
       <ImgTextBlock
         blueBackground
+        image="https://i.ibb.co/dQ35zfK/undraw-advanced-customization-58j6.png"
         title={i18n.t("alwaysStacked")}
         style={styles.bottomMargin}
       >

@@ -12,6 +12,7 @@ import ButtonOutline from "../../components/ButtonOutline";
 import defaultStyles from "../../config/styles";
 import AuthContext from "../../auth/context";
 import authStorage from "../../auth/storage";
+import RootNavigation from "../../navigation/RootNavigation";
 
 function AccountSettingsScreen({ navigation }) {
   const { user, setUser } = useContext(AuthContext);
@@ -19,11 +20,12 @@ function AccountSettingsScreen({ navigation }) {
   //Empties user state & redirect to home
   //while deleting stack navigation
   const handleLogout = () => {
-    setUser(null);
+    setUser();
     authStorage.removeToken();
     navigation.navigate("Home");
     const popAction = StackActions.pop(1);
     navigation.dispatch(popAction);
+    // RootNavigation.navigate('')
   };
 
   return (

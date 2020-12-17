@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 
+import i18n from "i18n-js";
+
 import CustomHeader from "../../components/CustomHeader";
 import Screen from "../../components/screenStyling/Screen";
 import defaultStyles from "../../config/styles";
@@ -38,7 +40,10 @@ function ManageSubscriptionScreen(props) {
 
   return (
     <Screen style={defaultStyles.screenContainer}>
-      <CustomHeader style={styles.header} title="Abonnement beheren" />
+      <CustomHeader
+        style={styles.header}
+        title={i18n.t("manageSubscription")}
+      />
       <SubscriptionProductsList
         style={styles.container}
         data={products}
@@ -46,28 +51,28 @@ function ManageSubscriptionScreen(props) {
         ListHeaderComponent={
           <>
             <AppText italic style={defaultStyles.textCenter}>
-              Abonnementen kunnen tot een dag voor bezorging gewijzigd worden
+              {i18n.t("dayBeforeNotice")}
             </AppText>
 
             <AppTitle style={defaultStyles.topWhitespaceSmaller}>
-              Bezorgkwantiteit
+              {i18n.t("deliveryFreq")}
             </AppTitle>
 
             <SquareSelectionItems
               items={subscriptionQuantityOptions}
               style={styles.item}
             />
-            <AppTitle style={styles.title}>Producten</AppTitle>
+            <AppTitle style={styles.title}>{i18n.t("products")}</AppTitle>
           </>
         }
         additionalFooterComponent={
           <View style={styles.footer}>
             <AppTitle>Overige opties</AppTitle>
-            <ButtonOutline title="Komende bestelling overslaan" />
+            <ButtonOutline title={i18n.t("skipNextDelivery")} />
             <ButtonOutline
               textColor="red"
               style={styles.stopSubBtn}
-              title="Abonnement opzeggen"
+              title={i18n.t("cancelSubscription")}
               onPress={cancelSubscription}
             />
           </View>

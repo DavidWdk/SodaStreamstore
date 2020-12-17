@@ -11,9 +11,7 @@ import {
 function ScrollScreen({ children, style, ...otherProps }) {
   return (
     <ScrollView style={[styles.screen, style]} {...otherProps}>
-      {/* <SafeAreaView> */}
       <View style={[styles.view]}>{children}</View>
-      {/* </SafeAreaView> */}
     </ScrollView>
   );
 }

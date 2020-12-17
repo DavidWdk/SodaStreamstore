@@ -23,7 +23,7 @@ export default [
     id: 4,
     title: `${i18n.t("manageSub")}`,
     icon: "calendar-repeat-outline",
-    designationScreen: "NoActiveSubscription",
+    designationScreen: "Subscription",
   },
   {
     id: 5,

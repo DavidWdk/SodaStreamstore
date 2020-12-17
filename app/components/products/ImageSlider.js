@@ -24,7 +24,7 @@ function ImageSlider({ images, style, bottomSpacePagination = 0 }) {
 
   return (
     <>
-      <View style={(style, { width, height })}>
+      <View style={[style, { width, height }]}>
         <ScrollView
           pagingEnabled
           horizontal

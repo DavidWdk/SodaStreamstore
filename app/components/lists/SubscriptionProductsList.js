@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import { StyleSheet, FlatList, View, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import i18n from "i18n-js";
@@ -119,6 +119,19 @@ function SubscriptionProducts({
     viewAreaCoveragePercentThreshold: 50,
   });
 
+  const handleNewSubscriptionConfirmation = () => {
+    if (subscriptionItems.length > 0) {
+      navigation.navigate("SubscriptionItemsOverview", {
+        subscriptionItems,
+      });
+    } else {
+      Alert.alert(
+        i18n.t("noProductsNoticeTitle"),
+        i18n.t("noProductsNoticeBody")
+      );
+    }
+  };
+
   //////////////////////////////////////////////
   //Returns list for managing the subscription//
   //////////////////////////////////////////////
@@ -208,11 +221,7 @@ function SubscriptionProducts({
           style={styles.nextButton}
           color="yellow"
           textColor="black"
-          onPress={() =>
-            navigation.navigate("SubscriptionItemsOverview", {
-              subscriptionItems,
-            })
-          }
+          onPress={handleNewSubscriptionConfirmation}
         />
       </>
     );

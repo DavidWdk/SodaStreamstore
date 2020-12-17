@@ -28,10 +28,11 @@ function UserVerificationCheckScreen({ navigation }) {
   return (
     <ScrollScreenKeyboard style={defaultStyles.screenContainer}>
       <CustomHeader title={i18n.t("quickCheck")} />
-      <AppTitle>{i18n.t("isItYou")}{userName}?</AppTitle>
-      <AppText style={styles.textBlock}>
-        {i18n.t("verificationDesc")}
-      </AppText>
+      <AppTitle>
+        {i18n.t("isItYou")}
+        {userName}?
+      </AppTitle>
+      <AppText style={styles.textBlock}>{i18n.t("verificationDesc")}</AppText>
       <AppForm
         initialValues={{ email: "", password: "" }}
         onSubmit={() => navigation.navigate("Checkout")}
@@ -52,10 +53,12 @@ function UserVerificationCheckScreen({ navigation }) {
         <SecondaryButton
           title={i18n.t("switchAcc")}
           style={styles.secondaryButton}
+          onPress={() => navigation.navigate("Login", { checkout: true })}
         />
         <SecondaryButton
           title={i18n.t("forgotPass")}
           style={styles.secondaryButton}
+          onPress={() => navigation.navigate("ForgotPassword")}
         />
       </View>
     </ScrollScreenKeyboard>

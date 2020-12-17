@@ -36,7 +36,7 @@ function productShowcaseFold({
         <AppButton
           bold
           fontSize={18}
-          icon="cart"
+          icon="cart-outline"
           textColor="black"
           title={i18n.t("addToCart")}
           color={"yellow"}

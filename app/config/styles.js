@@ -55,6 +55,7 @@ export default {
     },
     shadowRadius: 6,
     shadowOpacity: 0.15,
+    zIndex: -5,
   },
   subtitle: {
     color: colors.black,

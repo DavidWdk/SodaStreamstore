@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
-import { AsyncStorage } from "@react-native-community/async-storage";
 
 import { AppText } from "./fonts";
 import defaultStyles from "../config/styles";
 
-function AppSlider({ minimum, maximum, step, style, initialValue, unit }) {
-  const [value, setValue] = useState(initialValue);
-
+function AppSlider({
+  minimum,
+  maximum,
+  step,
+  style,
+  initialValue,
+  unit,
+  data,
+}) {
   return (
     <>
       <View style={styles.indicationWrapper}>
         <AppText bold style={styles.literIndication}>
-          {value + " "}
+          {data.volume + " "}
         </AppText>
         <AppText thin style={styles.literIndication}>
           {unit}
@@ -28,9 +33,9 @@ function AppSlider({ minimum, maximum, step, style, initialValue, unit }) {
         value={initialValue}
         thumbTintColor={defaultStyles.colors.darkBlue}
         minimumTrackTintColor={defaultStyles.colors.darkBlue}
-        maximumTrackTintColor={defaultStyles.colors.grey}
+        maximumTrackTintColor={defaultStyles.colors.lightestGrey}
         onValueChange={(value) => {
-          setValue(value);
+          data.changeVolume(value);
         }}
       />
     </>

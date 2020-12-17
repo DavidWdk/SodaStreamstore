@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { View, StyleSheet, Image, ScrollView, Keyboard } from "react-native";
 import Constants from "expo-constants";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 //localisation - both files required
 import i18n from "i18n-js";
@@ -19,14 +20,10 @@ import ProductTile from "../components/products/ProductTile";
 import HugeButton from "../components/HugeButton";
 import AuthContext from "../auth/context";
 import homeImageSliderData from "../../assets/placeholderData/homeImageSliderData";
-import userData from "../../assets/placeholderData/userData";
+import GlassCounter from "../components/GlasCounter";
 
 function HomeScreen({ navigation }) {
   const authContext = useContext(AuthContext);
-
-  const Login = () => {
-    authContext.setUser(userData);
-  };
 
   return (
     <ScrollView
@@ -40,6 +37,7 @@ function HomeScreen({ navigation }) {
         style={styles.logoHeader}
         resizeMode="contain"
       />
+
       <View style={[defaultStyles.screenContainer, styles.searchContainer]}>
         <AppTextInput
           icon="magnify"
@@ -47,7 +45,12 @@ function HomeScreen({ navigation }) {
           placeholder={i18n.t("searchPlaceholder")}
         />
       </View>
-      <ImageSlider images={homeImageSliderData} bottomSpacePagination={40} />
+
+      <ImageSlider
+        images={homeImageSliderData}
+        bottomSpacePagination={40}
+        style={styles.imageSlider}
+      />
       <View style={[styles.rowButtonsContainer, defaultStyles.screenContainer]}>
         {authContext.user ? (
           <AppButton
@@ -55,7 +58,7 @@ function HomeScreen({ navigation }) {
             title={i18n.t("subscription")}
             icon="calendar-repeat-outline"
             fontSize={17}
-            onPress={() => navigation.navigate("NoActiveSubscription")}
+            onPress={() => navigation.navigate("Subscription")}
           />
         ) : (
           <AppButton
@@ -63,8 +66,7 @@ function HomeScreen({ navigation }) {
             title={i18n.t("login")}
             icon="login"
             fontSize={17}
-            onPress={Login}
-            // onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Login")}
           />
         )}
         <AppButton
@@ -81,15 +83,12 @@ function HomeScreen({ navigation }) {
         </AppTitle>
       </View>
       <HorizontalItemList data={previouslyViewed} />
+
       <View style={[defaultStyles.blueSection, styles.hydrationSection]}>
         <AppTitle>{i18n.t("dailyHydration")}</AppTitle>
-
-        <View style={[defaultStyles.shadowBlock, styles.glassCounter]}>
-          <AppText thin style={defaultStyles.subtitle}>
-            {i18n.t("statistics")}
-          </AppText>
-        </View>
+        <GlassCounter />
       </View>
+
       <View style={defaultStyles.screenContainer}>
         <AppTitle>{i18n.t("ourProductRange")}</AppTitle>
         <View style={styles.productRange}>
@@ -122,6 +121,7 @@ function HomeScreen({ navigation }) {
           style={styles.hugeButton}
         />
       </View>
+
       <View style={defaultStyles.screenContainer}>
         <AppTitle style={defaultStyles.topWhitespaceSmallest}>
           {i18n.t("popularProducts")}
@@ -137,9 +137,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
-  },
-  glassCounter: {
-    marginTop: 16,
+    position: "relative",
   },
   hugeButton: {
     width: "10%",
@@ -163,10 +161,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   search: {
-    zIndex: 40,
-    position: "absolute",
+    zIndex: 12,
     top: -16,
-    elevation: 8,
+    position: "absolute",
     shadowColor: defaultStyles.colors.black,
     shadowOffset: {
       width: 0,
@@ -178,8 +175,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   searchContainer: {
-    zIndex: 5,
+    zIndex: 100,
     paddingTop: 16,
+    // position: "absolute",
+    width: "100%",
+    elevation: 9,
   },
   topRowButton: {
     width: "48%",

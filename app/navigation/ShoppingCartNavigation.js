@@ -1,22 +1,49 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
+import React, { useContext } from "react";
 
 import CheckoutScreen from "../screens/CheckoutScreen";
 import ShoppingCartScreen from "../screens/ShoppingCartScreen";
-import UserVerificationCheckScreen from "../screens/UserVerificationCheckScreen";
+// import UserVerificationCheckScreen from "../screens/UserVerificationCheckScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
+import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
+import AuthContext from "../auth/context";
 
 const ShoppingCartNavigation = () => {
   const Stack = createStackNavigator();
+  const authContext = useContext(AuthContext);
 
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+  const checkForLoggedUser = () => {
+    if (authContext.user) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  let isLoggedIn = checkForLoggedUser();
+
+  const loggedInNavigation = () => (
+    <>
+      <Stack.Screen name="ShoppingCart" component={ShoppingCartScreen} />
+      {/* <Stack.Screen name="QuickCheck" component={UserVerificationCheckScreen} /> */}
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
+    </>
+  );
+
+  const loggedOutNavigation = () => (
+    <>
       <Stack.Screen name="ShoppingCart" component={ShoppingCartScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="QuickCheck" component={UserVerificationCheckScreen} />
-      <Stack.Screen name="Checkout" component={CheckoutScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+    </>
+  );
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {!isLoggedIn ? loggedOutNavigation() : loggedInNavigation()}
     </Stack.Navigator>
   );
 };

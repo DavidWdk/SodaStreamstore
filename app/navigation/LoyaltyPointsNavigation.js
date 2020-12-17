@@ -22,25 +22,29 @@ const LoyaltyPointsNavigation = () => {
 
   let isLoggedIn = checkForLoggedUser();
 
+  const loggedInNavigation = () => (
+    <>
+      <Stack.Screen
+        name="LoyaltyPointsOverview"
+        component={LoyaltyPointsScreen}
+      />
+      <Stack.Screen name="Donate" component={DonateScreen} />
+    </>
+  );
+
+  const loggedOutNavigation = () => (
+    <>
+      <Stack.Screen
+        name="LoggedOutLoyalty"
+        component={LoggedoutLoyaltyScreen}
+      />
+      <Stack.Screen name="Login" component={LoginNavigation} />
+    </>
+  );
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {!isLoggedIn ? (
-        <>
-          <Stack.Screen
-            name="LoggedOutLoyalty"
-            component={LoggedoutLoyaltyScreen}
-          />
-          <Stack.Screen name="Login" component={LoginNavigation} />
-        </>
-      ) : (
-        <>
-          <Stack.Screen
-            name="LoyaltyPointsOverview"
-            component={LoyaltyPointsScreen}
-          />
-          <Stack.Screen name="Donate" component={DonateScreen} />
-        </>
-      )}
+      {!isLoggedIn ? loggedOutNavigation() : loggedInNavigation()}
     </Stack.Navigator>
   );
 };

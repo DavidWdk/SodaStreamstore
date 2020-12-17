@@ -38,7 +38,7 @@ function ShoppingCartItem({
       <Image source={{ uri: image }} style={styles.productImage} />
 
       <View style={styles.productInfo}>
-        <AppTitle>{title ? title : label}</AppTitle>
+        <AppTitle numberOfLines={2}>{title ? title : label}</AppTitle>
         {morgenInHuis && <MorgenInHuisCheck style={styles.topMargin} />}
 
         <View style={styles.bottomRow}>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   productInfo: {
-    // justifyContent: "space-between",
+    paddingLeft: 8,
     flex: 1,
   },
   topMargin: {

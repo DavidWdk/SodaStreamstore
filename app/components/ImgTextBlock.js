@@ -27,18 +27,6 @@ function ImgTextBlock({
           </AppText>
         </View>
       </View>
-
-      //   <>
-      //     <Image source={{ uri: image }} style={styles.image} />
-      //     <View style={styles.leftBlock}>
-      //       <View style={{ paddingLeft: 8 }}>
-      //         <AppTitle style={styles.title}>{title}</AppTitle>
-      //         <AppText style={[defaultStyles.subtitle, styles.lineSpacing]}>
-      //           {text}
-      //         </AppText>
-      //       </View>
-      //     </View>
-      //   </>
     );
   } else {
     return (
@@ -62,30 +50,6 @@ function ImgTextBlock({
           </AppText>
         </View>
       </View>
-
-      //   <>
-      //     <Image source={{ uri: image }} style={styles.image} />
-      //     <View style={styles.rightBlock}>
-      //       <View
-      //         style={{
-      //           paddingRight: 8,
-      //         }}
-      //       >
-      //         <AppTitle style={[styles.title, styles.rightAlign]}>
-      //           {title}
-      //         </AppTitle>
-      //         <AppText
-      //           style={[
-      //             defaultStyles.subtitle,
-      //             styles.lineSpacing,
-      //             styles.rightAlign,
-      //           ]}
-      //         >
-      //           {text}
-      //         </AppText>
-      //       </View>
-      //     </View>
-      //   </>
     );
   }
 }
@@ -97,6 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     width: 150,
     height: 150,
+    backgroundColor: defaultStyles.colors.transparant,
   },
   leftBlock: {
     borderLeftWidth: 4,
