@@ -11,7 +11,7 @@ import searchOptions from "../../assets/placeholderData/searchOptions";
 
 function SearchScreen(props) {
   return (
-    <View style={styles.container}>
+    <View>
       <AppTextInput
         icon="magnify"
         placeholder={i18n.t("searchPlaceholder")}
@@ -22,9 +22,6 @@ function SearchScreen(props) {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    // paddingTop: Constants.statusBarHeight,
-  },
   searchInput: {
     borderWidth: 0,
     borderBottomWidth: 1,

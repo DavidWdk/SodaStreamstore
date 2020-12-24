@@ -3,12 +3,12 @@ import { StyleSheet, View } from "react-native";
 
 import i18n from "i18n-js";
 import syrups from "../../../assets/placeholderData/syrups";
-// import onSale from "../../../assets/placeholderData/onSale";
+import onSale from "../../../assets/placeholderData/onSale";
 
 import CustomHeader from "../../components/CustomHeader";
 import ProductOverviewList from "../../components/lists/ProductOverviewList";
 
-function ProductOverviewScreen({ navigation }) {
+function ProductOverviewScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <CustomHeader
@@ -20,10 +20,12 @@ function ProductOverviewScreen({ navigation }) {
         secondaryHeaderItem
         onPressSecondary={() => navigation.replace("Filter")}
       />
-      <ProductOverviewList
-        // data={(route.params.payload = "onSale" ? onSale : syrups)}
-        data={syrups}
-      />
+      {/* {route.params.payload == "onSale" ? (
+        <ProductOverviewList data={onSale} />
+      ) : (
+        <ProductOverviewList data={syrups} />
+      )} */}
+      <ProductOverviewList data={syrups} />
     </View>
   );
 }

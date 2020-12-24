@@ -17,7 +17,6 @@ function AccordionList({ data, destinationScreen, ...otherProps }) {
           title={item.title}
           childrenItems={item.data}
           destinationScreen={item.destinationScreen}
-          payload={item.payload}
         />
       )}
       ListFooterComponent={

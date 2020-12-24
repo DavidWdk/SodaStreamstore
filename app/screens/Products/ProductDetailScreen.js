@@ -16,6 +16,26 @@ import HorizontalItemList from "../../components/lists/HorizontalItemList";
 import productInfo from "../../../assets/placeholderData/productDetailExample";
 
 function ProductDetailScreen({ route, navigation }) {
+  if (route.params == undefined || null) {
+    route.params.item = {
+      id: 1,
+      title: "Classic Cola Light Siroop",
+      price: "€4,99",
+      image:
+        "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548",
+      images: [
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548",
+        },
+        {
+          image:
+            "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548&sort=1",
+        },
+      ],
+    };
+  }
+
   return (
     <>
       <CustomHeader topPaddingAdjustment title="" />

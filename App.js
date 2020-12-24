@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
-LogBox.ignoreLogs(["Unhandled promise rejection: Error: Nat"]);
 import { AppLoading } from "expo";
 
 //NAVIGATION
 import { NavigationContainer } from "@react-navigation/native";
 import navigationTheme from "./app/navigation/navigationTheme";
 import BottomNavigation from "./app/navigation/BottomNavigation";
-// import { navigationRef } from "./app/navigation/RootNavigation";
 
 //needed for language localization
 import lan from "./app/lang/i18n";

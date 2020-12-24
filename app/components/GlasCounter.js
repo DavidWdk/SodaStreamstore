@@ -67,9 +67,10 @@ function GlasCounter(props) {
 
   useEffect(() => {
     applySettings();
-    let progress = applyProgressAsync();
-    console.log("PROGRESS", progress);
+    let progress = getProgressAsync();
+    console.log("PROGRESS", progress.glassProgress);
     setGlasses(progress);
+    // applyProgressAsync();
   }, []);
 
   const fullGlass = () => (
@@ -78,9 +79,6 @@ function GlasCounter(props) {
       style={[
         styles.glass,
         {
-          // width: width,
-          // height: width * ratio,
-          // marginHorizontal: containerWidth / 72,
           width: 32,
           height: 50,
           marginHorizontal: 5.33,
@@ -160,8 +158,8 @@ function GlasCounter(props) {
     let progress = await getProgressAsync();
     progress = progress.glassProgress;
     console.log(progress);
-    return progress;
-    // setGlasses(progress.glassProgress);
+    setGlasses(progress.glassProgress);
+    // return progress;
   };
 
   const expandSettingsPanel = () => {

@@ -23,6 +23,7 @@
         "backgroundColor": "#FFFFFF"
       }
     },
+    "description": "De officiële SodaStreamstore app",
     "web": {
       "favicon": "./assets/favicon.png"
     }
