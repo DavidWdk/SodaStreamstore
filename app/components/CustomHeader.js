@@ -45,14 +45,17 @@ function CustomHeader({
               />
             </Pressable>
           )}
-          <AppTitle
-            style={[
-              defaultStyles.title,
-              { color: defaultStyles.colors[textColor] },
-            ]}
-          >
-            {title}
-          </AppTitle>
+          <View style={styles.title}>
+            <AppTitle
+              style={[
+                defaultStyles.title,
+                { color: defaultStyles.colors[textColor] },
+              ]}
+              numberOfLines={1}
+            >
+              {title}
+            </AppTitle>
+          </View>
         </View>
 
         {secondaryHeaderItem && (
@@ -105,14 +108,17 @@ function CustomHeader({
               />
             </Pressable>
           )}
-          <AppTitle
-            style={[
-              defaultStyles.title,
-              { color: defaultStyles.colors[textColor] },
-            ]}
-          >
-            {title}
-          </AppTitle>
+          <View style={styles.title}>
+            <AppTitle
+              style={[
+                defaultStyles.title,
+                { color: defaultStyles.colors[textColor] },
+              ]}
+              numberOfLines={1}
+            >
+              {title}
+            </AppTitle>
+          </View>
         </View>
 
         {secondaryHeaderItem && (
@@ -159,6 +165,11 @@ const styles = StyleSheet.create({
   },
   mainHeaderContainer: {
     flexDirection: "row",
+    flexGrow: 1,
+    flex: 1,
+  },
+  title: {
+    flexShrink: 1,
   },
   secondaryIcon: {
     marginRight: 4,

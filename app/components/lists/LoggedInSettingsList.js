@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import BottleCounter from "../BottleCounter";
@@ -37,10 +37,5 @@ function LoggedInSettingsList({ data, userData }) {
     />
   );
 }
-const styles = StyleSheet.create({
-  titleText: {
-    // fontSize:
-  },
-});
 
 export default LoggedInSettingsList;

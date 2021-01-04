@@ -22,13 +22,14 @@ i18n.translations = {
     accessories: "Accessoires",
     devices: "Toestellen",
     seeDiscounts: "Bekijk onze",
-    seeDiscountsTitle: "Kortingen",
+    seeDiscountsTitle: "aanbiedingen",
     popularProducts: "Populaire producten",
     previouslyBought: "Laatst gekochte artikelen",
 
     //SEARCH
     yourOrderHistory: "Jouw bestelgeschiedenis",
     allArticlesOnDiscount: "Alle artikelen met korting",
+    search: "Zoeken",
 
     //PRODUCTDETAIL
     description: "Omschrijving",
@@ -108,6 +109,14 @@ i18n.translations = {
     orders: "Bestellingen",
     emptyOrderHistory: "U heeft nog geen bestellingen gedaan",
     emptyOrderHistoryDesc: "Bezoek onze winkel om een bestelling te plaatsen",
+
+    //ORDERHISTORYDETAILS
+    orderNum: "Bestelnummer",
+    orderedAt: "Besteld op",
+    invoiceAddress: "Factuuradres",
+    totalCostOrder: "Kostenoverzicht (totaal bestelling)",
+    paymentStatus: "Betaalstatus",
+    orderDetails: "Bestel details",
 
     //SMALLPRODUCTLIST
     repeatOrder: "Herhaal deze bestelling",
@@ -200,6 +209,7 @@ i18n.translations = {
     nutrition: "Voedingswaarde",
     specs: "Specificaties",
     relatedProducts: "Gerelateerde producten",
+    goToProduct: "Meer over dit product",
 
     //USERVERIFICATIONSCREEN
     quickCheck: "Korte controle",
@@ -255,7 +265,7 @@ i18n.translations = {
     step2: "Stap 2: frequentie",
     startDate: "Startdatum",
     subscriptionDisclaimer:
-      "Het abonnement zal elke twee maanden automatisch worden geincasseerd voor €23,99. We sturen een herinnering voor elke bezorging zodat je genoeg tijd hebt je bestelling aan te passen of te annuleren. Het abonnement kan je ten alle tijden opzeggen.",
+      "Het abonnement zal elk aantal gekozen maanden automatisch worden geïncasseerd voor €23,99. We sturen een herinnering voor elke bezorging zodat je genoeg tijd hebt je bestelling aan te passen of te annuleren. Het abonnement kan je ten allen tijden opzeggen.",
     buySubscription: "Abonnement aanschaffen",
 
     //DONATESCREEN

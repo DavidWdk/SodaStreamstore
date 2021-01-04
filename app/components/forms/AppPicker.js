@@ -6,7 +6,6 @@ import defaultStyles from "../../config/styles";
 import RNPickerSelect from "react-native-picker-select";
 import ErrorMessage from "./ErrorMessage";
 import { AppText } from "../fonts";
-import { typeOf } from "react-is";
 
 const Dropdown = ({ label, selection, placeholder, required, name }) => {
   const { handleChange, errors, touched } = useFormikContext();
@@ -30,7 +29,6 @@ const Dropdown = ({ label, selection, placeholder, required, name }) => {
             color: "black",
           }}
           onValueChange={handleChange(name)}
-          // onValueChange={(value) => console.log(typeof value)}
           useNativeAndroidPickerStyle={false}
           fixAndroidTouchableBug
           style={{

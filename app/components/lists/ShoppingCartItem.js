@@ -13,6 +13,8 @@ import { AppTitle, AppText } from "../fonts";
 import defaultStyles from "../../config/styles";
 import AddSubtractInput from "../AddSubtractInput";
 
+import { useNavigation } from "@react-navigation/native";
+
 function ShoppingCartItem({
   image,
   title,
@@ -26,6 +28,9 @@ function ShoppingCartItem({
   totalProductPrice,
   morgenInHuis = true,
 }) {
+  const navigation = useNavigation();
+  const route = {};
+
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <TouchableOpacity style={styles.deleteIcon} onPress={onPressDeleteItem}>
@@ -35,10 +40,15 @@ function ShoppingCartItem({
           color={defaultStyles.colors.black}
         />
       </TouchableOpacity>
-      <Image source={{ uri: image }} style={styles.productImage} />
+
+      <Pressable onPress={() => navigation.navigate("ProductDetails", route)}>
+        <Image source={{ uri: image }} style={styles.productImage} />
+      </Pressable>
 
       <View style={styles.productInfo}>
-        <AppTitle numberOfLines={2}>{title ? title : label}</AppTitle>
+        <Pressable onPress={() => navigation.navigate("ProductDetails", route)}>
+          <AppTitle numberOfLines={2}>{title ? title : label}</AppTitle>
+        </Pressable>
         {morgenInHuis && <MorgenInHuisCheck style={styles.topMargin} />}
 
         <View style={styles.bottomRow}>
@@ -47,7 +57,6 @@ function ShoppingCartItem({
               initialvalue={amount.toString()}
               style={styles.productAmount}
               styleInput={styles.productAmountInput}
-              //Make untypable?
               editable={false}
               textAlign="center"
               onPressAdd={onPressAdd}
@@ -67,7 +76,6 @@ function ShoppingCartItem({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    // flex: 1,
     marginVertical: 16,
     paddingHorizontal: 12,
   },

@@ -6,7 +6,7 @@ import HorizontalItemList from "./HorizontalItemList";
 import PreviouslyViewed from "../../../assets/placeholderData/previouslyViewed";
 import { AppTitle } from "../fonts";
 
-function AccordionList({ data, destinationScreen, ...otherProps }) {
+function AccordionList({ data, ...otherProps }) {
   return (
     <FlatList
       style={styles.list}
@@ -17,6 +17,7 @@ function AccordionList({ data, destinationScreen, ...otherProps }) {
           title={item.title}
           childrenItems={item.data}
           destinationScreen={item.destinationScreen}
+          payload={item.payload}
         />
       )}
       ListFooterComponent={

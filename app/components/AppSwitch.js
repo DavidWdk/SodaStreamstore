@@ -4,7 +4,7 @@ import { View, StyleSheet, Switch } from "react-native";
 import { AppText } from "./fonts";
 import defaultStyles from "../config/styles";
 
-function AppSwitch({ title, toggleSwitchFunction, bold, style }) {
+function AppSwitch({ title, bold, style }) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -13,7 +13,9 @@ function AppSwitch({ title, toggleSwitchFunction, bold, style }) {
 
   return (
     <View style={[styles.switchSection, style]}>
-      <AppText bold={bold} style={styles.title}>{title}</AppText>
+      <AppText bold={bold} style={styles.title}>
+        {title}
+      </AppText>
       <Switch
         trackColor={{
           false: defaultStyles.colors.grey,

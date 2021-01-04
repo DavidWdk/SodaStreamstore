@@ -16,6 +16,8 @@ import AppButton from "../components/AppButton";
 import SubmitButton from "../components/forms/SubmitButton";
 import userData from "../../assets/placeholderData/userData";
 import storage from "../auth/storage";
+import { StackActions } from "@react-navigation/native";
+import { TextInput } from "react-native-gesture-handler";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -45,10 +47,11 @@ function LoginScreen({ navigation, route }) {
   const handleSubmit = () => {
     authContext.setUser(userData);
     storage.storeToken("Token");
+    const popAction = StackActions.pop(5);
+    navigation.dispatch(popAction);
     handleRouting();
     // if (!route.params?.checkout) {
-    //   const popAction = StackActions.pop(5);
-    //   navigation.dispatch(popAction);
+
     // }
   };
 

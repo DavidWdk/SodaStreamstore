@@ -10,32 +10,32 @@ import defaultStyles from "../../config/styles";
 import AppSlider from "../../components/AppSlider";
 
 function BottleCountSettings(props) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [glassVolume, setGlassVolume] = useState(60);
+
+  const changeVolume = (volume) => {
+    setGlassVolume(Math.round(volume));
+  };
 
   return (
     <Screen style={defaultStyles.screenContainer}>
       <CustomHeader title={i18n.t("bottleCountHeader")} />
       <View style={defaultStyles.section}>
         <AppTitle>{i18n.t("counterWorkings")}</AppTitle>
-        <AppText>
-          {i18n.t("counterWorkingsDesc")}
-        </AppText>
+        <AppText>{i18n.t("counterWorkingsDesc")}</AppText>
       </View>
 
       <View style={defaultStyles.section}>
         <AppTitle>{i18n.t("amount")}</AppTitle>
-        <AppText>
-          {i18n.t("amountDesc")}
-        </AppText>
+        <AppText>{i18n.t("amountDesc")}</AppText>
 
         <AppSlider
           minimum={40}
-          maximum={70}
+          maximum={80}
           step={1}
           initialValue={60}
           unit={i18n.t("liter")}
           style={styles.slider}
+          data={{ volume: glassVolume, changeVolume: changeVolume }}
         />
       </View>
     </Screen>

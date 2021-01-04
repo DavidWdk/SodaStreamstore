@@ -7,7 +7,7 @@ import ScrollScreen from "../../components/screenStyling/ScrollScreen";
 import CustomHeader from "../../components/CustomHeader";
 import ProductShowcaseFold from "../../components/products/ProductShowcaseFold";
 import ButtonOutline from "../../components/ButtonOutline";
-import Screen from "../../components/screenStyling/Screen";
+import i18n from "i18n-js";
 
 //COLLECT THE ITEMS BELOW VIA NAVIGATION
 const orderNo = 120249123;
@@ -46,20 +46,20 @@ function OrderHistoryDetailScreen(props) {
         />
 
         <View style={[defaultStyles.screenContainer, styles.detailsSection]}>
-          <AppTitle>Bestel details</AppTitle>
+          <AppTitle>{i18n.t("orderDetails")}</AppTitle>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Bestelnummer
+            {i18n.t("orderNum")}
           </AppText>
           <AppText>{orderNo}</AppText>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Besteld op
+            {i18n.t("orderedAt")}
           </AppText>
           <AppText>{orderDate}</AppText>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Bezorgadres
+            {i18n.t("deliveryAddress")}
           </AppText>
           <AppText>{deliveryAddress}</AppText>
 
@@ -69,17 +69,17 @@ function OrderHistoryDetailScreen(props) {
           <AppText>{billingAddress}</AppText>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Kostenoverzicht (totaal bestelling)
+            {i18n.t("totalCostOrder")}
           </AppText>
           <AppText>{orderNo}</AppText>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Betaalwijze
+            {i18n.t("paymentMethod")}
           </AppText>
           <AppText>{billingMethod}</AppText>
 
           <AppText bold style={defaultStyles.lineWhitespace}>
-            Betaalstatus
+            {i18n.t("paymentStatus")}
           </AppText>
           <AppText>{billingStatus}</AppText>
 

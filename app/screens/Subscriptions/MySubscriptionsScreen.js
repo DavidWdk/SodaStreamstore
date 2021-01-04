@@ -14,7 +14,6 @@ const items = [
   "Fruit Drops Mango",
   "2 pack reiniginstabletten",
 ];
-const loyaltyPoints = 20;
 const price = "53,22";
 
 function MySubscriptionsScreen(props) {

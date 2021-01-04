@@ -60,7 +60,6 @@ export default {
   subtitle: {
     color: colors.black,
     fontSize: 18,
-    // fontWeight: "bold",
   },
   text: {
     color: colors.black,

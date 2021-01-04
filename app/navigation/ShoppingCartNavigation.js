@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 
 import CheckoutScreen from "../screens/CheckoutScreen";
 import ShoppingCartScreen from "../screens/ShoppingCartScreen";
+import ProductDetailScreen from "../screens/Products/ProductDetailScreen";
+//UNCOMMENT THE LINE BELOW AND IN LOGGEDINNAVIGATION FOR AN EXTRA AUTHENTICATION LAYER FOR LOGGED IN USERS
 // import UserVerificationCheckScreen from "../screens/UserVerificationCheckScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -26,7 +28,9 @@ const ShoppingCartNavigation = () => {
   const loggedInNavigation = () => (
     <>
       <Stack.Screen name="ShoppingCart" component={ShoppingCartScreen} />
-      {/* <Stack.Screen name="QuickCheck" component={UserVerificationCheckScreen} /> */}
+      <Stack.Screen name="ProductDetails" component={ProductDetailScreen} />
+      {/*  UNCOMMENT THE LINE BELOW FOR AN EXTRA AUTHENTICATION LAYER FOR LOGGED IN USERS
+      <Stack.Screen name="QuickCheck" component={UserVerificationCheckScreen} /> */}
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </>
@@ -35,6 +39,7 @@ const ShoppingCartNavigation = () => {
   const loggedOutNavigation = () => (
     <>
       <Stack.Screen name="ShoppingCart" component={ShoppingCartScreen} />
+      <Stack.Screen name="ProductDetails" component={ProductDetailScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />

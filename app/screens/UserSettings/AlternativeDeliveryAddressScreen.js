@@ -1,7 +1,3 @@
-//TO DO
-//GEGEVENS INVULLEN VAN GEBRUIKER
-//KIJK VERDER NAAR REGISTERSCREEN
-
 import React from "react";
 import {
   StyleSheet,
@@ -25,17 +21,41 @@ import Screen from "../../components/screenStyling/Screen";
 
 const validationSchema = Yup.object().shape({
   anderAdres: Yup.boolean(),
-  bedrijfsnaam: Yup.string().notRequired().label(`${i18n.t("companyName")}`),
-  verzendRef1: Yup.string().notRequired().label(`${i18n.t("deliveryRef1")}`),
-  verzendRef2: Yup.string().notRequired().label(`${i18n.t("deliveryRef2")}`),
-  voornaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("firstName")}`),
-  achternaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("lastName")}`),
-  land: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("country")}`),
-  straatnaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("street")}`),
-  postcode: Yup.string().max(4, `${i18n.t("minLength")}`).min(8, `${i18n.t("maxLength")}`).required(`${i18n.t("requiredField")}`).label(`${i18n.t("zipCode")}`),
-  huisnummer: Yup.number().required(`${i18n.t("requiredField")}`).label(`${i18n.t("houseNum")}`),
-  toevoeging: Yup.string().notRequired().label(`${i18n.t("addition")}`),
-  woonPlaats: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("city")}`),
+  bedrijfsnaam: Yup.string()
+    .notRequired()
+    .label(`${i18n.t("companyName")}`),
+  verzendRef1: Yup.string()
+    .notRequired()
+    .label(`${i18n.t("deliveryRef1")}`),
+  verzendRef2: Yup.string()
+    .notRequired()
+    .label(`${i18n.t("deliveryRef2")}`),
+  voornaam: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("firstName")}`),
+  achternaam: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("lastName")}`),
+  land: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("country")}`),
+  straatnaam: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("street")}`),
+  postcode: Yup.string()
+    .max(4, `${i18n.t("minLength")}`)
+    .min(8, `${i18n.t("maxLength")}`)
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("zipCode")}`),
+  huisnummer: Yup.number()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("houseNum")}`),
+  toevoeging: Yup.string()
+    .notRequired()
+    .label(`${i18n.t("addition")}`),
+  woonPlaats: Yup.string()
+    .required(`${i18n.t("requiredField")}`)
+    .label(`${i18n.t("city")}`),
 });
 
 function AlternativeDeliveryAddressScreen(props) {

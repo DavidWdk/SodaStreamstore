@@ -26,7 +26,7 @@ function GlasCounter(props) {
       const jsonValue = JSON.stringify(settingsObj);
       await AsyncStorage.setItem("settings", jsonValue);
     } catch (error) {
-      console.log("error saving data", error);
+      console.warn("error saving data", error);
     }
   };
 
@@ -35,29 +35,22 @@ function GlasCounter(props) {
       const jsonValue = await AsyncStorage.getItem("settings");
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (error) {
-      console.log("error getting data", error);
+      console.warn("error getting data", error);
     }
   };
 
   const applySettings = async () => {
-    // return await getSettings();
     let settings = await getSettings();
     setGlassVolume(settings.volume);
     setHydrationTarget(settings.target);
-    // console.log(settings);
   };
 
   const navigation = useNavigation();
   const [glasses, setGlasses] = useState([]);
-  // const [containerWidth, setContainerWidth] = useState();
   const [progress, setProgress] = useState(0);
   const [glassVolume, setGlassVolume] = useState(0.25);
   const [hydrationTarget, setHydrationTarget] = useState(2.5);
   const [expanded, setExpanded] = useState(false);
-
-  // const ratio = 78 / 50;
-  // const width = containerWidth / 12;
-  // let today = new Date();
 
   if (Platform.OS === "android") {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -68,9 +61,7 @@ function GlasCounter(props) {
   useEffect(() => {
     applySettings();
     let progress = getProgressAsync();
-    console.log("PROGRESS", progress.glassProgress);
     setGlasses(progress);
-    // applyProgressAsync();
   }, []);
 
   const fullGlass = () => (
@@ -159,7 +150,6 @@ function GlasCounter(props) {
     progress = progress.glassProgress;
     console.log(progress);
     setGlasses(progress.glassProgress);
-    // return progress;
   };
 
   const expandSettingsPanel = () => {
@@ -193,12 +183,7 @@ function GlasCounter(props) {
               <Feather name="settings" size={20} color="black" />
             </Pressable>
           </View>
-          <View
-            style={styles.glassesContainer}
-            // onLayout={(event) => {
-            //   setContainerWidth(event.nativeEvent.layout.width);
-            // }}
-          >
+          <View style={styles.glassesContainer}>
             {glasses.map((glass, index) => (
               <Pressable
                 style={styles.singleGlassContainer}

@@ -19,26 +19,40 @@ export default [
         title: `${i18n.t("allArticlesOnDiscount")}`,
         payload: "onSale",
         headerTitle: "Korting",
+        payload: {
+          payload: "onSale",
+        },
       },
       {
         title: `${i18n.t("cilinders")}`,
-        payload: "onSale",
         headerTitle: "Korting",
+        payload: {
+          payload: "onSale",
+        },
       },
       {
         title: `${i18n.t("syrups")}`,
         payload: "onSale",
         headerTitle: "Korting",
+        payload: {
+          payload: "onSale",
+        },
       },
       {
         title: `${i18n.t("accessories")}`,
         payload: "onSale",
         headerTitle: "Korting",
+        payload: {
+          payload: "onSale",
+        },
       },
       {
         title: `${i18n.t("devices")}`,
         payload: "onSale",
         headerTitle: "Korting",
+        payload: {
+          payload: "onSale",
+        },
       },
     ],
   },

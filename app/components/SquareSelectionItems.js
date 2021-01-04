@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   },
   textItems: {
     fontSize: 16,
+    color: defaultStyles.colors.black,
   },
   textItemsActive: {
     fontSize: 16,

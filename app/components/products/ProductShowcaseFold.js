@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import i18n from "i18n-js";
 
@@ -22,7 +23,10 @@ function productShowcaseFold({
     return fullPrice.split(".");
   };
 
+  const navigation = useNavigation();
   const [euros, cents] = priceFormatter(productPrice);
+
+  const route = {};
 
   return (
     <View style={styles.container}>
@@ -33,14 +37,27 @@ function productShowcaseFold({
           <AppTitle style={styles.cents}>{cents}</AppTitle>
         </View>
         <AppTitle style={defaultStyles.title}>{productTitle}</AppTitle>
-        <AppButton
-          bold
-          fontSize={18}
-          icon="cart-outline"
-          textColor="black"
-          title={i18n.t("addToCart")}
-          color={"yellow"}
-        />
+        {isProductHistory ? (
+          <AppButton
+            bold
+            fontSize={18}
+            icon="chevron-right"
+            textColor="black"
+            title={i18n.t("goToProduct")}
+            color={"yellow"}
+            onPress={() => navigation.navigate("ProductDetails", route)}
+          />
+        ) : (
+          <AppButton
+            bold
+            fontSize={18}
+            icon="cart-outline"
+            textColor="black"
+            title={i18n.t("addToCart")}
+            color={"yellow"}
+          />
+        )}
+
         {isProductHistory ? (
           <Check
             title={`${i18n.t("wasDeliveredDate")} ${productHistoryArrivalDate}`}

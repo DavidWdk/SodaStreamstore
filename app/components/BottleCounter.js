@@ -9,9 +9,10 @@ import { AppText } from "./fonts";
 function BottleCounter({ bottleAmounth, onPress }) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      {/* <View style={styles.wrapper}> */}
       <AppText thin style={styles.text}>
-        {i18n.t("bottlesSaved")}{"\n"}{i18n.t("withSodaStream")}
+        {i18n.t("bottlesSaved")}
+        {"\n"}
+        {i18n.t("withSodaStream")}
       </AppText>
 
       <View style={{ flexDirection: "row", alignItems: "center" }}>

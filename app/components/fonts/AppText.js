@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
   textItalic: {
     fontFamily: "Roboto_400Regular_Italic",
     fontSize: 16,
-    // fontStyle: "italic",
   },
   textThin: {
     fontFamily: "Roboto_300Light",

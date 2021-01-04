@@ -1,5 +1,4 @@
 import React from "react";
-// import Constants from "expo-constants";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -26,7 +25,6 @@ function ScrollScreenKeyboard({ children, style, onPress }) {
 
 const styles = StyleSheet.create({
   screen: {
-    // paddingTop: Constants.statusBarHeight,
     flex: 1,
   },
   view: {

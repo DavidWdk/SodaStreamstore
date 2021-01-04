@@ -67,12 +67,10 @@ function ImageSlider({ images, style, bottomSpacePagination = 0 }) {
                   <AppButton
                     title={item.btnText}
                     style={styles.button}
-                    onPress={
-                      () =>
-                        navigation.navigate("ProductDetails", {
-                          item: item.routeObject,
-                        })
-                      // console.log(item.routeObject)
+                    onPress={() =>
+                      navigation.navigate("ProductDetails", {
+                        item: item.routeObject,
+                      })
                     }
                   />
                 )}
@@ -135,14 +133,12 @@ const styles = StyleSheet.create({
     bottom: 35,
   },
   paginationActiveText: {
-    // position: "absolute",
     fontSize: width / 13,
     color: defaultStyles.colors.lightBlue,
     marginHorizontal: 2,
     zIndex: 1,
   },
   paginationText: {
-    // position: "absolute",
     fontSize: width / 13,
     color: defaultStyles.colors.lightGrey,
     marginHorizontal: 2,

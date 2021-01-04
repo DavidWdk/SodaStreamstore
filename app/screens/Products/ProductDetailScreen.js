@@ -16,29 +16,31 @@ import HorizontalItemList from "../../components/lists/HorizontalItemList";
 import productInfo from "../../../assets/placeholderData/productDetailExample";
 
 function ProductDetailScreen({ route, navigation }) {
-  if (route.params == undefined || null) {
+  if (route.params.item == undefined || null) {
     route.params.item = {
-      id: 1,
-      title: "Classic Cola Light Siroop",
+      id: 4,
+      title: "SodaStream Fruit Drops Mango Siroop",
       price: "€4,99",
       image:
-        "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548",
+        "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
       images: [
         {
           image:
-            "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548",
+            "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647",
         },
         {
           image:
-            "https://image.sodastreamstore.nl/m/sodastream-classic-siroop-cola-light?sid=3&pid=1393548&sort=1",
+            "https://image.sodastreamstore.nl/m/sodastream-fruit-drops-siroop-mango?sid=3&pid=3460647&sort=1",
         },
       ],
     };
   }
 
+  console.log(route.params.item);
+
   return (
     <>
-      <CustomHeader topPaddingAdjustment title="" />
+      <CustomHeader topPaddingAdjustment title={route.params.item.title} />
       <ScrollView style={styles.container}>
         <ProductShowcaseFold
           productImages={route.params.item.images}

@@ -75,9 +75,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     marginBottom: 24,
-
-    // flexDirection: "row",
-    // marginVertical: 8,
   },
   title: {
     fontSize: 20,

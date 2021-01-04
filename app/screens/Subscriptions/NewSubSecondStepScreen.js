@@ -70,7 +70,6 @@ function NewSubSecondStepScreen(props) {
             <AppTextInput
               value={formatDate()}
               editable={false}
-              //   onFocus={showDatepicker}
               style={styles.textInput}
             />
           </View>
@@ -86,7 +85,6 @@ function NewSubSecondStepScreen(props) {
           title={i18n.t("buySubscription")}
           icon="chevron-right"
           style={styles.nextButton}
-          //   onPress=
         />
       </ScrollView>
     </>

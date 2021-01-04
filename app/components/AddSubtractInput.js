@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import AppTextInput from "./AppTextInput";
 import defaulStyles from "../config/styles";
-import { AppText } from "./fonts";
 
 function AddSubtractInput({
   initialvalue,

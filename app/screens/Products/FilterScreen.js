@@ -19,7 +19,7 @@ function FilterScreen({ navigation }) {
         secondaryHeaderItem
         secondaryTitle={i18n.t("deleteFilter")}
         secondaryTextColor="darkBlue"
-        onPressSecondary={() => console.log("Reset filter")}
+        onPressSecondary={() => {}}
         topPaddingAdjustment
       />
       <ScrollView style={defaultStyles.screenContainer}>

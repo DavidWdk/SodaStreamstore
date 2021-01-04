@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   container: {
     width: "48%",
     alignItems: "center",
-    // aspectRatio: 1,
   },
   image: {
     width: 120,

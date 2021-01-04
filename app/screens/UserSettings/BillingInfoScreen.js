@@ -1,8 +1,3 @@
-//TO DO
-//IMPORT EXISTING USERDATA
-//KIJK NAAR REGISTERSCREEN VOOR VERDERE TO-DO'S
-//.MATCHES --- DOE JE ZO CIJFERS VOORKOMEN? /^[1234567890]+$/
-
 import React from "react";
 import {
   StyleSheet,
@@ -26,20 +21,47 @@ import countries from "../../../assets/placeholderData/countries";
 
 function BillingInfoScreen(props) {
   const validationSchema = Yup.object().shape({
-    voornaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("firstName")}`),
-    achternaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("lastName")}`),
-    bedrijfsnaam: Yup.string().notRequired().label(`${i18n.t("companyName")}`),
-    postcode: Yup.string().max(4, `${i18n.t("minLength")}`).min(8, `${i18n.t("maxLength")}`).required(`${i18n.t("requiredField")}`).label(`${i18n.t("zipCode")}`),
-    huisnummer: Yup.number(`${i18n.t("numberNotice")}`).required(`${i18n.t("requiredField")}`).label(`${i18n.t("houseNum")}`),
-    toevoeging: Yup.string().notRequired().label(`${i18n.t("addition")}`),
-    land: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("country")}`),
-    email: Yup.string().required(`${i18n.t("minLength")}`).email().label(`${i18n.t("email")}`),
-    straatnaam: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("street")}`),
-    iban: Yup.string().max(36, `${i18n.t("maxLength")}`).label(`${i18n.t("accountNum")}`),
+    voornaam: Yup.string()
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("firstName")}`),
+    achternaam: Yup.string()
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("lastName")}`),
+    bedrijfsnaam: Yup.string()
+      .notRequired()
+      .label(`${i18n.t("companyName")}`),
+    postcode: Yup.string()
+      .max(4, `${i18n.t("minLength")}`)
+      .min(8, `${i18n.t("maxLength")}`)
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("zipCode")}`),
+    huisnummer: Yup.number(`${i18n.t("numberNotice")}`)
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("houseNum")}`),
+    toevoeging: Yup.string()
+      .notRequired()
+      .label(`${i18n.t("addition")}`),
+    land: Yup.string()
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("country")}`),
+    email: Yup.string()
+      .required(`${i18n.t("minLength")}`)
+      .email()
+      .label(`${i18n.t("email")}`),
+    straatnaam: Yup.string()
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("street")}`),
+    iban: Yup.string()
+      .max(36, `${i18n.t("maxLength")}`)
+      .label(`${i18n.t("accountNum")}`),
     btwNum: Yup.string().label(`${i18n.t("btwNum")}`),
     kvkNum: Yup.string().label(`${i18n.t("kvkNum")}`),
-    emailFacturatie: Yup.string().email(`${i18n.t("validMail")}`).label(`${i18n.t("invoiceEmail")}`),
-    woonPlaats: Yup.string().required(`${i18n.t("requiredField")}`).label(`${i18n.t("city")}`),
+    emailFacturatie: Yup.string()
+      .email(`${i18n.t("validMail")}`)
+      .label(`${i18n.t("invoiceEmail")}`),
+    woonPlaats: Yup.string()
+      .required(`${i18n.t("requiredField")}`)
+      .label(`${i18n.t("city")}`),
     referentie1: Yup.string().label(`${i18n.t("yourReference1")}`),
     referentie2: Yup.string().label(`${i18n.t("yourReference2")}`),
     telefoon: Yup.string().label(`${i18n.t("phoneNum")}`),
@@ -175,11 +197,15 @@ function BillingInfoScreen(props) {
           />
 
           <View style={styles.section}>
-            <AppTitle style={defaultStyles.subtitle}>{i18n.t("companyDetails")}</AppTitle>
+            <AppTitle style={defaultStyles.subtitle}>
+              {i18n.t("companyDetails")}
+            </AppTitle>
             <AppText style={defaultStyles.text}>
               {i18n.t("businessOrderDesc")}
             </AppText>
+
             {/* Als er geen bedrijfsnaam is ingevoerd, maak de 'soort bestelling' particulier. */}
+
             <AppFormField
               autoCapitalize="words"
               autoCorrect={false}

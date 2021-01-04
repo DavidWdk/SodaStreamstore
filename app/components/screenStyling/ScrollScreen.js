@@ -1,12 +1,6 @@
 import React from "react";
 import Constants from "expo-constants";
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-  Platform,
-} from "react-native";
+import { ScrollView, StyleSheet, View, Platform } from "react-native";
 
 function ScrollScreen({ children, style, ...otherProps }) {
   return (

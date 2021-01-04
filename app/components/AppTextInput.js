@@ -51,7 +51,7 @@ function AppTextInput({
           <TextInput
             placeholderTextColor={defaultStyles.colors.grey}
             placeholder={placeholder}
-            style={defaultStyles.text}
+            style={styles.text}
             {...otherProps}
           />
         </View>
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingHorizontal: 12,
     paddingVertical: 14,
-    // marginTop: 16,
     fontFamily: "Roboto_400Regular",
   },
   icon: {
@@ -82,6 +81,8 @@ const styles = StyleSheet.create({
   text: {
     color: defaultStyles.colors.black,
     fontFamily: "Roboto_400Regular",
+    width: "100%",
+    fontSize: 16,
   },
   label: {
     fontSize: 16,

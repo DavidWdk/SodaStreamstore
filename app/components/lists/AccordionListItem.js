@@ -17,7 +17,7 @@ function AccordionListItem({
   title,
   childrenItems,
   destinationScreen = "ProductOverview",
-  // payload,
+  payload,
 }) {
   if (Platform.OS === "android") {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -33,7 +33,6 @@ function AccordionListItem({
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setExpanded(!expanded);
     } else if (!childrenItems) {
-      // navigation.navigate(destinationScreen, { payload });
       navigation.navigate(destinationScreen);
     }
   };
@@ -60,7 +59,13 @@ function AccordionListItem({
             <Pressable
               style={[styles.childRow, styles.row]}
               key={index}
-              onPress={() => navigation.navigate(destinationScreen)}
+              onPress={() => {
+                if (child.payload) {
+                  navigation.navigate(destinationScreen, child.payload);
+                } else {
+                  navigation.navigate(destinationScreen);
+                }
+              }}
             >
               <AppText>{child.title}</AppText>
             </Pressable>

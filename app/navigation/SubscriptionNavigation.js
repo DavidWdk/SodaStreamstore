@@ -1,7 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useContext } from "react";
 
-import MySubscriptionsScreen from "../screens/Subscriptions/MySubscriptionsScreen";
 import NewSubFirstStepScreen from "../screens/Subscriptions/NewSubFirstStepScreen";
 import NewSubSecondStepScreen from "../screens/Subscriptions/NewSubSecondStepScreen";
 import NoSubscriptionScreen from "../screens/Subscriptions/NoSubscriptionsScreen";

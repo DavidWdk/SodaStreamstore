@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
   },
   addItemText: {
     marginTop: 12,
-    // textSize: 18,
     color: defaultStyles.colors.lightBlue,
   },
   amount: {

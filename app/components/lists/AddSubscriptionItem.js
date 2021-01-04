@@ -14,8 +14,6 @@ function AddSubscriptionItem({
   item,
   amount = 0,
 }) {
-  const navigation = useNavigation();
-
   return (
     <Pressable style={styles.productContainer}>
       {amount > 0 && (
@@ -109,7 +107,6 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   subtractBtn: {
-    // backgroundColor: defaultStyles.colors.red,
     borderColor: defaultStyles.colors.red,
     marginRight: 6,
     paddingHorizontal: 8,

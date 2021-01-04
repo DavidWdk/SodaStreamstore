@@ -32,7 +32,7 @@ function MultipleChoiceSelection({ style, options }) {
               style={
                 index == active
                   ? [styles.title, styles.selectedText]
-                  : styles.title
+                  : styles.nonSelectedText
               }
             >
               {option.title}
