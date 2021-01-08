@@ -50,6 +50,7 @@ function HomeScreen({ navigation }) {
         images={homeImageSliderData}
         bottomSpacePagination={40}
         style={styles.imageSlider}
+        diaShow
       />
       <View style={[styles.rowButtonsContainer, defaultStyles.screenContainer]}>
         {authContext.user ? (

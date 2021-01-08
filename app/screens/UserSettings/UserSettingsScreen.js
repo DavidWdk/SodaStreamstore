@@ -1,17 +1,9 @@
-//LINK HET SCHERM LAATST BEKEKEN, DEZE STAAT OOK BIJ ZOEKEN
-//KLANTENSERVICE LEIDT NAAR WEBSITE
-//VOORWAARDEN ALS WEBVIEW OF LEIDT NAAR WEBSITE
-//FEEBACK OVER APP LEIDT NAAR PLAYSTORE/ APPSTORE
-
 import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
-
-import i18n from "i18n-js";
 
 import defaultStyles from "../../config/styles";
 import optionsData from "../../../assets/placeholderData/options";
 import optionsDataLoggedOut from "../../../assets/placeholderData/optionsDataLoggedOut";
-import userData from "../../../assets/placeholderData/userData";
 import Screen from "../../components/screenStyling/Screen";
 import AuthContext from "../../auth/context";
 import LoggedInSettingsList from "../../components/lists/LoggedInSettingsList";
@@ -32,8 +24,6 @@ function UserSettingsScreen({ navigation }) {
 
   return (
     <Screen>
-      {/* IF USER IS LOGGED IN */}
-
       {isLoggedIn ? (
         <LoggedInSettingsList data={optionsData} userData={authContext.user} />
       ) : (

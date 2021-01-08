@@ -13,6 +13,7 @@ function ListItem({
   textColor = "black",
   itemKind = "flat",
   designationScreen,
+  onPress,
 }) {
   const navigation = useNavigation();
 
@@ -21,6 +22,7 @@ function ListItem({
       <TouchableHighlight
         onPress={() => {
           if (designationScreen) navigation.navigate(designationScreen);
+          onPress;
         }}
         underlayColor={defaultStyles.colors.lightGrey}
       >

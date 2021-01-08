@@ -14,6 +14,7 @@ import SpecificationSchema from "../../components/products/SpecificationSchema";
 import AppButton from "../../components/AppButton";
 import HorizontalItemList from "../../components/lists/HorizontalItemList";
 import productInfo from "../../../assets/placeholderData/productDetailExample";
+import AddedToCartNotification from "../../components/AddedToCartNotification";
 
 function ProductDetailScreen({ route, navigation }) {
   if (route.params.item == undefined || null) {
@@ -36,7 +37,7 @@ function ProductDetailScreen({ route, navigation }) {
     };
   }
 
-  console.log(route.params.item);
+  const showNotification = () => {};
 
   return (
     <>
@@ -46,6 +47,7 @@ function ProductDetailScreen({ route, navigation }) {
           productImages={route.params.item.images}
           productTitle={route.params.item.title}
           productPrice={route.params.item.price}
+          onPress={() => showNotification()}
         />
 
         <View

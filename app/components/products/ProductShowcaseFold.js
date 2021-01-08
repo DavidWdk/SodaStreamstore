@@ -16,6 +16,7 @@ function productShowcaseFold({
   productPrice,
   isProductHistory = false,
   productHistoryArrivalDate = "Date",
+  onPress,
 }) {
   const priceFormatter = (price) => {
     const string = price.toString();
@@ -55,6 +56,7 @@ function productShowcaseFold({
             textColor="black"
             title={i18n.t("addToCart")}
             color={"yellow"}
+            onPress={onPress}
           />
         )}
 

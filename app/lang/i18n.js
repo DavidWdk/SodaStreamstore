@@ -109,6 +109,8 @@ i18n.translations = {
     orders: "Bestellingen",
     emptyOrderHistory: "U heeft nog geen bestellingen gedaan",
     emptyOrderHistoryDesc: "Bezoek onze winkel om een bestelling te plaatsen",
+    subscriptionSuggestion:
+      "Bestel je vaak hetzelfde? Overweeg een abonnement en krijg extra beloningen.",
 
     //ORDERHISTORYDETAILS
     orderNum: "Bestelnummer",

@@ -17,7 +17,6 @@ import SubmitButton from "../components/forms/SubmitButton";
 import userData from "../../assets/placeholderData/userData";
 import storage from "../auth/storage";
 import { StackActions } from "@react-navigation/native";
-import { TextInput } from "react-native-gesture-handler";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()

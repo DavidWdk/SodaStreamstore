@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ScrollView, View, StyleSheet, Pressable } from "react-native";
 import "intl";
@@ -13,10 +13,16 @@ import subscriptionQuantityOptions from "../../../assets/placeholderData/subscri
 import { AppText, AppTitle } from "../../components/fonts";
 import AppButton from "../../components/AppButton";
 import AppTextInput from "../../components/AppTextInput";
+import userData from "../../../assets/placeholderData/userData";
+import AuthContext from "../../auth/context";
+import { CommonActions } from "@react-navigation/native";
 
-function NewSubSecondStepScreen(props) {
+function NewSubSecondStepScreen({ navigation }) {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
+  const [user, setUser] = useState(userData);
+
+  let authContext = useContext(AuthContext);
 
   const showDatepicker = () => {
     setDatePickerVisibility(true);
@@ -37,6 +43,15 @@ function NewSubSecondStepScreen(props) {
     const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
     const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
     return `${da} ${mo} ${ye}`;
+  };
+
+  const activateSubscription = () => {
+    setUser((authContext.user.activeSubscription = true));
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: "Subscription",
+      })
+    );
   };
 
   return (
@@ -85,6 +100,7 @@ function NewSubSecondStepScreen(props) {
           title={i18n.t("buySubscription")}
           icon="chevron-right"
           style={styles.nextButton}
+          onPress={activateSubscription}
         />
       </ScrollView>
     </>

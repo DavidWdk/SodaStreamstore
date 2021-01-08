@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 
@@ -32,7 +32,7 @@ function CustomHeader({
       >
         <View style={styles.mainHeaderContainer}>
           {!noBackButton && (
-            <Pressable
+            <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
               }}
@@ -43,7 +43,7 @@ function CustomHeader({
                 color={defaultStyles.colors.black}
                 style={styles.backIcon}
               />
-            </Pressable>
+            </TouchableOpacity>
           )}
           <View style={styles.title}>
             <AppTitle
@@ -95,7 +95,7 @@ function CustomHeader({
       >
         <View style={styles.mainHeaderContainer}>
           {!noBackButton && (
-            <Pressable
+            <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
               }}
@@ -106,7 +106,7 @@ function CustomHeader({
                 color={defaultStyles.colors.black}
                 style={styles.backIcon}
               />
-            </Pressable>
+            </TouchableOpacity>
           )}
           <View style={styles.title}>
             <AppTitle

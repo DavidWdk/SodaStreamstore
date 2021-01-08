@@ -27,17 +27,6 @@ function ManageSubscriptionScreen(props) {
     }
   }, []);
 
-  const cancelSubscription = () => {
-    if (authContext.user !== undefined || null) {
-      if (authContext.user.activeSubscription == true) {
-        authContext.setUser((authContext.user.activeSubscription = false));
-        console.log(authContext.user.activeSubscription);
-      } else {
-      }
-    } else {
-    }
-  };
-
   return (
     <Screen style={defaultStyles.screenContainer}>
       <CustomHeader
@@ -73,7 +62,6 @@ function ManageSubscriptionScreen(props) {
               textColor="red"
               style={styles.stopSubBtn}
               title={i18n.t("cancelSubscription")}
-              onPress={cancelSubscription}
             />
           </View>
         }

@@ -8,8 +8,9 @@ import defaultStyles from "../../config/styles";
 import orderHistory from "../../../assets/placeholderData/orderHistory";
 import CustomHeader from "../../components/CustomHeader";
 import { AppTitle, AppText } from "../../components/fonts";
+import AppButton from "../../components/AppButton";
 
-function OrderHistoryScreen(props) {
+function OrderHistoryScreen({ navigation }) {
   return (
     <>
       <CustomHeader
@@ -18,9 +19,26 @@ function OrderHistoryScreen(props) {
         title={i18n.t("orders")}
         backgroundColor="white"
       />
+
       <SmallProductList
         contentContainerStyle={{ flexGrow: 1 }}
         data={orderHistory}
+        ListHeaderComponent={
+          <View style={defaultStyles.screenContainer}>
+            <AppText italic thin style={defaultStyles.textCenter}>
+              {i18n.t("subscriptionSuggestion")}
+            </AppText>
+
+            <AppButton
+              color="yellow"
+              textColor="black"
+              icon="calendar-repeat-outline"
+              title="Abonnement beheren"
+              bold
+              onPress={() => navigation.navigate("Subscription")}
+            />
+          </View>
+        }
         ListEmptyComponent={
           <View style={styles.emptyComponent}>
             <AppTitle>{i18n.t("emptyOrderHistory")}</AppTitle>

@@ -36,7 +36,6 @@ function NoSubscriptionScreen({ navigation }) {
         blueBackground
         image="https://i.ibb.co/dQ35zfK/undraw-advanced-customization-58j6.png"
         title={i18n.t("alwaysStacked")}
-        style={styles.bottomMargin}
       >
         {i18n.t("alwaysStackedDesc")}
       </ImgTextBlock>
@@ -45,13 +44,6 @@ function NoSubscriptionScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  bottomMargin: {
-    paddingBottom: 30,
-  },
-  btn: {
-    width: 280,
-    alignSelf: "center",
-  },
   title: {
     fontSize: 24,
     marginTop: 24,

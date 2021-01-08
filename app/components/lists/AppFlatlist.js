@@ -18,6 +18,7 @@ function AppFlatlist({ data, itemKind = "flat", ...otherProps }) {
           designationScreen={item.designationScreen}
           itemKind={item.itemKind}
           textColor={item.textColor}
+          onPress={item.onPress}
         />
       )}
       ItemSeparatorComponent={ListItemSeperator}

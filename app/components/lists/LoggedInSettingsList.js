@@ -26,6 +26,7 @@ function LoggedInSettingsList({ data, userData }) {
           style={[
             defaultStyles.screenContainer,
             defaultStyles.topWhitespaceSmallest,
+            defaultStyles.botSpacing16,
           ]}
         >
           <BottleCounter

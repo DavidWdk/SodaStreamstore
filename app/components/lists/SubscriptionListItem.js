@@ -71,6 +71,9 @@ function SubscriptionListItem({
           initialvalue={initialvalue}
           onPressAdd={onPressAdd}
           onPressSubtract={onPressSubtract}
+          textAlign="center"
+          style={styles.productAmount}
+          styleInput={styles.productAmountInput}
         />
       </View>
     </Pressable>
@@ -110,11 +113,16 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   manageItem: {
-    flexDirection: "row",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
     height: 40,
+  },
+  productAmount: {
+    width: 65,
+  },
+  productAmountInput: {
+    paddingVertical: 2,
   },
   productContainer: {
     borderColor: defaultStyles.colors.lightGrey,

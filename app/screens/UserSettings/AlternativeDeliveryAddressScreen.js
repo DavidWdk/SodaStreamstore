@@ -17,7 +17,6 @@ import SubmitButton from "../../components/forms/SubmitButton";
 import CustomHeader from "../../components/CustomHeader";
 import countries from "../../../assets/placeholderData/countries";
 import AppSwitch from "../../components/AppSwitch";
-import Screen from "../../components/screenStyling/Screen";
 
 const validationSchema = Yup.object().shape({
   anderAdres: Yup.boolean(),
@@ -60,17 +59,17 @@ const validationSchema = Yup.object().shape({
 
 function AlternativeDeliveryAddressScreen(props) {
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={[styles.container, defaultStyles.screenContainer]}
-    >
-      <Screen>
-        <ScrollView style={styles.section} onPress={Keyboard.dismiss}>
-          <CustomHeader
-            title={i18n.t("alternativeDeliveryAddress")}
-            style={defaultStyles.lineWhitespace}
-          />
-
+    <>
+      <CustomHeader
+        title={i18n.t("alternativeDeliveryAddress")}
+        topPaddingAdjustment
+        backgroundColor="blueBackground"
+      />
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={[styles.container, defaultStyles.screenContainer]}
+      >
+        <ScrollView onPress={Keyboard.dismiss}>
           <AppForm
             initialValues={{
               anderAdres: false,
@@ -183,8 +182,8 @@ function AlternativeDeliveryAddressScreen(props) {
             <SubmitButton style={styles.button} title={i18n.t("saveChanges")} />
           </AppForm>
         </ScrollView>
-      </Screen>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </>
   );
 }
 
@@ -192,10 +191,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.blueBackground,
     flex: 1,
-    paddingTop: 12,
   },
   button: {
     marginBottom: 32,
+    marginTop: 32,
   },
 });
 
